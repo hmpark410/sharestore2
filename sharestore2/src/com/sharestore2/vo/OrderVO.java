@@ -1,0 +1,52 @@
+package com.sharestore2.vo;
+
+import java.sql.Timestamp;
+
+public class OrderVO {
+	//상품번호, 주문번호, 상품명, 바이어_ID(FK), 결제금액, 주문일자, 상태
+	private String orderNumber;
+	private Timestamp orderDate;
+	private int totalPrice;
+	private String status;
+	private String memberId;
+	private String sellerId;
+	
+	public OrderVO() {}
+
+	public String getOrderNumber() {
+		return orderNumber;
+	}
+	public void setOrderNumber(String orderNumber) {
+		this.orderNumber = orderNumber;
+	}
+	public Timestamp getOrderDate() {
+		return orderDate;
+	}
+	public void setOrderDate(Timestamp orderDate) {
+		this.orderDate = orderDate;
+	}
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getMemberId() {
+		return memberId;
+	}
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
+	public void setSellerId(String sellerId) {
+		this.sellerId = sellerId;
+	}
+	public String getSellerId() {
+		return sellerId;
+	}
+}
