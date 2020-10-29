@@ -434,7 +434,7 @@ public class ProductDAO {
 		PreparedStatement pstmt = null;
 		try {
 			conn = connect();
-			String sql = "update product set name=?, size=?, price=?, stock=?, category=?, exp=?, filename1=?, filename2=?, filename3=? where product_number=?;";
+			String sql = "update product set name=?, size=?, price=?, stock=?, category=?, exp=?where product_number=?;";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, product.getName());
 			pstmt.setString(2, product.getSize());
@@ -442,10 +442,7 @@ public class ProductDAO {
 			pstmt.setInt(4, product.getStock());	
 			pstmt.setString(5, product.getCategory());
 			pstmt.setString(6, product.getExp());
-			pstmt.setString(7, product.getFilename1());
-			pstmt.setString(8, product.getFilename2());
-			pstmt.setString(9, product.getFilename3());
-			pstmt.setString(10, product.getproductNumber());
+			pstmt.setString(7, product.getproductNumber());
 			
 			pstmt.executeUpdate();
 		}
@@ -456,6 +453,26 @@ public class ProductDAO {
 			close(conn, pstmt);
 		}
 	}
+	
+	//수량수정
+		public void stockUpdate(ProductVO product) {
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			try {
+				conn = connect();
+				String sql = "update product set stock=? where product_number=?;";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, product.getStock());	
+				pstmt.setString(2, product.getproductNumber());
+				pstmt.executeUpdate();
+			}
+			catch(Exception ex){
+				System.out.println("오류 발생 : " + ex);
+			}
+			finally {
+				close(conn, pstmt);
+			}
+		}
 	
 	//관리자상품수정리스트
 	public ArrayList<ProductVO> adminPrdUpdatelist(String productNumber) {

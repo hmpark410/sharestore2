@@ -90,9 +90,6 @@
 				 	<h3>주문내역</h3>
 					<div class="orderlist">
 					<form name="form1" method="post">
-						<script type="text/javascript">
-							function showPopup2() { window.open("orderDetail.do", "주문상세", "width=750, height=400, top=45, left=535"); }
-						</script>
 						<table class="cols tbl_product shopping">
 							<colgroup>
 								<col style="width: 280px;">
@@ -105,7 +102,7 @@
 								<tr>
 									<th>주문번호</th>
 									<th>주문일</th>
-									<th>금액</th>
+									<th>총금액</th>
 									<th>진행상황</th>
 									<th>선택</th>
 								</tr>
@@ -118,9 +115,12 @@
 								<tr>
 									<th><button type="submit" class="hiddenbtn" name="orderNumber" onclick='showPopup2()' value="<%=order.getOrderNumber() %>"><%=order.getOrderNumber() %></button></th>
 									<th><%=order.getOrderDate() %></th>
-									<th><%=order.getTotalPrice() %></th>    
+									<th><%=order.getTotalPrice() %></th>
 									<th><%=order.getStatus() %></th>
-									<th></th>
+									<th>
+										<input type="submit" name="update_btn" class="update_btn" value="취소" onclick=""> 
+			 							<input type="submit" name="delete_btn" class="delete_btn" value="환불" onclick="">
+									</th>
 								</tr>
 							<%} 
 							}

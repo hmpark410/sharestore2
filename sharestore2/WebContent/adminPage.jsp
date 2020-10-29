@@ -46,6 +46,9 @@
 						<li>
 							<a href="adminProduct.do">상품 관리</a>
 						</li>
+						<li>
+							<a href="adminSaleList.do">판매 목록</a>
+						</li>
 					</ul>
 				</nav>
 	        </div>			

@@ -38,6 +38,12 @@ public class OrderProductInsertController implements Controller {
 		orderProduct.setProductNumber(productNumber);
 		orderProduct.setCount(count);
 		
+		ProductVO product2 = new ProductVO();
+		int udStock = product.getStock() - orderProduct.getCount();
+		product2.setproductNumber(productNumber);
+		product2.setStock(udStock);
+		service.stockUpdate(product2);
+		
 		//OrderVO 객체 
 		//주문번호 생성(주문날짜 + 랜던번호) 
 		Calendar cal = Calendar.getInstance();

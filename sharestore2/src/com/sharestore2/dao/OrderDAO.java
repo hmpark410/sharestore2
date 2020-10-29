@@ -65,6 +65,37 @@ public class OrderDAO {
 			}
 		}
 	}
+	
+	//판매리스트
+	public ArrayList<OrderVO> saleList() {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		OrderVO order = null;
+		ArrayList<OrderVO> saleList = new ArrayList<>();
+		try {
+			conn = connect();
+			pstmt = conn.prepareStatement("SELECT * FROM sharestore.order");
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				order = new OrderVO();
+				order.setOrderNumber(rs.getString(1));
+				order.setOrderDate(rs.getTimestamp(2));
+				order.setTotalPrice(rs.getInt(3));
+				order.setStatus(rs.getString(4));
+				order.setMemberId(rs.getString(5));
+				order.setSellerId(rs.getString(6));
+				saleList.add(order);
+			}
+
+		} catch (Exception ex) {
+			System.out.println("오류 발생 : " + ex);
+		} finally {
+			close(conn, pstmt, rs);
+		}
+		return saleList;
+	}
 
 	// 주문리스트
 	public ArrayList<OrderVO> orderList(String memberId) {

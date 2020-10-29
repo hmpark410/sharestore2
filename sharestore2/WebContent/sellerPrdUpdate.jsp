@@ -23,7 +23,7 @@
         </div>
         <div class="pupdate_frame">
         	<div class="pupdate_cont">
-				<form action="sellerPrdUpdate.do" method="post" enctype="multipart/form-data">
+				<form action="sellerPrdUpdate.do" method="post">
 					<% ArrayList<ProductVO> sellerPrdUpdatelist = (ArrayList<ProductVO>) request.getAttribute("sellerPrdUpdatelist");
 					if(!sellerPrdUpdatelist.isEmpty()){%>
 					<% 
@@ -97,22 +97,6 @@
 						        <td>
 					          		<input type="text" name="exp" id="exp" maxlength="50" value = "<%=prdlist.getExp()%>">
 					          	</td>
-							</tr>
-							<tr>
-						    	<th>대표 이미지</th>
-								<td><input type="file" accept=".gif, .png, .jpg, .jpeg"
-									name="filename1" id="prdimg1" value = "<%=prdlist.getFilename1()%>">
-								</td>
-							</tr>
-							<tr>
-								<th>추가 이미지1</th>
-								<td><input type="file" accept=".gif, .png, .jpg, .jpeg"
-									name="filename2" id="prdimg2" value = "<%=prdlist.getFilename2()%>"></td>
-							</tr>
-							<tr>
-								<th>추가 이미지2</th>
-								<td><input type="file" accept=".gif, .png, .jpg, .jpeg"
-									name="filename3" id="prdimg3" value = "<%=prdlist.getFilename3()%>"></td>
 							</tr>
 				        </tbody>
 					</table>

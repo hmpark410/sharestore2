@@ -69,6 +69,10 @@ public class ProductService {
 	public void SellerPrdUpdate(ProductVO product) {
 		dao.SellerPrdUpdate(product);
 	}
+	//수량 수정
+	public void stockUpdate(ProductVO product) {
+		dao.stockUpdate(product);
+	}
 	//관리자상품수정리스트
 	public ArrayList<ProductVO> adminPrdUpdatelist(String productNumber) {
 		ArrayList<ProductVO> adminPrdUpdatelist = dao.adminPrdUpdatelist(productNumber);

@@ -16,6 +16,7 @@ import com.sharestore2.service.OrderService;
 import com.sharestore2.service.ProductService;
 import com.sharestore2.vo.OrderProductVO;
 import com.sharestore2.vo.OrderVO;
+import com.sharestore2.vo.ProductVO;
 
 //장바구니 상품 주문하기 
 public class OrderInsertController implements Controller {
@@ -44,10 +45,20 @@ public class OrderInsertController implements Controller {
 		String status = "주문완료";
 		int totalPrice = 0;
 		String sellerId = null;
+		int stock = 0;
+		String productNumber = null;
 		for (int i = 0; i < orderProductList.size(); i++) {
 			OrderProductVO orderProduct = orderProductList.get(i);
 			totalPrice += orderProduct.getCount() * orderProduct.getPrice();
 			sellerId = orderProduct.getProduct().getSellerId();
+			stock = orderProduct.getProduct().getStock();
+			productNumber = orderProduct.getProduct().getproductNumber();
+			ProductVO product2 = new ProductVO();
+			int udStock = stock - orderProduct.getCount();
+			product2.setproductNumber(productNumber);
+			product2.setStock(udStock);
+			ProductService service = ProductService.getInstance();
+			service.stockUpdate(product2);
 		}
 		
 		OrderVO order = new OrderVO();
@@ -67,6 +78,7 @@ public class OrderInsertController implements Controller {
 			OrderProductService orderProductService = OrderProductService.getInstance();
 			orderProductService.OrderProductInsert(orderProduct);
 		}
+		
 		request.setAttribute("order", order);
 		HttpUtil.forward(request, response, "/result/orderInsertOut.jsp");
 	}

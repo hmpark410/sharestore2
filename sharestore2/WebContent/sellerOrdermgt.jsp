@@ -76,7 +76,7 @@
 		</div>
 		<h3>주문내역</h3>
 		<div class="orderlist">
-			<form action="sellerOrderUpdate.do" method="post">
+			<form name="form1" action="sellerOrderUpdate.do" method="post">
 				<table id="table1" class="cols tbl_product shopping">
 					<colgroup>
 					     <col style="width: 150px;">
@@ -97,17 +97,17 @@
 					        <th>아이디</th>
 					        <th>진행상황</th>
 					        <th></th>
-					        <th><Button type="submit" id="ddddd" name="update_status" class="update_status">수정</Button></th>	
+					        <th></th>
 					    </tr>
 					</thead>
 					<% 
-								if(!sellerOrderList.isEmpty()){		
-								for(int i = 0; i < sellerOrderList.size(); i++){
-									OrderVO orderlist = sellerOrderList.get(i);
+						if(!sellerOrderList.isEmpty()){		
+							for(int i = 0; i < sellerOrderList.size(); i++){
+								OrderVO orderlist = sellerOrderList.get(i);
 					%>
 					<tbody>
 						<tr>
-							<th><input type="text" name="orderDate" class="txt" value = "<%=orderlist.getOrderDate() %>"></th>
+							<th><input type="text" name="orderDate" class="txt" value = "<%=orderlist.getOrderDate() %>" readonly></th>
 							<th><input type="text" name="orderNumber" class="txt" value = "<%=orderlist.getOrderNumber() %>" readonly></th>
 							<th><input type="text" name="productNumber" class="txt" value = "" readonly></th>
 							<th><input type="text" name="totalPrice" class="txt" value = "<%=orderlist.getTotalPrice() %>" readonly></th>
@@ -126,31 +126,28 @@
 								</div>
 							</th>
 							<th>
-								<input type="checkbox" id="num_btn" name="chk1" checked="checked" style="display:none;" value=<%=orderlist.getOrderNumber() %>>
-								<input type="checkbox" id="status_btn" name="chk2" onclick="value_check();">
+								<input type="hidden" name="update_status" id="update_status">
+								<Button type="submit" name="orderNum" onclick='formClick()' value="<%=orderlist.getOrderNumber() %>">수정</Button>
 							</th>
-							<script>
-							    function value_check() {
-							    	
-							        var check_count = document.getElementsByName("chk2").length;
-							        for (var i=0; i<check_count; i++) {
-							            if (document.getElementsByName("chk2")[i].checked == true) {
-							            	var target = document.getElementById("orderstatus");
-							            	document.getElementsByName("chk2")[i].value = target.options[target.selectedIndex].value;
-							            }
-							        }
-							    }
-							</script>
 						</tr>
-						<%} 
+						<%}
 						}
 						else{%>
 				        <tr>
-				        	<td colspan="7" style="text-align:center;"><p>구매 내역이 없습니다.<p></td>
+				        	<td colspan="8" style="text-align:center;"><p>구매 내역이 없습니다.<p></td>
 				        </tr>
 					</tbody>
 					<%} %>
 				</table>
+				<script type="text/javascript">
+					function formClick(){
+						var sel = document.getElementById("orderstatus");
+						var val = sel.options[sel.selectedIndex].value;
+						var check =document.form1;
+						document.getElementById("update_status").value = val;
+						check.submit();
+					}	
+				</script>
 			</form>
 		</div>
     </div>

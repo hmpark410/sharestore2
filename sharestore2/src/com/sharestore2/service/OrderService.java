@@ -16,6 +16,12 @@ public class OrderService {
 	public static OrderService getInstance() {
 		return service;
 	}
+	//판매리스트
+	public ArrayList<OrderVO> saleList() {
+		ArrayList<OrderVO> saleList = dao.saleList();
+		return saleList;
+	}
+	
 	//주문리스트 
 	public ArrayList<OrderVO> orderList(String memberId) {
 		ArrayList<OrderVO> orderList = dao.orderList(memberId);

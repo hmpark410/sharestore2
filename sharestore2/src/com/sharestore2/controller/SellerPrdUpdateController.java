@@ -19,35 +19,14 @@ public class SellerPrdUpdateController implements Controller{
 	public void execute (HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8");
-		MultipartRequest multi = null;
 		
-		int sizeLimit = 10 * 1024 * 1024;
-		
-		String savePath = request.getSession().getServletContext().getRealPath("/data");
-		
-		try{
-            multi=new MultipartRequest(
-                    request
-                    , savePath
-                    , sizeLimit
-                    , "UTF-8"
-                    , new DefaultFileRenamePolicy()); 
- 
-         }catch (Exception e) {
-                e.printStackTrace();
-         }
-		
-		String productNumber = multi.getParameter("productNumber");
-		String category = multi.getParameter("category");
-		String name = multi.getParameter("name");
-		String size = multi.getParameter("size");
-		int price = Integer.parseInt(multi.getParameter("price"));
-		int stock = Integer.parseInt(multi.getParameter("stock"));
-		String exp = multi.getParameter("exp");
-		String filename1 = multi.getFilesystemName("filename1");
-		String filename2 = multi.getFilesystemName("filename2");
-		String filename3 = multi.getFilesystemName("filename3");
+		String productNumber = request.getParameter("productNumber");
+		String category = request.getParameter("category");
+		String name = request.getParameter("name");
+		String size = request.getParameter("size");
+		int price = Integer.parseInt(request.getParameter("price"));
+		int stock = Integer.parseInt(request.getParameter("stock"));
+		String exp = request.getParameter("exp");
 		
 		ProductVO product = new ProductVO();
 		product.setproductNumber(productNumber);
@@ -57,9 +36,6 @@ public class SellerPrdUpdateController implements Controller{
 		product.setPrice(price);
 		product.setStock(stock);
 		product.setExp(exp);
-		product.setFilename1(filename1);
-		product.setFilename2(filename2);
-		product.setFilename3(filename3);
 		
 		ProductService service = ProductService.getInstance();	
 		service.SellerPrdUpdate(product);

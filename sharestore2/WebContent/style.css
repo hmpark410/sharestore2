@@ -462,7 +462,7 @@ h2 {
 	border-bottom: 2px solid #1a2e88;
 }
 
-.sellerprdlist_frame, .admbuyer_frame, .admseller_frame {
+.sellerprdlist_frame, .admbuyer_frame, .admseller_frame, .salelist_frame {
 	width: 60%;
     margin-top: -950px;
     margin-left: 520px;
@@ -479,6 +479,16 @@ h2 {
 	overflow-y: scroll;
 	overflow-x: hidden;
 	float: left;
+    border-top: 2px solid #1a2e88;
+    border-bottom: 1px solid #1a2e88;
+}
+
+.salelist_frame .orderlist {
+	position: absolute;
+	width: 1112px;
+	height: 700px;
+	overflow-y: scroll;
+	overflow-x: hidden;
     border-top: 2px solid #1a2e88;
     border-bottom: 1px solid #1a2e88;
 }
@@ -515,7 +525,7 @@ h2 {
 	position: absolute;
 }
 
-.sellerprdreg_frame h3, .sellerprdlist_frame h3, .sellerodmgt_frame h3, .admbuyer_frame h3, .admseller_frame h3 {
+.sellerprdreg_frame h3, .sellerprdlist_frame h3, .sellerodmgt_frame h3, .admbuyer_frame h3, .admseller_frame h3, .salelist_frame h3 {
 	font-size: 25px;
     color: #000;
     font-weight: normal;
@@ -1202,7 +1212,7 @@ strong, b {
     border-top: 2px solid #1a2e88;
 }
 
-.member_cont .orderlist .hiddenbtn {
+.member_cont .orderlist .hiddenbtn, .salelist_frame .orderlist .hiddenbtn {
 	background-color: #fff;
 	border: none;
 	color: #1a2e88;
@@ -1210,19 +1220,23 @@ strong, b {
     text-align: center;
 }
 
+.salelist_frame .orderlist .hiddenbtn {
+	background-color: #f2f2f2;
+}
+
 #orderdetail {
 	margin:0;
 	padding:0;
 	width: 750px;
-	height: 395px;
+	height: 397px;
 	overflow-y: scroll;
 	overflow-x: hidden;
     border-top: 2px solid #1a2e88;
     border-bottom: 1px solid #1a2e88;
 }
 
-.sellerodmgt_frame table thead th Button {
-	margin-top: 8px;
+.sellerodmgt_frame table tbody tr Button {
+	margin-top: 5px;
 	margin-right: 15px;
 	float: right;
 	text-align: center;
