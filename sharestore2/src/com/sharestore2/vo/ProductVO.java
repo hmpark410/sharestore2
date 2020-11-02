@@ -52,8 +52,8 @@ public class ProductVO {
 	public String getCategory() {
 		return category;
 	}
-	public void setCategory(String categori) {
-		this.category = categori;
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	public void setExp(String exp) {
 		this.exp = exp;

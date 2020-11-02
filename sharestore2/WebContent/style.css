@@ -62,7 +62,7 @@ header .top_search {
     transform: translate(-50%,-50%);
     width: 425px;
     height: 40px;
-    border-bottom: 2px solid #1a2e88;
+    borer-bottom: 2px solid #1a2e88;
 }
 
 header .top_search #tsearch {
@@ -74,6 +74,10 @@ header .top_search #tsearch {
 	float: left;
 }
 
+/*header .top_search #tsearch:focus{
+  outline: none;
+}*/
+
 header .top_search button {
 	width: 50px;
 	height: 100%;
@@ -83,6 +87,26 @@ header .top_search button {
 	float: right;
 	color: #ffffff;
 }
+
+/*.search_box{
+	width: 375px;
+ 	background: #fff;
+ 	padding: 2%;
+ 	margin-top: 40px;
+}
+
+.search_box .item{
+  margin: 3% 0px;
+  display: flex;
+  align-items: center;
+}
+
+.search_box .search_name{
+  font-size: 15px;
+  font-weight: 470;
+  color: #333;
+}*/
+
 
 header .top_menu {
 	position: absolute;
@@ -372,6 +396,14 @@ h2 {
 	position: absolute;
 }
 
+#select_block {
+	margin-top: -10px;
+    padding: 0;
+    width: 100%;
+	display : block;
+	position: relative;
+}
+
 #pdtlist_block h1 {
 	margin-left: 30px;
 	font-size: 12px;
@@ -384,7 +416,12 @@ h2 {
 	margin-top: 50px;
 }
 
-#pdtlist_block table tr img {
+ #select_block table {
+	margin-top: 50px;
+	margin-left: 80px;
+}
+
+#pdtlist_block table tr img, #select_block table tr img {
 	display: block;
     width: 250px;
     height: 330px;
@@ -941,7 +978,7 @@ tbody {
     border-color: inherit;
 }
 
-table tbody th {
+table tbody th{
 	width: 300px;
     height: 68px;
     color: #333;
@@ -950,7 +987,7 @@ table tbody th {
     text-align: center;
 }
 
-table tbody th span {
+table tbody th span{
     color: red;
     display: inline-block;
     padding-top: 2px;

@@ -32,7 +32,7 @@
 											class="normal">
 											<option>카테고리</option>
 											<optgroup label="WOMEN">
-												<option value="1001">APPPAREL</option>
+												<option value="1001">APPAREL</option>
 												<option value="1002">BAG</option>
 												<option value="1003">SHOES</option>
 												<option value="1004">ACC</option>
@@ -54,7 +54,7 @@
 						<tr>
 							<th>상품명</th>
 							<td><input type="text" name="name" maxlength="30"
-								placeholder="ex) 플라워 미니 원피스" style="width: 600px;"></td>
+								placeholder="색상과 상품 상세내용을 입력해주세요. ex)핑크 플라워 미니 원피스" style="width: 600px;"></td>
 						</tr>
 						<tr>
 							<th>사이즈</th>
