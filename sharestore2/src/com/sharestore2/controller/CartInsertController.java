@@ -25,7 +25,7 @@ public class CartInsertController implements Controller {
 		if (orderProductList == null)
 			orderProductList = new ArrayList<OrderProductVO>();
 
-		String productNumber = request.getParameter("productNumber");
+		int productNumber =  Integer.parseInt(request.getParameter("productNumber"));
 		int count = Integer.parseInt(request.getParameter("count"));
 
 		// Service

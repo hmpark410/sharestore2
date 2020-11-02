@@ -18,18 +18,9 @@
 						</a>
 					</div>
 					<div class="top_search">
-						<input onkeyup="filter()" type="text" id="tsearch" name="search" placeholder="검색어를 입력하세요.">
-						<button type="submit" name="button" onclick="javascript: form.action='test.do';">검색</button>
-						<div class="search_box">
-							<div class="item">
-					          <span class="search_name">안녕</span>
-					        </div>
-					        <div class="item">
-					          <span class="search_name">Orange</span>
-					        </div>
-						</div>
+						<input type="text" id="tsearch" placeholder="검색어를 입력하세요.">
+						<button type="submit" name="button" onclick="javascript: form.action='search.do';">검색</button>
 					</div>
-					
 					<div class="top_menu">
 						<%
 							MemberVO member = (MemberVO) session.getAttribute("member");
@@ -145,23 +136,6 @@
 					  slides[slideIndex-1].style.display = "block";  
 					  dots[slideIndex-1].className += " active";
 					}
-					
-				      function filter(){
-	
-				        var value, name, item, i;
-	
-				        value = document.getElementById("tsearch").value.toUpperCase();
-				        item = document.getElementsByClassName("item");
-
-				        for(i=0;i<item.length;i++){
-				          name = item[i].getElementsByClassName("search_name");
-				          if(name[0].innerHTML.toUpperCase().indexOf(value) > -1){
-				        	  item[i].style.display = "flex";
-				          }else{
-				             item[i].style.display = "none";
-				          }
-				        }
-				      }
 				</script>
 			</section>
 		</form>

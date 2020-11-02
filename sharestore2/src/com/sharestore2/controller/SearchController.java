@@ -18,19 +18,12 @@ public class SearchController implements Controller{
 		String search = request.getParameter("search");
 		
 		ProductService service = ProductService.getInstance();
-		CategoryKeywordService service2 = CategoryKeywordService.getInstance();
-		ArrayList<CategoryKeywordVO> ctgkwSelect = service2.ctgkwSelect(search);
 		if(search.isEmpty()) {
 			ArrayList<ProductVO> allProduct = service.productList();
 			request.setAttribute("allProduct", allProduct);
 		} else {
-			for (int i = 0; i < ctgkwSelect.size(); i++) {
-				CategoryKeywordVO ctgkw = ctgkwSelect.get(i);
-				String category = ctgkw.getCategory();
-				System.out.println(category);
-				ArrayList<ProductVO> productPageList = service.productPageList(category);
-				request.setAttribute("allProduct", productPageList);
-			}
+			ArrayList<ProductVO> pdtSelect = service.pdtSelect(search);
+			request.setAttribute("allProduct", pdtSelect);
 		}
 
 		HttpUtil.forward(request, response, "/selectPage.jsp");

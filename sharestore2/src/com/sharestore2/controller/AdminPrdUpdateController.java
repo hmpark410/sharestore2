@@ -35,7 +35,7 @@ public class AdminPrdUpdateController implements Controller{
          }
 		
 		String sellerId = multi.getParameter("sellerId");
-		String productNumber = multi.getParameter("productNumber");
+		int productNumber =  Integer.parseInt(multi.getParameter("productNumber"));
 		String category = multi.getParameter("category");
 		String name = multi.getParameter("name");
 		String size = multi.getParameter("size");

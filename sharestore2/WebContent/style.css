@@ -62,7 +62,7 @@ header .top_search {
     transform: translate(-50%,-50%);
     width: 425px;
     height: 40px;
-    borer-bottom: 2px solid #1a2e88;d
+    borer-bottom: 2px solid #1a2e88;
 }
 
 header .top_search #tsearch {
@@ -74,9 +74,9 @@ header .top_search #tsearch {
 	float: left;
 }
 
-header .top_search #tsearch:focus{
+/*header .top_search #tsearch:focus{
   outline: none;
-}
+}*/
 
 header .top_search button {
 	width: 50px;
@@ -88,7 +88,7 @@ header .top_search button {
 	color: #ffffff;
 }
 
-.search_box{
+/*.search_box{
 	width: 375px;
  	background: #fff;
  	padding: 2%;
@@ -105,7 +105,7 @@ header .top_search button {
   font-size: 15px;
   font-weight: 470;
   color: #333;
-}
+}*/
 
 
 header .top_menu {

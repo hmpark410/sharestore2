@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.sharestore2.dao.OrderProductDAO;
 import com.sharestore2.vo.OrderProductVO;
-import com.sharestore2.vo.OrderVO;
 
 public class OrderProductService {
 	

@@ -135,7 +135,8 @@
 							<li class="total"><strong>총 결제금액</strong>
 								<p>
 									<em id="counterTotalAmt"><%=totalPrice%></em>원
-								</p></li>
+								</p>
+							</li>
 						</ul>
 
 						<%
@@ -143,7 +144,7 @@
 						%>
 						<button type="button" name="button" class="btn sky"
 							style="width: 100%" onclick="window.location='login.jsp'">전체상품
-							주문하기</button>
+						주문하기</button>
 						<%
 							} else {
 						%>
@@ -151,8 +152,8 @@
 						<button type="submit" name="button" class="btn sky"
 							style="width: 100%"
 							onclick="javascript: form.action='orderInsert.do';">전체상품
-							주문하기</button>
-
+					주문하기
+						</button>
 					</div>
 					<%
 						}

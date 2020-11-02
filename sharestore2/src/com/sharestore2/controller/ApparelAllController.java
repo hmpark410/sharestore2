@@ -17,6 +17,7 @@ public class ApparelAllController implements Controller{
 		ArrayList<ProductVO> productPageAllList1 = service.productPageAllList1();
 	
 		request.setAttribute("productList", productPageAllList1);
+
 		HttpUtil.forward(request, response, "/apparelAll.jsp");
 	}
 	

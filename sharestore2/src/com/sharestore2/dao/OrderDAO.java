@@ -2,7 +2,7 @@ package com.sharestore2.dao;
 
 import java.sql.*;
 import com.sharestore2.vo.OrderVO;
-import com.sharestore2.vo.ProductVO;
+
 
 import java.util.ArrayList;
 
@@ -86,6 +86,7 @@ public class OrderDAO {
 				order.setStatus(rs.getString(4));
 				order.setMemberId(rs.getString(5));
 				order.setSellerId(rs.getString(6));
+				order.setDeliveryDate(rs.getTimestamp(7));
 				saleList.add(order);
 			}
 
@@ -109,7 +110,6 @@ public class OrderDAO {
 			pstmt = conn.prepareStatement("SELECT * FROM sharestore.order where member_id = ?");
 			pstmt.setString(1, memberId);
 			rs = pstmt.executeQuery();
-
 			while (rs.next()) {
 				order = new OrderVO();
 				order.setOrderNumber(rs.getString(1));
@@ -117,15 +117,10 @@ public class OrderDAO {
 				order.setTotalPrice(rs.getInt(3));
 				order.setStatus(rs.getString(4));
 				order.setMemberId(rs.getString(5));
+				order.setSellerId(rs.getString(6));
+				order.setDeliveryDate(rs.getTimestamp(7));
 				orderList.add(order);
-
-				if (!orderList.isEmpty()) {
-					for (int i = 0; i < orderList.size(); i++) {
-						order = orderList.get(i);
-					}
-				}
 			}
-
 		} catch (Exception ex) {
 			System.out.println("오류 발생 : " + ex);
 		} finally {
@@ -167,16 +162,17 @@ public class OrderDAO {
 	}
 
 	// 셀러주문리스트수정
-	public void SellerOrderUpdate(OrderVO order) {
+	public void orderUpdate(OrderVO order) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn = connect();
-			String sql = "update sharestore.order set status=? where order_number=?;";
+			String sql = "update sharestore.order set status=?, delivery_date=? "
+					+ "where order_number=?;";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, order.getStatus());
-			pstmt.setString(2, order.getOrderNumber());
-
+			pstmt.setTimestamp(2, order.getDeliveryDate());
+			pstmt.setString(3, order.getOrderNumber());
 			pstmt.executeUpdate();
 		} catch (Exception ex) {
 			System.out.println("오류 발생 : " + ex);

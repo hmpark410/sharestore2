@@ -20,7 +20,7 @@ public class SellerPrdUpdateController implements Controller{
 			throws ServletException, IOException {
 		
 		
-		String productNumber = request.getParameter("productNumber");
+		int productNumber = Integer.parseInt(request.getParameter("productNumber"));
 		String category = request.getParameter("category");
 		String name = request.getParameter("name");
 		String size = request.getParameter("size");

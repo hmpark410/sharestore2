@@ -14,10 +14,15 @@ public class SellerPrdDeleteController implements Controller{
 	public void execute (HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
-		String[] chk = request.getParameterValues("class");
+	   String[] varChk = request.getParameterValues("class");
+	   int[] chk = new int[varChk.length];
+	   
+	   for(int i = 0; i < varChk.length; i ++) {
+		   chk[i] = Integer.parseInt(varChk[i]);
+	   }
 		
-		for(String productNumber : chk) {
-			ProductVO SellerPrdDelete = new ProductVO(productNumber);
+		for(int productNumber : chk) {
+			ProductVO SellerPrdDelete =new ProductVO(productNumber);
 			
 			ProductService service= ProductService.getInstance();
 			service.SellerPrdDelete(SellerPrdDelete);

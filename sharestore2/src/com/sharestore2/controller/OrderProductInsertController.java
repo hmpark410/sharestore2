@@ -24,7 +24,7 @@ public class OrderProductInsertController implements Controller {
 			throws ServletException, IOException {
 		
 		
-		String productNumber = request.getParameter("productNumber");
+		int productNumber = Integer.parseInt(request.getParameter("productNumber"));
 		String memberId = request.getParameter("memberId");
 		int count = Integer.parseInt(request.getParameter("count"));
 		//Service

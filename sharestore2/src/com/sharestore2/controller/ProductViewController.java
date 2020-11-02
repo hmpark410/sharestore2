@@ -14,12 +14,13 @@ public class ProductViewController implements Controller {
 	
 	public void execute(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		String productNumber = request.getParameter("productNumber");
+		
+		int productNumber = Integer.parseInt(request.getParameter("productNumber"));
 				
 		//Service 객체의 메소드 호출
 		ProductService service = ProductService.getInstance();
 		ProductVO product = service.productView(productNumber);
-		System.out.println();
+		
 	
 		//Output 페이지 이동
 		request.setAttribute("product", product);

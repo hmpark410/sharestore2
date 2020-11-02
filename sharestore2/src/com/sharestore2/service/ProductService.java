@@ -74,12 +74,12 @@ public class ProductService {
 		dao.stockUpdate(product);
 	}
 	//관리자상품수정리스트
-	public ArrayList<ProductVO> adminPrdUpdatelist(String productNumber) {
+	public ArrayList<ProductVO> adminPrdUpdatelist(int productNumber) {
 		ArrayList<ProductVO> adminPrdUpdatelist = dao.adminPrdUpdatelist(productNumber);
 		return adminPrdUpdatelist;
 	}
 	//상세상품 가져오기  
-	public ProductVO productView(String productNumber) {
+	public ProductVO productView(int productNumber) {
 		ProductVO product  = dao.productView(productNumber);
 		return product;
 	}
