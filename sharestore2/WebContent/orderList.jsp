@@ -92,7 +92,7 @@
 			else{%>
 				<tr>
 					<td colspan="8" style="text-align:center;"><p>구매 내역이 없습니다.<p></td>
-				 </tr>
+				</tr>
 			</tbody>		
 			</table><%}%>
 		</section>

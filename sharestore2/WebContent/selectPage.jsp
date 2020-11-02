@@ -1,27 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ page import="com.sharestore2.vo.MemberVO"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="com.sharestore2.vo.ProductVO"%>
 <%@ page import="com.sharestore2.dao.ProductDAO"%>
 <%@ page import="com.oreilly.servlet.MultipartRequest"%>
-<%@ page import="com.sharestore2.vo.MemberVO"%>
-
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="style.css" rel="stylesheet" type="text/css">
-<title>· SHARESTORE ·</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<title>· SHARESTORE ·</title>
 </head>
 <body>
 	<div id="page">
 		<header>
 			<div id="top">
 				<div class="logo">
-					<a href="mainhome.jsp"> <img src="./data/logo.png" />
+					<a href="mainhome.jsp">
+						<img src="./data/logo.png"/>
 					</a>
 				</div>
-
+				
 				<div class="top_menu">
 					<%
 						MemberVO member = (MemberVO) session.getAttribute("member");
@@ -60,53 +60,52 @@
 						}
 					%>
 				</div>
-			</div>
+			</div>			
 			<nav>
 				<ul class="nav-container">
-					<li class="nav-item"><a href="apparelAll.do">APPAREL</a>
-						<p>|</p></li>
-					<li class="nav-item"><a href="bagAll.do">BAG</a>
-						<p>|</p></li>
-					<li class="nav-item"><a href="shoesAll.do">SHOES</a>
-						<p>|</p></li>
-					<li class="nav-item"><a href="accAll.do">ACC</a>
-						<p>|</p></li>
-					<li class="nav-item"><a href="lifeAll.do">LIFE</a></li>
+					<li class="nav-item">
+						<a href="apparelAll.do">APPAREL</a>
+						<p>|</p>
+					</li>
+					<li class="nav-item">
+						<a href="bagAll.do">BAG</a>
+						<p>|</p>
+					</li>
+					<li class="nav-item">
+						<a href="shoesAll.do">SHOES</a>
+						<p>|</p>
+					</li>
+					<li class="nav-item">
+						<a href="accAll.do">ACC</a>
+						<p>|</p>
+					</li>
+					<li class="nav-item">
+						<a href="lifeAll.do">LIFE</a>
+					</li>
 				</ul>
-			</nav>
+			</nav>	
 		</header>
-
+		
 		<section id="pdtlist_title">
 			<div class="sub_title_wrap">
-				<h2 class="sub_title">APPAREL</h2>
-			</div>
+				<h2 class="sub_title"> SEARCH </h2>
+	        </div>
 		</section>
-
-		<section id="pdtlist_sub_title">
-			<nav>
-				<ul>
-					<li><a href="apparelAll.do">ALL</a></li>
-					<li><a href="apparelWomen.do">WOMEN</a></li>
-					<li><a href="apparelMen.do">MEN</a></li>
-				</ul>
-			</nav>
-		</section>
-		<section id="pdtlist_block">
-			<h1>HOME > APPAREL > ALL</h1>
+		
+		<section id="select_block">
 			<table>
 			<%
-				ArrayList<ProductVO> productList = (ArrayList<ProductVO>) request.getAttribute("productList");
-			if (!productList.isEmpty()) {
-				for (int i = 0; i < productList.size(); i++) {
-					ProductVO product = productList.get(i);
+				ArrayList<ProductVO> allProduct = (ArrayList<ProductVO>) request.getAttribute("allProduct");
+			if (!allProduct.isEmpty()) {
+				for (int i = 0; i < allProduct.size(); i++) {
+					ProductVO product = allProduct.get(i);
 					String url = "./data/" + product.getFilename1();
 					if (i % 2 == 0) {
 			%>
-			
 				<colgroup>
 					<col style="width: 400px;">
 				</colgroup>
-				<tr style="margin-left: 20px;">
+				<tr style="margin-left: 20px; margin-right: 20px;">
 					<%
 						}
 					%>
@@ -117,19 +116,27 @@
 						<%} else { %>
 						<a href="productView.do?productNumber=<%=product.getproductNumber()%>"><img src="<%=url%>" /></a>
 						<%} %>
-						</br> <%=product.getName()%></br> <%=product.getPrice()%></br></td>
-		
-					<%
+						</br> <%=product.getName()%></br> <%=product.getPrice()%></br>
+						<%
 						if (i % 2 == 1) {
-					%>
+						%>
+					</td>
 				</tr>
-
 			<%
-						
-					}
+						}
 				}
+			} else {
+			%>
+				<colgroup>
+					<col style="width: 400px;">
+				</colgroup>
+				<tr>
+					<td style="border-bottom: 1px solid #fff; border-top: 1px solid #fff;">
+						검색 결과가 없습니다.
+					</td>
+				</tr>
+			<%
 			}
-
 			%>
 			</table>
 		</section>
