@@ -107,15 +107,10 @@ public class ProductDAO {
 			conn = connect();
 			pstmt = conn.prepareStatement("SELECT * FROM sharestore.product");
 
-			// paging 
-			// "SELECT @ROWNUM := @ROWNUM + 1 AS ROWNUM, A.* FROM"
-			// + "(SELECT * FROM sharestore.product ORDER BY product_number ASC) AS A"
-			// + ",(SELECT @ROWNUM := 0) B"
-
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				product = new ProductVO();
-				product.setproductNumber(rs.getString(1));
+				product.setproductNumber(rs.getInt(1));
 				product.setName(rs.getString(2));
 				product.setSize(rs.getString(3));
 				product.setPrice(rs.getInt(4));
@@ -156,7 +151,7 @@ public class ProductDAO {
 
 			while (rs.next()) {
 				product = new ProductVO();
-				product.setproductNumber(rs.getString(1));
+				product.setproductNumber(rs.getInt(1));
 				product.setName(rs.getString(2));
 				product.setSize(rs.getString(3));
 				product.setPrice(rs.getInt(4));
@@ -196,7 +191,7 @@ public class ProductDAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				product = new ProductVO();
-				product.setproductNumber(rs.getString(1));
+				product.setproductNumber(rs.getInt(1));
 				product.setName(rs.getString(2));
 				product.setSize(rs.getString(3));
 				product.setPrice(rs.getInt(4));
@@ -236,7 +231,7 @@ public class ProductDAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				product = new ProductVO();
-				product.setproductNumber(rs.getString(1));
+				product.setproductNumber(rs.getInt(1));
 				product.setName(rs.getString(2));
 				product.setSize(rs.getString(3));
 				product.setPrice(rs.getInt(4));
@@ -276,7 +271,7 @@ public class ProductDAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				product = new ProductVO();
-				product.setproductNumber(rs.getString(1));
+				product.setproductNumber(rs.getInt(1));
 				product.setName(rs.getString(2));
 				product.setSize(rs.getString(3));
 				product.setPrice(rs.getInt(4));
@@ -316,7 +311,7 @@ public class ProductDAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				product = new ProductVO();
-				product.setproductNumber(rs.getString(1));
+				product.setproductNumber(rs.getInt(1));
 				product.setName(rs.getString(2));
 				product.setSize(rs.getString(3));
 				product.setPrice(rs.getInt(4));
@@ -352,7 +347,7 @@ public class ProductDAO {
 
 			while (rs.next()) {
 				product = new ProductVO();
-				product.setproductNumber(rs.getString(1));
+				product.setproductNumber(rs.getInt(1));
 				product.setName(rs.getString(2));
 				product.setSize(rs.getString(3));
 				product.setPrice(rs.getInt(4));
@@ -381,7 +376,7 @@ public class ProductDAO {
 	    	conn = connect();
 			String sql = "delete from product where product_number=?;";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, product.getproductNumber());
+			pstmt.setInt(1, product.getproductNumber());
 			pstmt.executeUpdate();
 	      }
 	      catch(Exception ex){
@@ -407,7 +402,7 @@ public class ProductDAO {
 
 			while (rs.next()) {
 				product = new ProductVO();
-				product.setproductNumber(rs.getString(1));
+				product.setproductNumber(rs.getInt(1));
 				product.setName(rs.getString(2));
 				product.setSize(rs.getString(3));
 				product.setPrice(rs.getInt(4));
@@ -442,7 +437,7 @@ public class ProductDAO {
 			pstmt.setInt(4, product.getStock());	
 			pstmt.setString(5, product.getCategory());
 			pstmt.setString(6, product.getExp());
-			pstmt.setString(7, product.getproductNumber());
+			pstmt.setInt(7, product.getproductNumber());
 			
 			pstmt.executeUpdate();
 		}
@@ -463,7 +458,7 @@ public class ProductDAO {
 				String sql = "update product set stock=? where product_number=?;";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, product.getStock());	
-				pstmt.setString(2, product.getproductNumber());
+				pstmt.setInt(2, product.getproductNumber());
 				pstmt.executeUpdate();
 			}
 			catch(Exception ex){
@@ -475,7 +470,7 @@ public class ProductDAO {
 		}
 	
 	//관리자상품수정리스트
-	public ArrayList<ProductVO> adminPrdUpdatelist(String productNumber) {
+	public ArrayList<ProductVO> adminPrdUpdatelist(int productNumber) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -484,12 +479,12 @@ public class ProductDAO {
 		try {
 			conn = connect();
 			pstmt = conn.prepareStatement("SELECT * from product where product_number=?;");
-			pstmt.setString(1, productNumber);
+			pstmt.setInt(1, productNumber);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
 				product = new ProductVO();
-				product.setproductNumber(rs.getString(1));
+				product.setproductNumber(rs.getInt(1));
 				product.setName(rs.getString(2));
 				product.setSize(rs.getString(3));
 				product.setPrice(rs.getInt(4));
@@ -534,7 +529,7 @@ public class ProductDAO {
 	}
 
 	// 상품상세보기
-	public ProductVO productView(String productNumber) {
+	public ProductVO productView(int productNumber) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -544,12 +539,13 @@ public class ProductDAO {
 			String sql = "SELECT * FROM sharestore.product " 
 			+ "WHERE product_number =?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, productNumber);
+			pstmt.setInt(1, productNumber);
 			// select문 실행 결과값
 			rs = pstmt.executeQuery();
+			
 			if (rs.next()) {
 				product = new ProductVO();
-				product.setproductNumber(rs.getString(1));
+				product.setproductNumber(rs.getInt(1));
 				product.setName(rs.getString(2));
 				product.setSize(rs.getString(3));
 				product.setPrice(rs.getInt(4));

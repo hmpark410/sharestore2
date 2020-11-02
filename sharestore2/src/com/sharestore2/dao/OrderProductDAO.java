@@ -70,7 +70,7 @@ public class OrderProductDAO {
 			String sql ="INSERT into sharestore.order_product VALUES (?, ?, ?);";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, orderProduct.getOrderNumber());
-			pstmt.setString(2, orderProduct.getProductNumber());
+			pstmt.setInt(2, orderProduct.getProductNumber());
 			pstmt.setInt(3, orderProduct.getCount());	
 			pstmt.executeUpdate();
 			
@@ -100,7 +100,7 @@ public class OrderProductDAO {
 			while (rs.next()) {
 				orderProduct = new OrderProductVO();
 				orderProduct.setOrderNumber(rs.getString(1));
-				orderProduct.setProductNumber(rs.getString(2));
+				orderProduct.setProductNumber(rs.getInt(2));
 				orderProduct.setCount(rs.getInt(3));
 				orderDetail.add(orderProduct);
 			}

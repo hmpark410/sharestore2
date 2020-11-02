@@ -34,8 +34,8 @@ public class OrderService {
 		return sellerOrderList;
 	}
 	
-	public void SellerOrderUpdate(OrderVO order) {
-		dao.SellerOrderUpdate(order);
+	public void OrderUpdate(OrderVO order) {
+		dao.orderUpdate(order);
 	}
 
 	//상품주문 

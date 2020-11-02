@@ -12,10 +12,13 @@ import com.sharestore2.vo.ProductVO;
 public class AdminPrdDeleteController implements Controller{
 	public void execute (HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		
-		String[] chk = request.getParameterValues("class");
-		
-		for(String productNumber : chk) {
+		 String[] varChk = request.getParameterValues("class");
+		   int[] chk = new int[varChk.length];
+		   
+		   for(int i = 0; i < varChk.length; i ++) {
+			   chk[i] = Integer.parseInt(varChk[i]);
+		   }
+		for(int productNumber : chk) {
 			ProductVO SellerPrdDelete = new ProductVO(productNumber);
 			
 			ProductService service= ProductService.getInstance();

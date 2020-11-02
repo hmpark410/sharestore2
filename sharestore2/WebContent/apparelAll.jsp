@@ -111,22 +111,20 @@
 					%>
 					<td
 						style="font-weight: bolder; border-bottom: 1px solid #fff; border-top: 1px solid #fff;">
-						<% if(product.getStock()==0) {%>
+						<% 
+						if(product.getStock()==0) {%>
 						<a href="./result/soldoutAlertOut.jsp"><img style="opacity:0.5;" src="<%=url%>" /></a>
-						<%} else { %>
+						<%} 
+						else { %>
 						<a href="productView.do?productNumber=<%=product.getproductNumber()%>"><img src="<%=url%>" /></a>
 						<%} %>
 						</br> <%=product.getName()%></br> <%=product.getPrice()%></br></td>
-		
 					<%
 						if (i % 2 == 1) {
 					%>
 				</tr>
-				
 			</table>
-
 			<%
-						
 					}
 				}
 			}

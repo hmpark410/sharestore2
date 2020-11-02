@@ -21,7 +21,8 @@ import com.sharestore2.vo.ProductVO;
 //장바구니 상품 주문하기 
 public class OrderInsertController implements Controller {
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void execute(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
 		String memberId = request.getParameter("memberId");
 		ArrayList<OrderProductVO> orderProductList = (ArrayList<OrderProductVO>) 
@@ -46,13 +47,14 @@ public class OrderInsertController implements Controller {
 		int totalPrice = 0;
 		String sellerId = null;
 		int stock = 0;
-		String productNumber = null;
+		int productNumber = 0;
+		
 		for (int i = 0; i < orderProductList.size(); i++) {
 			OrderProductVO orderProduct = orderProductList.get(i);
 			totalPrice += orderProduct.getCount() * orderProduct.getPrice();
 			sellerId = orderProduct.getProduct().getSellerId();
 			stock = orderProduct.getProduct().getStock();
-			productNumber = orderProduct.getProduct().getproductNumber();
+			productNumber = (int) orderProduct.getProduct().getproductNumber();
 			ProductVO product2 = new ProductVO();
 			int udStock = stock - orderProduct.getCount();
 			product2.setproductNumber(productNumber);

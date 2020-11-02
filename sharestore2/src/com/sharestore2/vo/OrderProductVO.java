@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class OrderProductVO {
 	// 주문번호, 상품번호(FK), 수량
 	private String orderNumber;
-	private String productNumber;
+	private int productNumber;
 	private int count;
 	
 	// 선택한 상품 
@@ -43,11 +43,11 @@ public class OrderProductVO {
 		this.orderNumber = orderNumber;
 	}
 
-	public String getProductNumber() {
+	public int getProductNumber() {
 		return productNumber;
 	}
 
-	public void setProductNumber(String productNumber) {
+	public void setProductNumber(int productNumber) {
 		this.productNumber = productNumber;
 	}
 

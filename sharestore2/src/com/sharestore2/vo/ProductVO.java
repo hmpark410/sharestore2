@@ -2,7 +2,7 @@ package com.sharestore2.vo;
 
 public class ProductVO {
 	//상품_ID, 상품명, 사이즈, 가격, 수량, 상태, 셀러_ID(FK), 카테고리_ID(FK)
-	private String productNumber;
+	private int productNumber;
 	private String name;
 	private String size;
 	private int price;
@@ -16,13 +16,13 @@ public class ProductVO {
 	
 	public ProductVO() {}
 	
-	public ProductVO(String productNumber) {
+	public ProductVO(int productNumber) {
 		this.productNumber = productNumber;
 	}
-	public String getproductNumber() {
+	public int getproductNumber() {
 		return productNumber;
 	}
-	public void setproductNumber(String productNumber) {
+	public void setproductNumber(int productNumber) {
 		this.productNumber = productNumber;
 	}
 	public String getName() {
@@ -85,5 +85,6 @@ public class ProductVO {
 	public String getFilename3() {
 		return filename3;
 	}
+
 	
 }

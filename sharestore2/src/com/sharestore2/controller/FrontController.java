@@ -36,6 +36,7 @@ public class FrontController extends HttpServlet{
 		list.put("/orderList.do", new OrderListController());
 		list.put("/sellerOrdermgt.do", new SellerOrdermgtController());
 		list.put("/sellerOrderUpdate.do", new SellerOrderUpdateController());
+		list.put("/memberOrderUpdate.do", new MemberOrderUpdateController());
 		list.put("/orderProductInsert.do", new OrderProductInsertController());
 		list.put("/orderInsert.do", new OrderInsertController());
 		list.put("/cartInsert.do", new CartInsertController());

@@ -22,7 +22,7 @@ public class OrderDetailController implements Controller {
 		if(!orderDetail.isEmpty()){
 			for(int i = 0; i < orderDetail.size(); i++){
 				OrderProductVO orderProduct = orderDetail.get(i);
-				String productNumber = orderProduct.getProductNumber();
+				int productNumber = orderProduct.getProductNumber();
 				int count = orderProduct.getCount();
 				
 				ProductService service2 = ProductService.getInstance();
