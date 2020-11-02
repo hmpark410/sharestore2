@@ -93,43 +93,34 @@
 		</section>
 		<section id="pdtlist_block">
 			<h1>HOME > APPAREL > ALL</h1>
-			<%
-				ArrayList<ProductVO> productList = (ArrayList<ProductVO>) request.getAttribute("productList");
+			<%		
+			ArrayList<ProductVO> productList = (ArrayList<ProductVO>) request.getAttribute("productList");
 			if (!productList.isEmpty()) {
 				for (int i = 0; i < productList.size(); i++) {
 					ProductVO product = productList.get(i);
 					String url = "./data/" + product.getFilename1();
-					if (i % 2 == 0) {
 			%>
-			<table>
+			<table>	
+			<%if (i % 3 == 0) {%>
 				<colgroup>
 					<col style="width: 400px;">
 				</colgroup>
 				<tr style="margin-left: 20px;">
-					<%
-						}
-					%>
-					<td
-						style="font-weight: bolder; border-bottom: 1px solid #fff; border-top: 1px solid #fff;">
+					<td style="font-weight: bolder; border-bottom: 1px solid #fff; border-top: 1px solid #fff;">
 						<% 
 						if(product.getStock()==0) {%>
 						<a href="./result/soldoutAlertOut.jsp"><img style="opacity:0.5;" src="<%=url%>" /></a>
-						<%} 
+						<%}
 						else { %>
 						<a href="productView.do?productNumber=<%=product.getproductNumber()%>"><img src="<%=url%>" /></a>
-						<%} %>
-						</br> <%=product.getName()%></br> <%=product.getPrice()%></br></td>
-					<%
-						if (i % 2 == 1) {
-					%>
+						<%}%></br>
+						<%=product.getName()%></br>
+						<%=product.getPrice()%></br>
+						<%
+						if (i % 3 == 1) {%>
+					</td> 
 				</tr>
-			</table>
-			<%
-					}
-				}
-			}
-
-			%>
+				<%} %>		
 			</table>
 		</section>
 	</div>
