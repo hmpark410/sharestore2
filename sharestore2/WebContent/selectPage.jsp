@@ -97,18 +97,15 @@
 			<%
 				ArrayList<ProductVO> allProduct = (ArrayList<ProductVO>) request.getAttribute("allProduct");
 			if (!allProduct.isEmpty()) {
-				for (int i = 0; i < allProduct.size(); i++) {
-					ProductVO product = allProduct.get(i);
-					String url = "./data/" + product.getFilename1();
-					if (i % 2 == 0) {
 			%>
 				<colgroup>
 					<col style="width: 400px;">
 				</colgroup>
-				<tr style="margin-left: 20px; margin-right: 20px;">
-					<%
-						}
-					%>
+				<tr style="margin-left: 20px; margin-right: 20px; margin-top: 20px;">
+				<% for (int i = 0; i < allProduct.size(); i++) {
+					ProductVO product = allProduct.get(i);
+					String url = "./data/" + product.getFilename1(); 
+					if(i % 4 != 0) {%>
 					<td
 						style="font-weight: bolder; border-bottom: 1px solid #fff; border-top: 1px solid #fff;">
 						<% if(product.getStock()==0) {%>
@@ -117,13 +114,11 @@
 						<a href="productView.do?productNumber=<%=product.getproductNumber()%>"><img src="<%=url%>" /></a>
 						<%} %>
 						</br> <%=product.getName()%></br> <%=product.getPrice()%></br>
-						<%
-						if (i % 2 == 1) {
-						%>
 					</td>
+				<%	} else {%>
 				</tr>
 			<%
-						}
+				}
 				}
 			} else {
 			%>

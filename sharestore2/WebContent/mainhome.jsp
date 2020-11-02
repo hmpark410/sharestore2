@@ -18,7 +18,7 @@
 						</a>
 					</div>
 					<div class="top_search">
-						<input type="text" id="tsearch" placeholder="검색어를 입력하세요.">
+						<input type="text" id="tsearch" name="search" placeholder="검색어를 입력하세요.">
 						<button type="submit" name="button" onclick="javascript: form.action='search.do';">검색</button>
 					</div>
 					<div class="top_menu">
