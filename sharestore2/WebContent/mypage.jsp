@@ -119,7 +119,7 @@
 									for (int i = 0; i < orderList.size(); i++) {
 										OrderVO order = orderList.get(i);
 										String status = order.getStatus();
-								%>
+								%>	
 								<tbody>
 									<tr>
 										<th><button type="submit" class="hiddenbtn"
@@ -128,40 +128,39 @@
 										<th><%=order.getOrderDate()%></th>
 										<th><%=order.getTotalPrice()%></th>
 										<th><%=order.getStatus()%></th>
-										<th><input type="hidden" name="orderNumber"
-											value="<%=order.getOrderNumber()%>"> 
-											
+									<form name="form2" method="post">
 											<%if (status.equals("주문완료")) {%>
 											<button type="submit" name="update_status" value="주문취소"
 												class="update_btn"
 												onclick="javascript: form.action='memberOrderUpdate.do';">주문취소</button>
-											<%
- 											}
-											%> 
+												<th><input type="hidden" name="orderNumber" value="<%=order.getOrderNumber()%>"> 
+											<%}%> 
 											<%if (order.getDeliveryDate()!=null) {
-  											Timestamp current = new Timestamp(System.currentTimeMillis());
- 											long today = current.getTime(); 
- 											long deliveryDate = order.getDeliveryDate().getTime();
-  											long validity = (today - deliveryDate) / (24 * 60 * 60 * 1000); 
-  											//7일 이전 환불신청
+												Timestamp current = new Timestamp(System.currentTimeMillis());
+												long today = current.getTime();  											
+												long deliveryDate = order.getDeliveryDate().getTime();  											
+												long validity = (today - deliveryDate) / (24 * 60 * 60 * 1000); 
+  											
+												//7일 이전 환불신청
 												if (validity < 7) {%>
+												<input type="hidden" name="orderNumber" value="<%=order.getOrderNumber()%>"> 
 												<button type="submit" name="update_status" value="환불신청" 
  												class="update_btn" onclick="javascript:form.action='memberOrderUpdate.do';">환불신청</button>
 											<%} 
 											} 
 											%>
 											</th>
+											</form>
 											</tr> 
-									<%}
-									}else{
+											<%}
+									}
+									else{
 									%>
 									<tr>
 										<th colspan="5" style="text-align: center;">
 										<p>구매 내역이 없습니다.<p></th>
 									</tr>
-									<%
-									}
-									%>
+									<%}%>
 								</tbody>
 							</table>
 							<script type="text/javascript">
