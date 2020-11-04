@@ -1260,7 +1260,7 @@ strong, b {
 
 .member_cont .state .order li, .sellerodmgt_frame .state .order li {
 	float: left;
-    width: 33.3%;	
+    width: 20%;	
     padding: 0 0 4px;
     margin: 0 -1px 0 0;
     border-right: 1px dotted #c9c7ca;
@@ -1313,6 +1313,14 @@ strong, b {
 	margin-top: 5px;
 	margin-right: 15px;
 	float: right;
+	text-align: center;
+	border-color: #1a2e88;
+    background-color: #1a2e88;
+    color: #fff;
+}
+
+.member_frame table tbody tr Button {
+	margin: 0;
 	text-align: center;
 	border-color: #1a2e88;
     background-color: #1a2e88;

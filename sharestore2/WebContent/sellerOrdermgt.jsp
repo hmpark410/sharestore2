@@ -33,53 +33,85 @@
 					int cnt1 = 0;
 				int cnt2 = 0;
 				int cnt3 = 0;
+				int cnt4 = 0;
+				int cnt5 = 0;
 
 				ArrayList<OrderVO> sellerOrderList = (ArrayList<OrderVO>) request.getAttribute("sellerOrderList");
 				%>
 				<li>
 					<h4>배송준비</h4> <%
- 	if (!sellerOrderList.isEmpty()) {
- 	for (int i = 0; i < sellerOrderList.size(); i++) {
- 		OrderVO orderlist = sellerOrderList.get(i);
- 		if (orderlist.getStatus().equals("배송준비")) {
- 	cnt1++;
- 		}
- 	}
- %> <span><%=cnt1%></span> <%
- 	} else {
- %> <span>0</span> <%
- 	}
- %>
+				 	if (!sellerOrderList.isEmpty()) {
+				 	for (int i = 0; i < sellerOrderList.size(); i++) {
+				 		OrderVO orderlist = sellerOrderList.get(i);
+				 		if (orderlist.getStatus().equals("배송준비")) {
+				 	cnt1++;
+				 		}
+				 	}
+				 %> <span><%=cnt1%></span> <%
+				 	} else {
+				 %> <span>0</span> <%
+				 	}
+				 %>
 				</li>
 				<li>
 					<h4>배송중</h4> <%
- 	if (!sellerOrderList.isEmpty()) {
- 	for (int i = 0; i < sellerOrderList.size(); i++) {
- 		OrderVO orderlist = sellerOrderList.get(i);
- 		if (orderlist.getStatus().equals("배송중")) {
- 	cnt2++;
- 		}
- 	}
- %> <span><%=cnt2%></span> <%
- 	} else {
- %> <span>0</span> <%
- 	}
- %>
+				 	if (!sellerOrderList.isEmpty()) {
+				 	for (int i = 0; i < sellerOrderList.size(); i++) {
+				 		OrderVO orderlist = sellerOrderList.get(i);
+				 		if (orderlist.getStatus().equals("배송중")) {
+				 	cnt2++;
+				 		}
+				 	}
+				 %> <span><%=cnt2%></span> <%
+				 	} else {
+				 %> <span>0</span> <%
+				 	}
+				 %>
 				</li>
 				<li>
 					<h4>배송완료</h4> <%
- 	if (!sellerOrderList.isEmpty()) {
- 	for (int i = 0; i < sellerOrderList.size(); i++) {
- 		OrderVO orderlist = sellerOrderList.get(i);
- 		if (orderlist.getStatus().equals("배송완료")) {
- 	cnt3++;
- 		}
- 	}
- %> <span><%=cnt3%></span> <%
- 	} else {
- %> <span>0</span> <%
- 	}
- %>
+				 	if (!sellerOrderList.isEmpty()) {
+				 	for (int i = 0; i < sellerOrderList.size(); i++) {
+				 		OrderVO orderlist = sellerOrderList.get(i);
+				 		if (orderlist.getStatus().equals("배송완료")) {
+				 	cnt3++;
+				 		}
+				 	}
+				 %> <span><%=cnt3%></span> <%
+				 	} else {
+				 %> <span>0</span> <%
+				 	}
+				 %>
+				</li>
+				<li>
+					<h4>환불</h4> <%
+				 	if (!sellerOrderList.isEmpty()) {
+				 	for (int i = 0; i < sellerOrderList.size(); i++) {
+				 		OrderVO orderlist = sellerOrderList.get(i);
+				 		if (orderlist.getStatus().equals("환불")) {
+				 	cnt4++;
+				 		}
+				 	}
+				 %> <span><%=cnt4%></span> <%
+				 	} else {
+				 %> <span>0</span> <%
+				 	}
+				 %>
+				</li>
+				<li>
+					<h4>취소</h4> <%
+				 	if (!sellerOrderList.isEmpty()) {
+				 	for (int i = 0; i < sellerOrderList.size(); i++) {
+				 		OrderVO orderlist = sellerOrderList.get(i);
+				 		if (orderlist.getStatus().equals("취소")) {
+				 	cnt5++;
+				 		}
+				 	}
+				 %> <span><%=cnt5%></span> <%
+				 	} else {
+				 %> <span>0</span> <%
+				 	}
+				 %>
 				</li>
 			</ul>
 		</div>
