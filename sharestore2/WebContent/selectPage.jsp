@@ -14,6 +14,7 @@
 </head>
 <body>
 	<div id="page">
+	<form method="post">
 		<header>
 			<div id="top">
 				<div class="logo">
@@ -21,7 +22,10 @@
 						<img src="./data/logo.png"/>
 					</a>
 				</div>
-				
+				<div class="top_search">
+					<input type="text" id="tsearch" name="search" placeholder="검색어를 입력하세요.">
+					<button type="submit" name="button" onclick="javascript: form.action='search.do';">검색</button>
+				</div>
 				<div class="top_menu">
 					<%
 						MemberVO member = (MemberVO) session.getAttribute("member");
@@ -93,48 +97,35 @@
 		</section>
 		
 		<section id="select_block">
-			<table>
-			<%
+			<ul>
+				<%
 				ArrayList<ProductVO> allProduct = (ArrayList<ProductVO>) request.getAttribute("allProduct");
-			if (!allProduct.isEmpty()) {
-			%>
-				<colgroup>
-					<col style="width: 400px;">
-				</colgroup>
-				<tr style="margin-left: 20px; margin-right: 20px; margin-top: 20px;">
-				<% for (int i = 0; i < allProduct.size(); i++) {
-					ProductVO product = allProduct.get(i);
-					String url = "./data/" + product.getFilename1(); 
-					if(i % 4 != 0) {%>
-					<td
-						style="font-weight: bolder; border-bottom: 1px solid #fff; border-top: 1px solid #fff;">
+				if (!allProduct.isEmpty()) {
+					for (int i = 0; i < allProduct.size(); i++) {
+						ProductVO product = allProduct.get(i);
+						String url = "./data/" + product.getFilename1();%>
+					<li>
 						<% if(product.getStock()==0) {%>
-						<a href="./result/soldoutAlertOut.jsp"><img style="opacity:0.5;" src="<%=url%>" /></a>
+						<a href="./result/soldoutAlertOut.jsp"><img style="opacity:0.5; display: block;
+						    width: 250px;
+						    height: 330px;
+						    background-size: 150px 250px;
+						    background-repeat: no-repeat;" src="<%=url%>" /></a>
 						<%} else { %>
-						<a href="productView.do?productNumber=<%=product.getproductNumber()%>"><img src="<%=url%>" /></a>
+						<a href="productView.do?productNumber=<%=product.getproductNumber()%>"><img style="width: 250px;
+							    height: 330px;
+							    background-size: 150px 250px;
+							    background-repeat: no-repeat;" src="<%=url%>" /></a>
 						<%} %>
-						</br> <%=product.getName()%></br> <%=product.getPrice()%></br>
-					</td>
-				<%	} else {%>
-				</tr>
-			<%
+						<strong><%=product.getName()%></strong>
+						<span><%=product.getPrice()%> 원</span>
+					</li>
+				<%	}
 				}
-				}
-			} else {
-			%>
-				<colgroup>
-					<col style="width: 400px;">
-				</colgroup>
-				<tr>
-					<td style="border-bottom: 1px solid #fff; border-top: 1px solid #fff;">
-						검색 결과가 없습니다.
-					</td>
-				</tr>
-			<%
-			}
-			%>
-			</table>
+				%>
+			</ul>
 		</section>
+		</form>
 	</div>
 </body>
 </html>

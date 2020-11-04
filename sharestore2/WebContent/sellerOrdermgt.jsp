@@ -89,19 +89,17 @@
 
 			<table class="cols tbl_product shopping">
 				<colgroup>
-					<col style="width: 155px;">
-					<col style="width: 155px;">
-					<col style="width: 155px;">
-					<col style="width: 155px;">
-					<col style="width: 155px;">
-					<col style="width: 155px;">
+					<col style="width: 186px;">
+					<col style="width: 186px;">
+					<col style="width: 186px;">
+					<col style="width: 186px;">
+					<col style="width: 186px;">
 					<col style="width: 200px;">
 				</colgroup>
 				<thead>
 					<tr>
 						<th>주문일</th>
 						<th>주문번호</th>
-						<th>상품ID</th>
 						<th>금액</th>
 						<th>아이디</th>
 						<th>진행상황</th>
@@ -119,17 +117,6 @@
 							value="<%=orderlist.getOrderDate()%>"></th>
 						<th><input type="text" name="orderNumber" class="txt"
 							value="<%=orderlist.getOrderNumber()%>" readonly></th>
-						<%
-							//주문한 상품 리스트 
-						ArrayList<OrderProductVO> orderProductList = orderlist.getOrderProduct();
-						for (int j = 0; j < orderProductList.size(); j++) {
-							OrderProductVO orderProduct = orderProductList.get(j);
-						%>
-						<th><input type="text" name="productNumber" class="txt"
-							value="<%=orderProduct.getName()%>" readonly>,</th>
-						<%
-							}
-						%>
 						<th><input type="text" name="totalPrice" class="txt"
 							value="<%=orderlist.getTotalPrice()%>" readonly></th>
 						<th><input type="text" name="memberId" class="txt"
@@ -163,7 +150,7 @@
 					} else {
 					%>
 					<tr>
-						<td colspan="7" style="text-align: center;"><p>구매 내역이
+						<td colspan="6" style="text-align: center;"><p>구매 내역이
 								없습니다.
 							<p></td>
 					</tr>

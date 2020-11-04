@@ -15,7 +15,7 @@ public class OrderDetailController implements Controller {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ArrayList<OrderProductVO> orderProductList = new ArrayList<>();
-		String orderNumber = request.getParameter("orderNumber");
+		String orderNumber = request.getParameter("orderNum");
 		
 		OrderProductService service = OrderProductService.getInstance();
 		ArrayList<OrderProductVO> orderDetail = service.orderDetail(orderNumber);

@@ -16,12 +16,12 @@
 		if(member != null) {%>
 			<script type="text/javascript">
 				alert("${member.name}님의 아이디는 ${member.id}입니다.");
-				document.location.href="../login.jsp";
+				document.location.href="login.jsp";
 			</script>
 		<% } else {%>
 			<script type="text/javascript">
 				alert("회원이 아닙니다.");
-				document.location.href="../login.jsp";
+				document.location.href="login.jsp";
 			</script>
 	<%} %>
 </body>

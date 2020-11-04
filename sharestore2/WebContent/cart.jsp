@@ -12,13 +12,17 @@
 </head>
 <body>
 	<div id="page">
+		<form method="post">
 		<header>
 			<div id="top">
 				<div class="logo">
 					<a href="mainhome.jsp"> <img src="./data/logo.png" />
 					</a>
 				</div>
-
+				<div class="top_search">
+					<input type="text" id="tsearch" name="search" placeholder="검색어를 입력하세요.">
+					<button type="submit" name="button" onclick="javascript: form.action='search.do';">검색</button>
+				</div>
 				<div class="top_menu">
 					<%
 						MemberVO member = (MemberVO) session.getAttribute("member");
@@ -72,7 +76,6 @@
 				</ul>
 			</nav>
 		</header>
-		<form method="post">
 			<section id="container_cart">
 				<div class="sub_title_wrap2">
 					<h2 class="sub_title">SHOPPING BAG</h2>
@@ -189,6 +192,5 @@
 			</section>
 		</form>
 	</div>
-
 </body>
 </html>

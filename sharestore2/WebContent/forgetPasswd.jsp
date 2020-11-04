@@ -9,11 +9,16 @@
 </head>
 <body>
 	<div id="page">
+		<form method="post">
 		<header>
 			<div id="top">
 				<div class="logo">
 					<a href="mainhome.jsp"> <img src="./data/logo.png" />
 					</a>
+				</div>
+				<div class="top_search">
+					<input type="text" id="tsearch" name="search" placeholder="검색어를 입력하세요.">
+					<button type="submit" name="button" onclick="javascript: form.action='search.do';">검색</button>
 				</div>
 				<div class="top_menu">
 					<li class="menu-item"><a href="login.jsp"> <span
@@ -63,43 +68,49 @@
 	        </div>
 	        <div class="member_frame">
 	        	<div class="member_cont">
-	            	<div class="login_wrap">
-						<form action="forgetPasswd.do" method="post" style="margin-top: 60px;">
-							<div class="login_radio" style="margin-bottom: 5px;">
-								<span class="input_button">
-									<input type="radio" name="memberType" id="idSave" value="buyer" checked="checked">
-									<label for="idSave">Buyer</label>
-								</span>
-								<span class="input_button" style="margin-left: -15px;">
-									<input type="radio" name="memberType" id="idSave" value="seller">
-									<label for="idSave">Seller</label>
-								</span>
-							</div>
-							
-							<div class="inp_group">
-		                        <p>
-		                            <label for="inp_name">이름</label> 		                           
-		                            <input type="text" name="name" id="name" maxlength="10" class="full_width">
-		                        </p>
-		                        
-		                        <p class="mt20">
-		                            <label for="inp_phone">아이디</label>		                         
-		                            <input type="text" name="id" id="id" maxlength="20" class="full_width">	                     
-		                       </p>
-		                        
-		                        <p class="mt20">
-		                            <label for="inp_phone">휴대폰번호</label>		                         
-		                            <input type="text" name="phone" id="phone" maxlength="20" placeholder="하이픈(-)을 제외하고 입력해주세요." class="full_width">	                     
-		                       </p>
-		                    </div>
-		                    <div class="btn_group" style="margin-top: 33px;">
-		                        <button type="submit" class="btn full_width black">확인</button>
-		                    </div>
-		                </form>
+	            	<div class="login_wrap"  style="margin-top: 60px;">
+						<div class="login_radio" style="margin-bottom: 5px;">
+							<span class="input_button">
+								<input type="radio" name="memberType" id="idSave" value="buyer" checked="checked">
+								<label for="idSave">Buyer</label>
+							</span>
+							<span class="input_button" style="margin-left: -15px;">
+								<input type="radio" name="memberType" id="idSave" value="seller">
+								<label for="idSave">Seller</label>
+							</span>
+						</div>
+						
+						<div class="inp_group">
+	                        <p>
+	                            <label for="inp_name">이름</label> 		                           
+	                            <input type="text" name="name" id="name" maxlength="10" class="full_width">
+	                        </p>
+	                        
+	                        <p class="mt20">
+	                            <label for="inp_phone">아이디</label>		                         
+	                            <input type="text" name="id" id="id" maxlength="20" class="full_width">	                     
+	                       </p>
+	                        
+	                        <p class="mt20">
+	                            <label for="inp_phone">휴대폰번호</label>		                         
+	                            <input type="text" name="phone" id="phone" maxlength="20" placeholder="하이픈(-)을 제외하고 입력해주세요." class="full_width">	                     
+	                       </p>
+	                    </div>
+	                    <div class="btn_group" style="margin-top: 33px;">
+	                        <button type="submit" class="btn full_width black" onclick="javascript: form.action='forgetPasswd.do';">확인</button>
+	                    </div>
 		             </div>
 		         </div>
 		   	</div>
 		</section>
+		</form>
 	</div>
+	<script type="text/javascript">
+		document.addEventListener('keydown', function(event) {
+		    if (event.keyCode === 13) {
+		        event.preventDefault();
+		    }
+		}, true);
+	</script>
 </body>
 </html>

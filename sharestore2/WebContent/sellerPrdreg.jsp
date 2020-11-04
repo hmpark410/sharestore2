@@ -54,7 +54,7 @@
 						<tr>
 							<th>상품명</th>
 							<td><input type="text" name="name" maxlength="30"
-								placeholder="색상과 상품 상세내용을 입력해주세요. ex)핑크 플라워 미니 원피스" style="width: 600px;"></td>
+								placeholder="ex)핑크 플라워 미니 원피스" style="width: 600px;"></td>
 						</tr>
 						<tr>
 							<th>사이즈</th>
@@ -80,7 +80,7 @@
 						<tr>
 							<th>상품설명</th>
 							<td><input type="text" name="exp" id="exp" maxlength="50"
-								placeholder="50자 이내로 적어주세요." style="width: 600px;"></td>
+								placeholder="색상과 상품 상세내용을 50자 이내로 적어주세요." style="width: 600px;"></td>
 						</tr>
 						<tr>
 							<th>대표 이미지</th>

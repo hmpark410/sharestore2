@@ -150,6 +150,7 @@ public class OrderDAO {
 				order.setStatus(rs.getString(4));
 				order.setMemberId(rs.getString(5));
 				order.setSellerId(rs.getNString(6));
+				order.setDeliveryDate(rs.getTimestamp(7));
 				sellerOrderList.add(order);
 			}
 
@@ -188,7 +189,7 @@ public class OrderDAO {
 		PreparedStatement pstmt = null;
 		try {
 			conn = connect();
-			String sql ="INSERT into sharestore.order VALUES (?, ?, ?, ?, ?, ?);";
+			String sql ="INSERT into sharestore.order VALUES (?, ?, ?, ?, ?, ?, ?);";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, order.getOrderNumber());	
 			pstmt.setTimestamp(2, order.getOrderDate());
@@ -196,6 +197,7 @@ public class OrderDAO {
 			pstmt.setString(4, order.getStatus());
 			pstmt.setString(5, order.getMemberId());
 			pstmt.setString(6, order.getSellerId());
+			pstmt.setTimestamp(7, order.getDeliveryDate());
 			pstmt.executeUpdate();
 		}
 		catch(Exception ex){

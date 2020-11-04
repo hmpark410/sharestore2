@@ -37,17 +37,15 @@ public class OrderInsertController implements Controller {
 		int year = cal.get(Calendar.YEAR);
 		String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
 		String ymd = ym + new DecimalFormat("00").format(cal.get(Calendar.DATE));
-		String subNum = "";
-		for (int i = 1; i <= 6; i++) {
-			subNum += (int) (Math.random() * 10);
-		}
-		String orderNumber = ymd + "_" + subNum;
+		
+		String orderNumber = null;
 		Timestamp orderDate = new Timestamp(System.currentTimeMillis());
 		String status = "주문완료";
 		int totalPrice = 0;
 		String sellerId = null;
 		int stock = 0;
 		int productNumber = 0;
+		Timestamp deliveryDate = null;
 		
 		for (int i = 0; i < orderProductList.size(); i++) {
 			OrderProductVO orderProduct = orderProductList.get(i);
@@ -61,27 +59,33 @@ public class OrderInsertController implements Controller {
 			product2.setStock(udStock);
 			ProductService service = ProductService.getInstance();
 			service.stockUpdate(product2);
+			
+			String subNum = "";
+			for (int j = 1; j <= 6; j++) {
+				subNum += (int) (Math.random() * 10);
+			}
+			orderNumber = ymd + "_" + subNum;
+			OrderVO order = new OrderVO();
+			order.setOrderNumber(orderNumber);
+			order.setOrderDate(orderDate);
+			order.setTotalPrice(totalPrice);
+			order.setStatus(status);
+			order.setMemberId(memberId);
+			order.setSellerId(sellerId);
+			order.setDeliveryDate(deliveryDate);
+			OrderService orderService = OrderService.getInstance();
+			orderService.orderInsert(order);
+			request.setAttribute("order", order);
 		}
 		
-		OrderVO order = new OrderVO();
-		order.setOrderNumber(orderNumber);
-		order.setOrderDate(orderDate);
-		order.setTotalPrice(totalPrice);
-		order.setStatus(status);
-		order.setMemberId(memberId);
-		order.setSellerId(sellerId);
-		OrderService orderService = OrderService.getInstance();
-		orderService.orderInsert(order);
-		
+		/*
 		//OrderProductVO
 		for (int i = 0; i < orderProductList.size(); i++) {
 			OrderProductVO orderProduct = orderProductList.get(i);
 			orderProduct.setOrderNumber(orderNumber);
 			OrderProductService orderProductService = OrderProductService.getInstance();
 			orderProductService.OrderProductInsert(orderProduct);
-		}
-		
-		request.setAttribute("order", order);
+		}*/
 		HttpUtil.forward(request, response, "/result/orderInsertOut.jsp");
 	}
 
