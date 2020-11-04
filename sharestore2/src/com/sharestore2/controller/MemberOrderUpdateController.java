@@ -22,7 +22,7 @@ public class MemberOrderUpdateController implements Controller{
 		
 		
 		System.out.println("orderNum" + order.getOrderNumber());
-		System.out.println("orderSatus" + order.getStatus());
+		System.out.println("orderStatus" + order.getStatus());
 		
 		OrderService service = OrderService.getInstance();	
 		service.OrderUpdate(order);

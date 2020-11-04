@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="com.sharestore2.vo.ProductVO"%>
 <%@ page import="com.sharestore2.dao.ProductDAO"%>
@@ -35,57 +35,58 @@
 							class="icon icon-login"></span> <strong>LOGIN</strong>
 					</a></li>
 
-					<li class="menu-item"><a href="join.jsp"> <span
-							class="icon icon-join"></span> <strong>JOIN</strong>
-					</a></li>
+               <li class="menu-item"><a href="join.jsp"> <span
+                     class="icon icon-join"></span> <strong>JOIN</strong>
+               </a></li>
 
-					<li class="menu-item"><a href="cart.jsp"> <span
-							class="icon icon-cart"></span> <strong>CART</strong>
-					</a></li>
+               <li class="menu-item"><a href="cart.jsp"> <span
+                     class="icon icon-cart"></span> <strong>CART</strong>
+               </a></li>
 
-					<li class="menu-item"><a href="login.jsp"> <span
-							class="icon icon-mypage"></span> <strong>MYPAGE</strong>
-					</a></li>
+               <li class="menu-item"><a href="login.jsp"> <span
+                     class="icon icon-mypage"></span> <strong>MYPAGE</strong>
+               </a></li>
 
-					<%
-						} else {
-					%>
-					<li class="menu-item"><a href="result/logout.jsp"> <span
-							class="icon icon-logout"></span> <strong>LOGOUT</strong>
-					</a></li>
-					<li class="menu-item"><a href="cart.jsp"> <span
-							class="icon icon-cart"></span> <strong>CART</strong>
-					</a></li>
-					<li class="menu-item"><a href="orderList.do"> <span
-							class="icon icon-mypage"></span> <strong>MYPAGE</strong>
-					</a></li>
+               <%
+                  } else {
+               %>
+               <li class="menu-item"><a href="result/logout.jsp"> <span
+                     class="icon icon-logout"></span> <strong>LOGOUT</strong>
+               </a></li>
+               <li class="menu-item"><a href="cart.jsp"> <span
+                     class="icon icon-cart"></span> <strong>CART</strong>
+               </a></li>
+               <li class="menu-item"><a href="orderList.do"> <span
+                     class="icon icon-mypage"></span> <strong>MYPAGE</strong>
+               </a></li>
 
-					<%
-						}
-					%>
-				</div>
-			</div>
-			<nav>
-				<ul class="nav-container">
-					<li class="nav-item"><a href="apparelAll.do">APPAREL</a>
-						<p>|</p></li>
-					<li class="nav-item"><a href="bagAll.do">BAG</a>
-						<p>|</p></li>
-					<li class="nav-item"><a href="shoesAll.do">SHOES</a>
-						<p>|</p></li>
-					<li class="nav-item"><a href="accAll.do">ACC</a>
-						<p>|</p></li>
-					<li class="nav-item"><a href="lifeAll.do">LIFE</a></li>
-				</ul>
-			</nav>
-		</header>
+               <%
+                  }
+               %>
+            </div>
+         </div>
+         <nav>
+            <ul class="nav-container">
+               <li class="nav-item"><a href="apparelAll.do">APPAREL</a>
+                  <p>|</p></li>
+               <li class="nav-item"><a href="bagAll.do">BAG</a>
+                  <p>|</p></li>
+               <li class="nav-item"><a href="shoesAll.do">SHOES</a>
+                  <p>|</p></li>
+               <li class="nav-item"><a href="accAll.do">ACC</a>
+                  <p>|</p></li>
+               <li class="nav-item"><a href="lifeAll.do">LIFE</a></li>
+            </ul>
+         </nav>
+      </header>
 
-		<section id="pdtlist_title">
-			<div class="sub_title_wrap">
-				<h2 class="sub_title">APPAREL</h2>
-			</div>
-		</section>
+      <section id="pdtlist_title">
+         <div class="sub_title_wrap">
+            <h2 class="sub_title">APPAREL</h2>
+         </div>
+      </section>
 
+<<<<<<< HEAD
 		<section id="pdtlist_sub_title">
 			<nav>
 				<ul>

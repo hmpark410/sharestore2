@@ -17,6 +17,7 @@ public class SellerOrderUpdateController implements Controller{
 		String orderNumber = request.getParameter("orderNumber");
 		String status = request.getParameter("update_status");
 		//주문완료,배송준비,배송중,배송완료,취소,환불
+		
 		OrderVO order = new OrderVO();
 		order.setOrderNumber(orderNumber);
 		order.setStatus(status);
