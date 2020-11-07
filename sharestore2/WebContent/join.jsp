@@ -9,11 +9,16 @@
 </head>
 <body>
 	<div id="page">
+	<form method="post">
 		<header>
 			<div id="top">
 				<div class="logo">
 					<a href="mainhome.jsp"> <img src="./data/logo.png" />
 					</a>
+				</div>
+				<div class="top_search">
+					<input type="text" id="tsearch" name="search" placeholder="검색어를 입력하세요.">
+					<button type="submit" name="button" onclick="javascript: form.action='search.do';">검색</button>
 				</div>
 				<div class="top_menu">
 					<li class="menu-item"><a href="login.jsp"> <span
@@ -62,16 +67,13 @@
 				<h2 class="sub_title">JOIN</h2>
 			</div>
 			<div class="member_frame">
-
-				${error}
 				<div class="join_btn_wrap">
-					<button type="submit"  name="button" class="btn" onclick="location.href='memberInsert.jsp'">Buyer</button>
-					<button type="submit"  name="button" class="btn" onclick="location.href='sellerInsert.jsp'">Seller</button>
+					<button type="button"  name="button" class="btn" onclick="location.href='memberInsert.jsp'">Buyer</button>
+					<button type="button"  name="button" class="btn" onclick="location.href='sellerInsert.jsp'">Seller</button>
 				</div>
-				</form>
 			</div>
-	</div> 
 		</section>
+		</form>
 	</div>
 </body>
 </html>

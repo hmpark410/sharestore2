@@ -33,53 +33,85 @@
 					int cnt1 = 0;
 				int cnt2 = 0;
 				int cnt3 = 0;
+				int cnt4 = 0;
+				int cnt5 = 0;
 
 				ArrayList<OrderVO> sellerOrderList = (ArrayList<OrderVO>) request.getAttribute("sellerOrderList");
 				%>
 				<li>
 					<h4>배송준비</h4> <%
- 	if (!sellerOrderList.isEmpty()) {
- 	for (int i = 0; i < sellerOrderList.size(); i++) {
- 		OrderVO orderlist = sellerOrderList.get(i);
- 		if (orderlist.getStatus().equals("배송준비")) {
- 	cnt1++;
- 		}
- 	}
- %> <span><%=cnt1%></span> <%
- 	} else {
- %> <span>0</span> <%
- 	}
- %>
+				 	if (!sellerOrderList.isEmpty()) {
+				 	for (int i = 0; i < sellerOrderList.size(); i++) {
+				 		OrderVO orderlist = sellerOrderList.get(i);
+				 		if (orderlist.getStatus().equals("배송준비")) {
+				 	cnt1++;
+				 		}
+				 	}
+				 %> <span><%=cnt1%></span> <%
+				 	} else {
+				 %> <span>0</span> <%
+				 	}
+				 %>
 				</li>
 				<li>
 					<h4>배송중</h4> <%
- 	if (!sellerOrderList.isEmpty()) {
- 	for (int i = 0; i < sellerOrderList.size(); i++) {
- 		OrderVO orderlist = sellerOrderList.get(i);
- 		if (orderlist.getStatus().equals("배송중")) {
- 	cnt2++;
- 		}
- 	}
- %> <span><%=cnt2%></span> <%
- 	} else {
- %> <span>0</span> <%
- 	}
- %>
+				 	if (!sellerOrderList.isEmpty()) {
+				 	for (int i = 0; i < sellerOrderList.size(); i++) {
+				 		OrderVO orderlist = sellerOrderList.get(i);
+				 		if (orderlist.getStatus().equals("배송중")) {
+				 	cnt2++;
+				 		}
+				 	}
+				 %> <span><%=cnt2%></span> <%
+				 	} else {
+				 %> <span>0</span> <%
+				 	}
+				 %>
 				</li>
 				<li>
 					<h4>배송완료</h4> <%
- 	if (!sellerOrderList.isEmpty()) {
- 	for (int i = 0; i < sellerOrderList.size(); i++) {
- 		OrderVO orderlist = sellerOrderList.get(i);
- 		if (orderlist.getStatus().equals("배송완료")) {
- 	cnt3++;
- 		}
- 	}
- %> <span><%=cnt3%></span> <%
- 	} else {
- %> <span>0</span> <%
- 	}
- %>
+				 	if (!sellerOrderList.isEmpty()) {
+				 	for (int i = 0; i < sellerOrderList.size(); i++) {
+				 		OrderVO orderlist = sellerOrderList.get(i);
+				 		if (orderlist.getStatus().equals("배송완료")) {
+				 	cnt3++;
+				 		}
+				 	}
+				 %> <span><%=cnt3%></span> <%
+				 	} else {
+				 %> <span>0</span> <%
+				 	}
+				 %>
+				</li>
+				<li>
+					<h4>환불</h4> <%
+				 	if (!sellerOrderList.isEmpty()) {
+				 	for (int i = 0; i < sellerOrderList.size(); i++) {
+				 		OrderVO orderlist = sellerOrderList.get(i);
+				 		if (orderlist.getStatus().equals("환불")) {
+				 	cnt4++;
+				 		}
+				 	}
+				 %> <span><%=cnt4%></span> <%
+				 	} else {
+				 %> <span>0</span> <%
+				 	}
+				 %>
+				</li>
+				<li>
+					<h4>취소</h4> <%
+				 	if (!sellerOrderList.isEmpty()) {
+				 	for (int i = 0; i < sellerOrderList.size(); i++) {
+				 		OrderVO orderlist = sellerOrderList.get(i);
+				 		if (orderlist.getStatus().equals("취소")) {
+				 	cnt5++;
+				 		}
+				 	}
+				 %> <span><%=cnt5%></span> <%
+				 	} else {
+				 %> <span>0</span> <%
+				 	}
+				 %>
 				</li>
 			</ul>
 		</div>
@@ -89,19 +121,21 @@
 
 			<table class="cols tbl_product shopping">
 				<colgroup>
-					<col style="width: 155px;">
-					<col style="width: 155px;">
-					<col style="width: 155px;">
-					<col style="width: 155px;">
-					<col style="width: 155px;">
-					<col style="width: 155px;">
+					<col style="width: 186px;">
+					<col style="width: 186px;">
+					<col style="width: 186px;">
+					<col style="width: 186px;">
+					<col style="width: 186px;">
 					<col style="width: 200px;">
 				</colgroup>
 				<thead>
 					<tr>
 						<th>주문일</th>
 						<th>주문번호</th>
+<<<<<<< HEAD
 						<th>상품</th>
+=======
+>>>>>>> branch 'master' of https://github.com/hmpark410/sharestore2
 						<th>금액</th>
 						<th>아이디</th>
 						<th>진행상황</th>
@@ -119,17 +153,6 @@
 							value="<%=orderlist.getOrderDate()%>"></th>
 						<th><input type="text" name="orderNumber" class="txt"
 							value="<%=orderlist.getOrderNumber()%>" readonly></th>
-						<%
-							//주문한 상품 리스트 
-						ArrayList<OrderProductVO> orderProductList = orderlist.getOrderProduct();
-						for (int j = 0; j < orderProductList.size(); j++) {
-							OrderProductVO orderProduct = orderProductList.get(j);
-						%>
-						<th><input type="text" name="productNumber" class="txt"
-							value="<%=orderProduct.getName()%>" readonly>,</th>
-						<%
-							}
-						%>
 						<th><input type="text" name="totalPrice" class="txt"
 							value="<%=orderlist.getTotalPrice()%>" readonly></th>
 						<th><input type="text" name="memberId" class="txt"
@@ -162,7 +185,7 @@
 					} else {
 					%>
 					<tr>
-						<td colspan="7" style="text-align: center;"><p>구매 내역이
+						<td colspan="6" style="text-align: center;"><p>구매 내역이
 								없습니다.
 							<p></td>
 					</tr>

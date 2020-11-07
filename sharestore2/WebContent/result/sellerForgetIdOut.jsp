@@ -16,12 +16,12 @@
 		if(seller != null) {%>
 			<script type="text/javascript">
 				alert("${seller.store}님의 아이디는 ${seller.sellerId}입니다.");
-				document.location.href="../login.jsp";
+				document.location.href="login.jsp";
 			</script>
 		<% } else {%>
 			<script type="text/javascript">
 				alert("회원이 아닙니다.");
-				document.location.href="../login.jsp";
+				document.location.href="login.jsp";
 			</script>
 	<%} %>
 </body>

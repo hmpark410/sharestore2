@@ -9,6 +9,10 @@
 <body>
 	<script>
 		alert('주문이 수정되었습니다.');
+<<<<<<< HEAD
 		location.href="orderList.do";
+=======
+		location.href="./orderList.do";
+>>>>>>> branch 'master' of https://github.com/hmpark410/sharestore2
 	</script>
 </body></html>

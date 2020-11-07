@@ -14,22 +14,26 @@
 <title>· SHARESTORE ·</title>
 </head>
 <body>
-   <div id="page">
-      <header>
-         <div id="top">
-            <div class="logo">
-               <a href="mainhome.jsp"> <img src="./data/logo.png" />
-               </a>
-            </div>
-
-            <div class="top_menu">
-               <%
-                  MemberVO member = (MemberVO) session.getAttribute("member");
-               if (member == null) {
-               %>
-               <li class="menu-item"><a href="login.jsp"> <span
-                     class="icon icon-login"></span> <strong>LOGIN</strong>
-               </a></li>
+	<div id="page">
+		<form method="post">
+		<header>
+			<div id="top">
+				<div class="logo">
+					<a href="mainhome.jsp"> <img src="./data/logo.png" />
+					</a>
+				</div>
+				<div class="top_search">
+					<input type="text" id="tsearch" name="search" placeholder="검색어를 입력하세요.">
+					<button type="submit" name="button" onclick="javascript: form.action='search.do';">검색</button>
+				</div>
+				<div class="top_menu">
+					<%
+						MemberVO member = (MemberVO) session.getAttribute("member");
+					if (member == null) {
+					%>
+					<li class="menu-item"><a href="login.jsp"> <span
+							class="icon icon-login"></span> <strong>LOGIN</strong>
+					</a></li>
 
                <li class="menu-item"><a href="join.jsp"> <span
                      class="icon icon-join"></span> <strong>JOIN</strong>
@@ -82,56 +86,47 @@
          </div>
       </section>
 
-      <section id="pdtlist_sub_title">
-         <nav>
-            <ul>
-               <li><a href="apparelAll.do">ALL</a></li>
-               <li><a href="apparelWomen.do">WOMEN</a></li>
-               <li><a href="apparelMen.do">MEN</a></li>
-            </ul>
-         </nav>
-      </section>
-      <section id="pdtlist_block">
-         <h1>HOME > APPAREL > ALL</h1>
-         <table>
-         <%
-            ArrayList<ProductVO> productList = (ArrayList<ProductVO>) request.getAttribute("productList");
-         if (!productList.isEmpty()) {
-            for (int i = 0; i < productList.size(); i++) {
-               ProductVO product = productList.get(i);
-               String url = "./data/" + product.getFilename1();
-               if (i % 2 == 0) {
-         %>
-         
-            <colgroup>
-               <col style="width: 400px;">
-            </colgroup>
-            <tr style="margin-left: 20px;">
-               <%
-                  }
-               %>
-               <td
-                  style="font-weight: bolder; border-bottom: 1px solid #fff; border-top: 1px solid #fff;">
-                  <% 
-                  if(product.getStock()==0) {%>
-                  <a href="./result/soldoutAlertOut.jsp"><img style="opacity:0.5;" src="<%=url%>" /></a>
-                  <%} 
-                  else { %>
-                  <a href="productView.do?productNumber=<%=product.getproductNumber()%>"><img src="<%=url%>" /></a>
-                  <%} %>
-                  </br> <%=product.getName()%></br> <%=product.getPrice()%></br></td>
-               <%
-                  if (i % 2 == 1) {
-               %>
-            </tr>
-         <%
-               }
-            }
-         }
-
-         %>
-         </table>
-      </section>
-   </div>
+<<<<<<< HEAD
+		<section id="pdtlist_sub_title">
+			<nav>
+				<ul>
+					<li><a href="apparelAll.do">ALL</a></li>
+					<li><a href="apparelWomen.do">WOMEN</a></li>
+					<li><a href="apparelMen.do">MEN</a></li>
+				</ul>
+			</nav>
+		</section>
+		<section id="pdtlist_block">
+			<h1>HOME > APPAREL > ALL</h1>
+			<ul>
+				<%
+				ArrayList<ProductVO> productList = (ArrayList<ProductVO>) request.getAttribute("productList");
+				if (!productList.isEmpty()) {
+					for (int i = 0; i < productList.size(); i++) {
+						ProductVO product = productList.get(i);
+						String url = "./data/" + product.getFilename1();%>
+					<li>
+						<% if(product.getStock()==0) {%>
+						<a href="./result/soldoutAlertOut.jsp"><img style="opacity:0.5; display: block;
+						    width: 250px;
+						    height: 330px;
+						    background-size: 150px 250px;
+						    background-repeat: no-repeat;" src="<%=url%>" /></a>
+						<%} else { %>
+						<a href="productView.do?productNumber=<%=product.getproductNumber()%>"><img style="width: 250px;
+							    height: 330px;
+							    background-size: 150px 250px;
+							    background-repeat: no-repeat;" src="<%=url%>" /></a>
+						<%} %>
+						<strong><%=product.getName()%></strong>
+						<span><%=product.getPrice()%> 원</span>
+					</li>
+				<%	}
+				}
+				%>
+			</ul>
+		</section>
+		</form>
+	</div>
 </body>
 </html>

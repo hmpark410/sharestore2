@@ -30,7 +30,7 @@ public class SellerPrdDeleteController implements Controller{
 			request.setAttribute("SellerPrdDelete", SellerPrdDelete);
 		}
 
-		HttpUtil.forward(request, response, "/sellerPrdDeleteOut.jsp");
+		HttpUtil.forward(request, response, "/result/sellerPrdDeleteOut.jsp");
 		
 	}
 }

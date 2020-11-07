@@ -14,6 +14,7 @@
 </head>
 <body>
 	<div id="page">
+	<form method="post">
 		<header>
 			<div id="top">
 				<div class="logo">
@@ -110,46 +111,35 @@
 		
 		<section id="pdtlist_block">
 			<h1>HOME > SHOES > WOMEN</h1>
-			<%
+			<ul>
+				<%
 				ArrayList<ProductVO> productList = (ArrayList<ProductVO>) request.getAttribute("productList");
-			if (!productList.isEmpty()) {
-				for (int i = 0; i < productList.size(); i++) {
-					ProductVO product = productList.get(i);
-					String url = "./data/" + product.getFilename1();
-					if (i % 2 == 0) {
-			%>
-			<table>
-				<colgroup>
-					<col style="width: 400px;">
-				</colgroup>
-				<tr style="margin-left: 20px;">
-					<%
-						}
-					%>
-					<td
-						style="font-weight: bolder; border-bottom: 1px solid #fff; border-top: 1px solid #fff;">
+				if (!productList.isEmpty()) {
+					for (int i = 0; i < productList.size(); i++) {
+						ProductVO product = productList.get(i);
+						String url = "./data/" + product.getFilename1();%>
+					<li>
 						<% if(product.getStock()==0) {%>
-						<a href="./result/soldoutAlertOut.jsp"><img style="opacity:0.5;" src="<%=url%>" /></a>
+						<a href="./result/soldoutAlertOut.jsp"><img style="opacity:0.5; display: block;
+						    width: 250px;
+						    height: 330px;
+						    background-size: 150px 250px;
+						    background-repeat: no-repeat;" src="<%=url%>" /></a>
 						<%} else { %>
-						<a href="productView.do?productNumber=<%=product.getproductNumber()%>"><img src="<%=url%>" /></a>
+						<a href="productView.do?productNumber=<%=product.getproductNumber()%>"><img style="width: 250px;
+							    height: 330px;
+							    background-size: 150px 250px;
+							    background-repeat: no-repeat;" src="<%=url%>" /></a>
 						<%} %>
-						</br> <%=product.getName()%></br> <%=product.getPrice()%></br></td>
-		
-					<%
-						if (i % 2 == 1) {
-					%>
-				</tr>
-				
-			</table>
-			<%
-						
-					}
+						<strong><%=product.getName()%></strong>
+						<span><%=product.getPrice()%> 원</span>
+					</li>
+				<%	}
 				}
-			}
-
-			%>
-			</table>
+				%>
+			</ul>
 		</section>
+		</form>
 	</div>
 </body>
 </html>

@@ -62,7 +62,7 @@ header .top_search {
     transform: translate(-50%,-50%);
     width: 425px;
     height: 40px;
-    borer-bottom: 2px solid #1a2e88;
+    border-bottom: 2px solid #1a2e88;
 }
 
 header .top_search #tsearch {
@@ -74,10 +74,6 @@ header .top_search #tsearch {
 	float: left;
 }
 
-/*header .top_search #tsearch:focus{
-  outline: none;
-}*/
-
 header .top_search button {
 	width: 50px;
 	height: 100%;
@@ -88,7 +84,11 @@ header .top_search button {
 	color: #ffffff;
 }
 
-/*.search_box{
+/*header .top_search #tsearch:focus{
+  outline: none;
+}
+
+.search_box{
 	width: 375px;
  	background: #fff;
  	padding: 2%;
@@ -411,21 +411,58 @@ h2 {
     font-style: normal;
 }
 
-#pdtlist_block table {
-	margin-left:50px;
-	margin-top: 50px;
-}
-
- #select_block table {
-	margin-top: 50px;
-	margin-left: 80px;
-}
-
-#pdtlist_block table tr img, #select_block table tr img {
+#pdtlist_block ul {
+	min-width: 930px;
 	display: block;
-    width: 250px;
-    height: 330px;
-    background-size: 150px 250px;
+	margin: 0;
+}
+
+
+#select_block ul {
+	min-width: 1250px;
+	display: block;
+	margin: 0;
+	padding: 0 3% 0 2.5%;
+}
+
+#select_block li {
+	width: 300px;
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 0 5% 7%;
+}
+
+#pdtlist_block li {
+	width: 300px;
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+	margin: 4% 0 0 3%;
+}
+#pdtlist_block ul li strong, #select_block ul li strong {
+	font-size: 18px;
+	font-weight: bold;
+	font-style: normal;
+	display: block;
+	margin-top: 6px;
+}
+
+#pdtlist_block ul li span, #select_block ul li span {
+	font-size: 15px;
+	font-weight: normal;
+	font-style: normal;
+	display: block;
+	margin-top: 2px;
+	color: #1a2e88;
+}
+
+
+#pdtlist_block ul li img, #select_block ul li img {
+	display: block;
+    width: 300px;
+    height: 380px;
+    background-size: 200px 350px;
     background-repeat: no-repeat;
 }
 
@@ -1223,7 +1260,7 @@ strong, b {
 
 .member_cont .state .order li, .sellerodmgt_frame .state .order li {
 	float: left;
-    width: 33.3%;	
+    width: 20%;	
     padding: 0 0 4px;
     margin: 0 -1px 0 0;
     border-right: 1px dotted #c9c7ca;
@@ -1249,7 +1286,7 @@ strong, b {
     border-top: 2px solid #1a2e88;
 }
 
-.member_cont .orderlist .hiddenbtn, .salelist_frame .orderlist .hiddenbtn {
+.member_cont .orderlist .hiddenbtn, .salelist_frame .orderlist .hiddenbtn, .sellerodmgt_frame .orderlist #hiddenbtn {
 	background-color: #fff;
 	border: none;
 	color: #1a2e88;
@@ -1257,7 +1294,7 @@ strong, b {
     text-align: center;
 }
 
-.salelist_frame .orderlist .hiddenbtn {
+.salelist_frame .orderlist .hiddenbtn, .sellerodmgt_frame .orderlist #hiddenbtn {
 	background-color: #f2f2f2;
 }
 
@@ -1276,6 +1313,14 @@ strong, b {
 	margin-top: 5px;
 	margin-right: 15px;
 	float: right;
+	text-align: center;
+	border-color: #1a2e88;
+    background-color: #1a2e88;
+    color: #fff;
+}
+
+.member_frame table tbody tr Button {
+	margin: 0;
 	text-align: center;
 	border-color: #1a2e88;
     background-color: #1a2e88;
