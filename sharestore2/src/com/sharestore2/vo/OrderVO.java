@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class OrderVO {
-	// 상품번호, 주문번호, 상품명, 바이어_ID(FK), 결제금액, 주문일자, 상태
+	//주문번호, 주문일, 총가격, 상태, memberId, sellerId, 배송완료일 
 	private String orderNumber;
 	private Timestamp orderDate;
 	private int totalPrice;

@@ -22,8 +22,7 @@ public class OrderProductInsertController implements Controller {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		
-		
+				
 		int productNumber = Integer.parseInt(request.getParameter("productNumber"));
 		String memberId = request.getParameter("memberId");
 		int count = Integer.parseInt(request.getParameter("count"));
@@ -66,6 +65,7 @@ public class OrderProductInsertController implements Controller {
 		order.setStatus(status);
 		order.setMemberId(memberId);
 		order.setSellerId(sellerId);
+		order.setDeliveryDate(null);
 		
 		OrderService orderService = OrderService.getInstance();
 		orderService.orderInsert(order);

@@ -9,6 +9,6 @@
 <body>
 	<script>
 		alert('주문이 수정되었습니다.');
-		location.href="./mypage.jsp";
+		location.href="orderList.do";
 	</script>
 </body></html>

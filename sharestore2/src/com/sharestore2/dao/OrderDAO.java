@@ -196,6 +196,7 @@ public class OrderDAO {
 			pstmt.setString(4, order.getStatus());
 			pstmt.setString(5, order.getMemberId());
 			pstmt.setString(6, order.getSellerId());
+			pstmt.setTimestamp(7, order.getDeliveryDate());
 			pstmt.executeUpdate();
 		}
 		catch(Exception ex){
