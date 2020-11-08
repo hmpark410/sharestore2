@@ -73,12 +73,8 @@
 				<p style="margin-top: -10px; margin-bottom: 15px; font-size: 12px;">${product.exp }</p>
 			</div>
 			<div class="pdtexp_middle" style="margin-bottom: 50px;">
-				<select id="pdtsize" name="pdtsize" style="width: 100%"
-					class="normal">
-					<option value="">사이즈</option>
-					<option value="${product.size}">${product.size}</option>
-				</select>
-				<input type="number" name="count" placeholder="수량" style="width: 100%; margin-top:15px;"/>
+				<p style="font-size: 20px;">${product.size}</p>
+				<input type="number" name="count" min="1" value ="1" style="width: 100%; margin-top:10px;"/>
 				<input
 				type="hidden" name="memberId" value="${member.id}" /> <input
 				type="hidden" name="productNumber" value="${product.productNumber}" />

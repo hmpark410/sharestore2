@@ -50,7 +50,7 @@
 					%>
 					<tbody>
 						<tr>
-							<th><button type="submit" class="hiddenbtn" name="orderNumber" onclick='showPopup2()' value="<%=list.getOrderNumber() %>"><%=list.getOrderNumber() %></button></th>
+							<th><button type="submit" class="hiddenbtn" name="orderNum" onclick='showPopup2()' value="<%=list.getOrderNumber() %>"><%=list.getOrderNumber() %></button></th>
 							<th><%=list.getOrderDate() %></th>
 							<th><%=list.getTotalPrice() %></th>    
 							<th><%=list.getStatus() %></th>

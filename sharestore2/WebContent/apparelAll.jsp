@@ -86,7 +86,6 @@
          </div>
       </section>
 
-<<<<<<< HEAD
 		<section id="pdtlist_sub_title">
 			<nav>
 				<ul>

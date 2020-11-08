@@ -3,17 +3,15 @@ package com.sharestore2.controller;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import com.sharestore2.service.OrderProductService;
 import com.sharestore2.service.OrderService;
-import com.sharestore2.service.ProductService;
 import com.sharestore2.vo.OrderProductVO;
 import com.sharestore2.vo.OrderVO;
 import com.sharestore2.vo.ProductVO;
@@ -39,7 +37,9 @@ public class OrderInsertController implements Controller {
 		String ymd = ym + new DecimalFormat("00").format(cal.get(Calendar.DATE));
 		
 		String orderNumber = null;
-		Timestamp orderDate = new Timestamp(System.currentTimeMillis());
+		SimpleDateFormat sdfCurrent = new SimpleDateFormat ("yyyy-MM-dd hh:mm:ss");
+		Timestamp ts = new Timestamp(System.currentTimeMillis());
+		String orderDate = sdfCurrent.format(ts);
 		String status = "주문완료";
 		int totalPrice = 0;
 		String sellerId = null;
@@ -49,43 +49,81 @@ public class OrderInsertController implements Controller {
 		
 		for (int i = 0; i < orderProductList.size(); i++) {
 			OrderProductVO orderProduct = orderProductList.get(i);
-			totalPrice += orderProduct.getCount() * orderProduct.getPrice();
+			totalPrice = orderProduct.getCount() * orderProduct.getPrice();
 			sellerId = orderProduct.getProduct().getSellerId();
 			stock = orderProduct.getProduct().getStock();
 			productNumber = (int) orderProduct.getProduct().getproductNumber();
 			ProductVO product2 = new ProductVO();
-			int udStock = stock - orderProduct.getCount();
 			product2.setproductNumber(productNumber);
+			/*int udStock = stock - orderProduct.getCount();
 			product2.setStock(udStock);
 			ProductService service = ProductService.getInstance();
-			service.stockUpdate(product2);
+			service.stockUpdate(product2);*/
 			
 			String subNum = "";
 			for (int j = 1; j <= 6; j++) {
 				subNum += (int) (Math.random() * 10);
 			}
 			orderNumber = ymd + "_" + subNum;
-			OrderVO order = new OrderVO();
-			order.setOrderNumber(orderNumber);
-			order.setOrderDate(orderDate);
-			order.setTotalPrice(totalPrice);
-			order.setStatus(status);
-			order.setMemberId(memberId);
-			order.setSellerId(sellerId);
-			order.setDeliveryDate(deliveryDate);
-			OrderService orderService = OrderService.getInstance();
-			orderService.orderInsert(order);
-			request.setAttribute("order", order);
+			OrderService service = OrderService.getInstance();
+			ArrayList<OrderVO> list = service.sOrderList(sellerId, orderDate);
+			if(!list.isEmpty()) {
+				for (int j = 0; j < list.size(); j++) {
+					OrderVO vo = list.get(j);
+					String orderNumber1 = vo.getOrderNumber();
+					int totalPrice1 = totalPrice + vo.getTotalPrice();
+					if(vo.getSellerId().equals(sellerId) && vo.getOrderDate().equals(orderDate)) {
+						OrderVO order = new OrderVO();
+						order.setOrderNumber(orderNumber1);
+						order.setTotalPrice(totalPrice1);
+						service.cartUpdate(order);
+						
+						//OrderProductVO
+						OrderProductVO orderProduct2 = orderProductList.get(j);
+						orderProduct2.setOrderNumber(orderNumber1);
+						orderProduct2.setProductNumber(productNumber);
+						orderProduct2.setCount(orderProduct.getCount());
+						OrderProductService orderProductService = OrderProductService.getInstance();
+						orderProductService.OrderProductInsert(orderProduct2);
+					} else {
+						OrderVO order = new OrderVO();
+						order.setOrderNumber(orderNumber);
+						order.setOrderDate(orderDate);
+						order.setTotalPrice(totalPrice);
+						order.setStatus(status);
+						order.setMemberId(memberId);
+						order.setSellerId(sellerId);
+						order.setDeliveryDate(deliveryDate);
+						service.orderInsert(order);
+						
+						//OrderProductVO
+						OrderProductVO orderProduct2 = orderProductList.get(j);
+						orderProduct2.setOrderNumber(orderNumber);
+						orderProduct2.setProductNumber(productNumber);
+						orderProduct2.setCount(orderProduct.getCount());
+						OrderProductService orderProductService = OrderProductService.getInstance();
+						orderProductService.OrderProductInsert(orderProduct2);
+					}
+				}
+			} else {
+				OrderVO order = new OrderVO();
+				order.setOrderNumber(orderNumber);
+				order.setOrderDate(orderDate);
+				order.setTotalPrice(totalPrice);
+				order.setStatus(status);
+				order.setMemberId(memberId);
+				order.setSellerId(sellerId);
+				order.setDeliveryDate(deliveryDate);
+				service.orderInsert(order);
+				
+				//OrderProductVO
+				OrderProductVO orderProduct2 = orderProductList.get(i);
+				orderProduct2.setOrderNumber(orderNumber);
+				OrderProductService orderProductService = OrderProductService.getInstance();
+				orderProductService.OrderProductInsert(orderProduct2);
+			}
 		}
 		
-		/*
-		//OrderProductVO
-		for (int i = 0; i < orderProductList.size(); i++) {
-			OrderProductVO orderProduct = orderProductList.get(i);
-			orderProduct.setOrderNumber(orderNumber);
-			OrderProductService orderProductService = OrderProductService.getInstance();
-			orderProductService.OrderProductInsert(orderProduct);
-		}*/
 		HttpUtil.forward(request, response, "/result/orderInsertOut.jsp");
 	}
 

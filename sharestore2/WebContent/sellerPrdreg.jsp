@@ -65,7 +65,7 @@
 							<th>가격</th>
 							<td>
 								<p>
-									<input type="number" name="price" id="price" maxlength="10"
+									<input type="number" name="price" min="1" value ="1" id="price" maxlength="10"
 										placeholder="ex) 50000"
 										style="width: 400px; margin-right: 5px;" /> 원
 								</p>
@@ -73,8 +73,8 @@
 						</tr>
 						<tr>
 							<th>수량</th>
-							<td><input type="number" name="stock" id=""
-								stock"" maxlength="10" placeholder="ex) 10"
+							<td><input type="number" name="stock" id="
+								stock" min="1" value ="1" maxlength="10" placeholder="ex) 10"
 								style="width: 400px;"></td>
 						</tr>
 						<tr>

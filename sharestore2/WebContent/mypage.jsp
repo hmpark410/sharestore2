@@ -20,17 +20,13 @@
    else {
    %>
    <div id="page">
-   <form name="form1" method="post">
       <header>
          <div id="top">
             <div class="logo">
                <a href="mainhome.jsp"> <img src="./data/logo.png" />
                </a>
             </div>
-			<div class="top_search">
-				<input type="text" id="tsearch" name="search" placeholder="검색어를 입력하세요.">
-				<button type="submit" name="button" onclick="javascript: form.action='search.do';">검색</button>
-			</div>
+
             <div class="top_menu">
                <li class="menu-item"><a href="result/logout.jsp"> <span
                      class="icon icon-logout"></span> <strong>LOGOUT</strong>
@@ -100,19 +96,22 @@
                </div>
                <h3>주문내역</h3>
                <div class="orderlist">
+                  <form name="form1" method="post">
                      <table class="cols tbl_product shopping">
                         <colgroup>
-                           <col style="width: 280px;">
-                           <col style="width: 280px;">
-                           <col style="width: 280px;">
-                           <col style="width: 280px;">
-                           <col style="width: 120px;">
+                           <col style="width: 225px;">
+                           <col style="width: 225px;">
+                           <col style="width: 225px;">
+                           <col style="width: 225px;">
+                           <col style="width: 225px;">
+                           <col style="width: 115px;">
                         </colgroup>
                         <thead>
                            <tr>
                               <th>주문번호</th>
                               <th>주문일</th>
                               <th>총금액</th>
+                              <th>판매자</th>
                               <th>진행상황</th>
                               <th>선택</th>
                            </tr>
@@ -130,6 +129,7 @@
                               value="<%=order.getOrderNumber()%>"><%=order.getOrderNumber()%></button></th>
                               <th><%=order.getOrderDate()%></th>
                               <th><%=order.getTotalPrice()%></th>
+                              <th><%=order.getSellerId()%></th>
                               <th><%=order.getStatus()%></th>                             
                                 <form name="form2" method="post"> 
                                 <th><input type="hidden" name="orderNumber"
@@ -154,13 +154,13 @@
                                  } 
                                  %>                                
                                  </th>                                 
-                               </form>
-                          </tr> 
+                                 </form>
+                                 </tr> 
                            <%}
                            }else{
                            %>
                            <tr>
-                              <th colspan="5" style="text-align: center;">
+                              <th colspan="6" style="text-align: center;">
                               <p>구매 내역이 없습니다.<p></th>
                            </tr>
                            <%
@@ -177,11 +177,10 @@
                            check.submit();
                         }
                      </script>
-                  
+                  </form>
                </div>
             </div>
       </section>
-      </form>
    </div>
    <%} %>
 </body>

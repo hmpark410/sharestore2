@@ -67,7 +67,7 @@ public class OrderProductDAO {
 		PreparedStatement pstmt = null;
 		try {
 			conn = connect();
-			String sql ="INSERT into sharestore.order_product VALUES (?, ?, ?);";
+			String sql ="INSERT into sharestore.order_product (order_number, product_number, count) VALUES (?, ?, ?);";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, orderProduct.getOrderNumber());
 			pstmt.setInt(2, orderProduct.getProductNumber());
@@ -93,7 +93,7 @@ public class OrderProductDAO {
 		ArrayList<OrderProductVO> orderDetail = new ArrayList<>();
 		try {
 			conn = connect();
-			pstmt = conn.prepareStatement("SELECT * from order_product where order_number=?;");
+			pstmt = conn.prepareStatement("SELECT order_number, product_number, count from order_product where order_number=?;");
 			pstmt.setString(1, orderNumber);
 			rs = pstmt.executeQuery();
 

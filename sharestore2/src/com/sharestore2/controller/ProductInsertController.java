@@ -71,7 +71,7 @@ public class ProductInsertController implements Controller {
 		service.productService(product);
 		
 		request.setAttribute("product", product); 
-		HttpUtil.forward(request, response, "/sellerPage.jsp");
+		HttpUtil.forward(request, response, "/result/sellerPrdInsertOut.jsp");
 	}
 }
 

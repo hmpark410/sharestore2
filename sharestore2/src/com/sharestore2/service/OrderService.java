@@ -2,8 +2,7 @@ package com.sharestore2.service;
 
 import com.sharestore2.dao.OrderDAO;
 import com.sharestore2.vo.OrderVO;
-import com.sharestore2.vo.ProductVO;
-
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class OrderService {
@@ -34,8 +33,17 @@ public class OrderService {
 		return sellerOrderList;
 	}
 	
+	public ArrayList<OrderVO> sOrderList(String sellerId, String orderDate) {
+		ArrayList<OrderVO> sOrderList = dao.sOrderList(sellerId, orderDate);
+		return sOrderList;
+	}
+	
 	public void OrderUpdate(OrderVO order) {
 		dao.orderUpdate(order);
+	}
+	
+	public void cartUpdate(OrderVO order) {
+		dao.cartUpdate(order);
 	}
 
 	//상품주문 
