@@ -3,6 +3,7 @@ package com.sharestore2.controller;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -37,11 +38,11 @@ public class OrderProductInsertController implements Controller {
 		orderProduct.setProductNumber(productNumber);
 		orderProduct.setCount(count);
 		
-		ProductVO product2 = new ProductVO();
+		/*ProductVO product2 = new ProductVO();
 		int udStock = product.getStock() - orderProduct.getCount();
 		product2.setproductNumber(productNumber);
 		product2.setStock(udStock);
-		service.stockUpdate(product2);
+		service.stockUpdate(product2);*/
 		
 		//OrderVO 객체 
 		//주문번호 생성(주문날짜 + 랜던번호) 
@@ -54,7 +55,9 @@ public class OrderProductInsertController implements Controller {
 		  subNum += (int)(Math.random() * 10);
 		 }
 		String orderNumber = ymd + "_" + subNum;
-		Timestamp orderDate = new Timestamp(System.currentTimeMillis());
+		SimpleDateFormat sdfCurrent = new SimpleDateFormat ("yyyy-MM-dd hh:mm:ss");
+		Timestamp ts = new Timestamp(System.currentTimeMillis());
+		String orderDate = sdfCurrent.format(ts);
 		int totalPrice = orderProduct.getCount() * orderProduct.getPrice();
 		String status = "주문완료";
 		String sellerId = product.getSellerId();

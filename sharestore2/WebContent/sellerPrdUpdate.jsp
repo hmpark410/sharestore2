@@ -83,13 +83,13 @@
 							<tr>
 						    	<th>가격</th>
 						        <td>
-					          		<input type="number" name="price" id="price" maxlength="10" value = "<%=prdlist.getPrice()%>">
+					          		<input type="number" name="price" id="price" maxlength="10" min="1" value ="1" "<%=prdlist.getPrice()%>">
 					          	</td>
 							</tr>
 							<tr>
 						    	<th>수량</th>
 						        <td>
-					          		<input type="number" name="stock" id="stock" maxlength="10"  value = "<%=prdlist.getStock()%>">
+					          		<input type="number" name="stock" id="stock" maxlength="10" min="1" value ="1" "<%=prdlist.getStock()%>">
 					          	</td>
 							</tr>
 							<tr>

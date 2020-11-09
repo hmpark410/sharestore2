@@ -3,10 +3,11 @@ package com.sharestore2.vo;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+
 public class OrderVO {
 	//주문번호, 주문일, 총가격, 상태, memberId, sellerId, 배송완료일 
 	private String orderNumber;
-	private Timestamp orderDate;
+	private String orderDate;
 	private int totalPrice;
 	private String status;
 	private String memberId;
@@ -31,11 +32,11 @@ public class OrderVO {
 		this.orderNumber = orderNumber;
 	}
 
-	public Timestamp getOrderDate() {
+	public String getOrderDate() {
 		return orderDate;
 	}
 
-	public void setOrderDate(Timestamp orderDate) {
+	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
 	}
 
