@@ -30,12 +30,11 @@
 		<div class="state">
 			<ul class="order">
 				<%
-					int cnt1 = 0;
+				int cnt1 = 0;
 				int cnt2 = 0;
 				int cnt3 = 0;
 				int cnt4 = 0;
 				int cnt5 = 0;
-
 				ArrayList<OrderVO> sellerOrderList = (ArrayList<OrderVO>) request.getAttribute("sellerOrderList");
 				%>
 				<li>
@@ -132,10 +131,7 @@
 					<tr>
 						<th>주문일</th>
 						<th>주문번호</th>
-<<<<<<< HEAD
 						<th>상품</th>
-=======
->>>>>>> branch 'master' of https://github.com/hmpark410/sharestore2
 						<th>금액</th>
 						<th>아이디</th>
 						<th>진행상황</th>

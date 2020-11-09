@@ -38,7 +38,6 @@ public class OrderInsertController implements Controller {
 		
 		Calendar cal = Calendar.getInstance();
 		int year = cal.get(Calendar.YEAR);
-<<<<<<< HEAD
 		String yearMonth = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
 		String yearMonthDay = yearMonth + new DecimalFormat("00").format(cal.get(Calendar.DATE));
 		String subNum = "";
@@ -46,17 +45,13 @@ public class OrderInsertController implements Controller {
 			subNum += (int) (Math.random() * 10);
 		}
 		String orderNumber = yearMonthDay + "_" + subNum;
-=======
 		String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
 		String ymd = ym + new DecimalFormat("00").format(cal.get(Calendar.DATE));
-		
 		String orderNumber = null;
->>>>>>> branch 'master' of https://github.com/hmpark410/sharestore2
 		Timestamp orderDate = new Timestamp(System.currentTimeMillis());
 		String status = "주문완료";
 		int totalPrice = 0;
 		String sellerId = null;
-<<<<<<< HEAD
 		Timestamp deliveryDate = null;
 			
 		order.setOrderNumber(orderNumber);
@@ -65,18 +60,14 @@ public class OrderInsertController implements Controller {
 		order.setMemberId(memberId);
 		//주문번호, 주문일, 총가격, 상태, memberId, sellerId, 배송완료일 
 		//주문상품 
-=======
 		int stock = 0;
 		int productNumber = 0;
 		Timestamp deliveryDate = null;
-		
->>>>>>> branch 'master' of https://github.com/hmpark410/sharestore2
+
 		for (int i = 0; i < orderProductList.size(); i++) {
 			OrderProductVO orderProduct = orderProductList.get(i);
 			totalPrice += orderProduct.getCount() * orderProduct.getPrice();
 			sellerId = orderProduct.getProduct().getSellerId();
-<<<<<<< HEAD
-=======
 			stock = orderProduct.getProduct().getStock();
 			productNumber = (int) orderProduct.getProduct().getproductNumber();
 			ProductVO product2 = new ProductVO();
@@ -102,33 +93,13 @@ public class OrderInsertController implements Controller {
 			OrderService orderService = OrderService.getInstance();
 			orderService.orderInsert(order);
 			request.setAttribute("order", order);
->>>>>>> branch 'master' of https://github.com/hmpark410/sharestore2
-		}
-		
-<<<<<<< HEAD
 		order.setTotalPrice(totalPrice);
 	
 		order.setSellerId(sellerId);
 		order.setDeliveryDate(deliveryDate);
 		OrderService orderService = OrderService.getInstance();
 		orderService.orderInsert(order);
-		
-=======
-		/*
->>>>>>> branch 'master' of https://github.com/hmpark410/sharestore2
-		//OrderProductVO
-		for (int i = 0; i < orderProductList.size(); i++) {
-			OrderProductVO orderProduct = orderProductList.get(i);
-			orderProduct.setOrderNumber(orderNumber);
-			OrderProductService orderProductService = OrderProductService.getInstance();
-			orderProductService.OrderProductInsert(orderProduct);
-<<<<<<< HEAD
-		}
-		orderProductList = null;
-		request.setAttribute("order", order);
-=======
-		}*/
->>>>>>> branch 'master' of https://github.com/hmpark410/sharestore2
+
 		HttpUtil.forward(request, response, "/result/orderInsertOut.jsp");
 	}
 }

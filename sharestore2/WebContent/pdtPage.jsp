@@ -83,9 +83,6 @@
 				type="hidden" name="memberId" value="${member.id}" /> <input
 				type="hidden" name="productNumber" value="${product.productNumber}" />
 			</div>
-			
-				 
-
 			<div class="pdtexp_bottom">
 				<button type="submit" name="button" class="btn"
 					style="width: 100%; margin-bottom: 10px;"

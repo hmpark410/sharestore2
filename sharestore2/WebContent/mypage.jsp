@@ -20,7 +20,6 @@
    else {
    %>
    <div id="page">
-<<<<<<< HEAD
       <header>
          <div id="top">
             <div class="logo">
@@ -181,7 +180,6 @@
       </section>
    </div>
    <%} %>
-=======
    <form name="form1" method="post">
       <header>
          <div id="top">
@@ -345,6 +343,4 @@
       </section>
       </form>
    </div>
-   <%} %>
->>>>>>> branch 'master' of https://github.com/hmpark410/sharestore2
 </body>
