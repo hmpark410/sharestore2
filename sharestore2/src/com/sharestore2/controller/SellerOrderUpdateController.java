@@ -3,11 +3,9 @@ package com.sharestore2.controller;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.sharestore2.service.OrderProductService;
 import com.sharestore2.service.OrderService;
 import com.sharestore2.service.ProductService;

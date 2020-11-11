@@ -7,7 +7,6 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import com.sharestore2.service.MemberService;
 import com.sharestore2.vo.MemberVO;
-
 public class MemberInsertController implements Controller {	
 	public void execute(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
@@ -22,7 +21,9 @@ public class MemberInsertController implements Controller {
 		int birth_y = Integer.parseInt(request.getParameter("select_year"));
 		int birth_m = Integer.parseInt(request.getParameter("select_month"));
 		int birth_d = Integer.parseInt(request.getParameter("select_day"));
-		String address = request.getParameter("address");
+		String roadAddress = request.getParameter("roadAddress");
+		String detailAddress = request.getParameter("detailAddress");
+		String address = roadAddress +  "," + detailAddress;
 		Pattern pwd = Pattern.compile("^(?=.*[0-9])(?=.*[A-Za-z]).{8,16}$");
 	    Matcher m = pwd.matcher(passwd);
 	    
