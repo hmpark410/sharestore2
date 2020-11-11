@@ -2,7 +2,6 @@ package com.sharestore2.controller;
 import java.io.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
 import com.sharestore2.service.MemberService;
@@ -10,7 +9,6 @@ import com.sharestore2.vo.MemberVO;
 public class MemberInsertController implements Controller {	
 	public void execute(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		
 		String id = request.getParameter("id");
 		String passwd = request.getParameter("passwd");
 		String check_passwd = request.getParameter("check_passwd");
@@ -63,7 +61,6 @@ public class MemberInsertController implements Controller {
 		//Service 객체의 메소드 호출
 		MemberService service = MemberService.getInstance();
 		service.memberInsert(member);
-		
 		//Output 페이지 이동
 		request.setAttribute("id", id);
 		out.println("<script>location.href='result/memberInsertOut.jsp';</script>");

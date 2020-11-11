@@ -1,13 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-
 <!DOCTYPE html>
 <html>
 <head>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script
-	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="style.css" rel="stylesheet" type="text/css">
 <title>· SHARESTORE ·</title>
@@ -320,7 +317,6 @@
 			}).open();
 		}
 	</script>
-
 	<script type="text/javascript">
 		document.addEventListener('keydown', function(event) {
 			if (event.keyCode === 13) {
