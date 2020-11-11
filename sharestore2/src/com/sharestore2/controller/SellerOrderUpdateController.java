@@ -41,38 +41,39 @@ public class SellerOrderUpdateController implements Controller {
 				}
 				service.OrderUpdate(order);
 			}
-
+		
 			OrderProductVO orderProduct = new OrderProductVO();
 			OrderProductService orderProductService = OrderProductService.getInstance();
 			ArrayList<OrderProductVO> orderProductList = orderProductService.orderDetail(orderNumber);
-			System.out.println("productNumber : " );
+			
 			// orderProduct
 			for (int j = 0; j < orderProductList.size(); j++) {
 				orderProduct = orderProductList.get(j);
 				int productNumber = orderProduct.getProductNumber();	
-				
-
 				ProductService productService = ProductService.getInstance();
 				ProductVO product = productService.productView(productNumber);
-			
+				
+				System.out.println(j + "번");
 				// product(배송준비 (-), 환불(+))
 				if (product.getSellerId().equals(sellerId)) {
 					int stock = product.getStock();
 					int count = orderProduct.getCount();
 					if (status.equals("배송준비")) {
 						stock -= count;
-						System.out.println("stock : " + stock);
-					} else if (status.equals("환불")) {
+						System.out.println(product.getName() + "stock : " + stock);
+					} 
+					else if (status.equals("환불")) {
 						stock += count;
-						System.out.println("stock : " +stock);
+						System.out.println(product.getName() + "stock : "  + stock);
+						
 					}
 					product.setproductNumber(productNumber);
 					product.setStock(stock);
 					productService.stockUpdate(product);
+		
 				}
 			}
 		}
-		// 환불 수량(+)
 		request.setAttribute("orderNumber", orderNumber);
 		HttpUtil.forward(request, response, "/result/sellerOrderUpdateOut.jsp");
 	}
