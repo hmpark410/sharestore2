@@ -161,6 +161,7 @@
 									style="float: left; margin-left: 5px;">
 									<div class="select_box orderstatus_box">
 									<input type="hidden" name="orderNumber" value="<%=orderlist.getOrderNumber()%>">
+									<input type="hidden" name="sellerId" value="<%=orderlist.getSellerId()%>">
 										<select id="orderstatus" name="update_status"
 											style="width: 110px;" class="orderstatus">
 											<option value="">상태변경</option>
@@ -172,6 +173,7 @@
 										</select>
 									</div>
 								</div>
+								
 								<Button type="submit" name="update_status" class="update_status">수정</Button>
 							</form>
 						</th>

@@ -37,7 +37,11 @@ public class OrderService {
 		ArrayList<OrderVO> sOrderList = dao.sOrderList(sellerId, orderDate);
 		return sOrderList;
 	}
-	
+	public OrderVO getOrder(String sellerId, String orderNumber) {
+		OrderVO order = dao.getOrder(sellerId, orderNumber);
+		return order;
+	}
+	//주문 수정 
 	public void OrderUpdate(OrderVO order) {
 		dao.orderUpdate(order);
 	}
