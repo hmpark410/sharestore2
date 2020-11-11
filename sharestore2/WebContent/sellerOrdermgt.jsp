@@ -1,7 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="com.sharestore2.vo.OrderVO"%>
 <%@ page import="com.sharestore2.vo.OrderProductVO"%>
@@ -162,7 +159,7 @@
 									<div class="select_box orderstatus_box">
 									<input type="hidden" name="orderNumber" value="<%=orderlist.getOrderNumber()%>">
 									<input type="hidden" name="sellerId" value="<%=orderlist.getSellerId()%>">
-										<select id="orderstatus" name="update_status"
+										<select id="orderstatus" name="updateStatus"
 											style="width: 110px;" class="orderstatus">
 											<option value="">상태변경</option>
 											<option value="취소">취소</option>
@@ -180,7 +177,8 @@
 					</tr>
 					<%
 						}
-					} else {
+					} 
+					else {
 					%>
 					<tr>
 						<td colspan="6" style="text-align: center;"><p>구매 내역이

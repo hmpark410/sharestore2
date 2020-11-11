@@ -1,4 +1,5 @@
 package com.sharestore2.controller;
+
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -20,13 +21,14 @@ public class SellerOrderUpdateController implements Controller {
 		String orderNumber = request.getParameter("orderNumber");
 		String sellerId = request.getParameter("sellerId");
 		// 주문완료,배송준비,배송중,배송완료,취소,환불
-		String status = request.getParameter("update_status");
+		String status = request.getParameter("updateStatus");
 
 		OrderVO order = new OrderVO();
 		OrderService service = OrderService.getInstance();
 		ArrayList<OrderVO> orderList = service.sellerOrderList(sellerId);
 		// order
-		for (int i = 0; i < orderList.size(); i++) {
+		int i;
+		for (i = 0; i < orderList.size(); i++) {
 			order = orderList.get(i);
 			if (order.getOrderNumber().equals(orderNumber)) {
 				order.setOrderNumber(orderNumber);
@@ -35,42 +37,35 @@ public class SellerOrderUpdateController implements Controller {
 				if (status.equals("배송완료")) {
 					Timestamp deliveryDate = new Timestamp(System.currentTimeMillis());
 					order.setDeliveryDate(deliveryDate);
-				} 
-				else {
+				} else {
 					order.setDeliveryDate(null);
 				}
 				service.OrderUpdate(order);
 			}
-		
 			OrderProductVO orderProduct = new OrderProductVO();
 			OrderProductService orderProductService = OrderProductService.getInstance();
 			ArrayList<OrderProductVO> orderProductList = orderProductService.orderDetail(orderNumber);
-			
 			// orderProduct
-			for (int j = 0; j < orderProductList.size(); j++) {
-				orderProduct = orderProductList.get(j);
-				int productNumber = orderProduct.getProductNumber();	
+			for (i = 0; i < orderProductList.size(); i++) {
+				orderProduct = orderProductList.get(i);
+				int productNumber = orderProduct.getProductNumber();
 				ProductService productService = ProductService.getInstance();
 				ProductVO product = productService.productView(productNumber);
-				
-				System.out.println(j + "번");
 				// product(배송준비 (-), 환불(+))
 				if (product.getSellerId().equals(sellerId)) {
 					int stock = product.getStock();
 					int count = orderProduct.getCount();
 					if (status.equals("배송준비")) {
 						stock -= count;
-						System.out.println(product.getName() + "stock : " + stock);
+						System.out.println(product.getName() + "(+)stock : " + stock);
 					} 
-					else if (status.equals("환불")) {
+					if (status.equals("환불")) {
 						stock += count;
-						System.out.println(product.getName() + "stock : "  + stock);
-						
+						System.out.println(product.getName() + "(-)stock : " + stock);
 					}
 					product.setproductNumber(productNumber);
 					product.setStock(stock);
 					productService.stockUpdate(product);
-		
 				}
 			}
 		}
