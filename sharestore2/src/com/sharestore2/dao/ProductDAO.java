@@ -565,39 +565,4 @@ public class ProductDAO {
 		}
 		return product;
 	}
-	
-	//검색 기능
-	public ArrayList<ProductVO> pdtSelect(String selectTxt) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		ProductVO product = null;
-		ArrayList<ProductVO> pdtSelect = new ArrayList<>();
-		try {
-			conn = connect();
-			pstmt = conn.prepareStatement("SELECT * from product where name like '%"+selectTxt+"%' or exp like '%"+selectTxt+"%';");
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				product = new ProductVO();
-				product.setproductNumber(rs.getInt(1));
-				product.setName(rs.getString(2));
-				product.setSize(rs.getString(3));
-				product.setPrice(rs.getInt(4));
-				product.setStock(rs.getInt(5));
-				product.setCategory(rs.getString(6));
-				product.setExp(rs.getString(7));
-				product.setSellerId(rs.getString(8));
-				product.setFilename1(rs.getString(9));
-				product.setFilename2(rs.getString(10));
-				product.setFilename3(rs.getString(11));
-				pdtSelect.add(product);
-			}
-		} catch (Exception ex) {
-			System.out.println("오류 발생 : " + ex);
-		} finally {
-			close(conn, pstmt, rs);
-		}
-		return pdtSelect;
-	}
 }

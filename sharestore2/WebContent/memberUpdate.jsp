@@ -29,13 +29,13 @@
 				        		</td>
 				       		</tr>
 					        <tr>
-					        	<th>비밀번호 </th>
+					        	<th>비밀번호<span>*</span> </th>
 					         	<td>
 					          		<input type="password" name="passwd" id="pw" value = "${member.passwd}"  maxlength="16"  placeholder="영문+숫자 조합 8~16자리">
 					          	</td>
 					        </tr>
 						    <tr>
-						    	<th>비밀번호 확인</th>
+						    	<th>비밀번호 확인<span>*</span></th>
 						        <td>
 						        	<input type="password" name="check_passwd" id="pwConfirm" maxlength="16">
 						        </td>
@@ -48,16 +48,21 @@
 						        </td>
 							</tr>
 							<tr>
-						    	<th>휴대폰번호</th>
+						    	<th>휴대폰번호<span>*</span></th>
 						        <td>
 					          		<input type="text" name="phone" id="phone" value = "${member.phone}" maxlength="13" placeholder="하이픈(-)을 포함하여 입력해주세요.">
 					          	</td>
 							</tr>
 							<tr>
-						    	<th>주소</th>
-						        <td>
-					          		<input type="text" name="address" id="adress" value = "${member.address}" maxlength="45" placeholder="상세 주소를 입력해주세요.">
-					          	</td>
+						    	<th>주소<span>*</span></th>
+								<td>
+									<input type="text" name="postCode" id="postCode" style="width:100px; margin: 10px 8px 0 0;" readonly>
+									<input type="button" onclick="DaumPostcode()" value="우편번호 찾기">
+									<br>
+									<input type="text" name="roadAddress" id="roadAddress" name="roadAddress" placeholder="도로명주소" style="margin: 8px 0 0 0;" readonly>
+									<br>
+									<input type="text" name="detailAddress" id="detailAddress" name="detailAddress"placeholder="상세주소" style="margin: 8px 0 10px;">
+								</td>
 							</tr>
 							<tr>
 						    	<th>이메일</th>
@@ -86,5 +91,18 @@
 			</div>
 	   	</div>
 	</section>
+	<script type="text/javascript">
+		function DaumPostcode() {
+			new daum.Postcode({
+				oncomplete : function(data) {
+					var roadAddr = data.roadAddress; // 도로명 주소 변수
+					// 우편번호와 주소 정보를 해당 필드에 넣는다.
+					document.getElementById('postCode').value = data.zonecode;
+					document.getElementById("roadAddress").value = roadAddr;
+					detailAddress
+				}
+			}).open();
+		}
+	</script>
 </body>
 </html>

@@ -61,55 +61,55 @@
 		<%
 		MemberVO member = (MemberVO) session.getAttribute("member");
 		ProductVO product = new ProductVO();
-		ArrayList<OrderProductVO> orderProductList = (ArrayList<OrderProductVO>) session.getAttribute("orderProductList");
 		%>
 		
 		<div class="pdtexp">
-		<form method="post">
-			<div class="pdtexp_top"
-				style="margin-bottom: 20px; border-bottom: 2px solid #e6e6e6;">
-				<h2 style="font-weight: bolder; font-size: 35px;">${product.name }</h2>
-				<p style="font-size: 25px;">${product.price }</p>
-				<p style="margin-top: -10px; margin-bottom: 15px; font-size: 12px;">${product.exp }</p>
-			</div>
-			<div class="pdtexp_middle" style="margin-bottom: 50px;">
-				<p style="font-size: 20px;">${product.size}</p>
-				<input type="number" name="count" min="1" value ="1" style="width: 100%; margin-top:10px;"/>
-				<input
-				type="hidden" name="memberId" value="${member.id}" /> <input
-				type="hidden" name="productNumber" value="${product.productNumber}" />
-			</div>
-			<div class="pdtexp_bottom">
-				<button type="submit" name="button" class="btn"
-					style="width: 100%; margin-bottom: 10px;"
-					onclick="javascript:form.action='cartInsert.do';">장바구니</button>
+			<form method="post">
+				<div class="pdtexp_top"
+					style="margin-bottom: 20px; border-bottom: 2px solid #e6e6e6;">
+					<h2 style="font-weight: bolder; font-size: 35px;">${product.name }</h2>
+					<p style="font-size: 25px;">${product.price }</p>
+					<p style="margin-top: -10px; margin-bottom: 15px; font-size: 12px;">${product.exp }</p>
+				</div>
+				<div class="pdtexp_middle" style="margin-bottom: 50px;">
+					<p style="font-size: 20px;">${product.size}</p>
+					<input type="number" name="count" min="1" value ="1" style="width: 100%; margin-top:10px;"/>
+					<input type="hidden" name="memberId" value="${member.id}" />
+					<input type="hidden" name="productNumber" value="${product.productNumber}" />
+					<input type="hidden" name="sellerId" value="${product.sellerId}" />
+				</div>
+				<div class="pdtexp_bottom">
+					<%
+				
+						if (member == null) {
+					%>
+					<button type="button" name="button" class="btn"
+						style="width: 100%; margin-bottom: 10px;" onclick="window.location='login.jsp'">장바구니</button>
+					<button type="button" name="button" class="btn sky"
+						style="width: 100%" onclick="window.location='login.jsp'">구매하기</button>
+					<%
+						} else {
+					%>
+					<button type="submit" name="button" class="btn"
+						style="width: 100%; margin-bottom: 10px;"
+						onclick="javascript:form.action='cartInsert.do';">장바구니</button>
+				
+					<button type="submit" name="button" class="btn sky"
+						style="width: 100%"
+						onclick="javascript: form.action='orderProductInsert.do';">구매하기</button>
+
+				</div>
+				<%
+					}
+				%>
 				<script type="text/javascript">
 					function cartClick() {
 						opener.parent.location="form.action='cartInsert.do'";
 						window.close();
 					}
 				</script>
-				<%
-			
-					if (member == null) {
-				%>
-				<button type="button" name="button" class="btn sky"
-					style="width: 100%" onclick="window.location='login.jsp'">구매하기</button>
-				<%
-					} else {
-				%>
-			
-				<button type="submit" name="button" class="btn sky"
-					style="width: 100%"
-					onclick="javascript: form.action='orderProductInsert.do';">구매하기</button>
-			
-			</div>
-			<%
-				}
-			%>
 			</form>
 		</div>
-
 	</section>
 </body>
 </html>

@@ -31,7 +31,6 @@
 				int cnt2 = 0;
 				int cnt3 = 0;
 				int cnt4 = 0;
-				int cnt5 = 0;
 				ArrayList<OrderVO> sellerOrderList = (ArrayList<OrderVO>) request.getAttribute("sellerOrderList");
 				%>
 				<li>
@@ -89,21 +88,6 @@
 				 		}
 				 	}
 				 %> <span><%=cnt4%></span> <%
-				 	} else {
-				 %> <span>0</span> <%
-				 	}
-				 %>
-				</li>
-				<li>
-					<h4>취소</h4> <%
-				 	if (!sellerOrderList.isEmpty()) {
-				 	for (int i = 0; i < sellerOrderList.size(); i++) {
-				 		OrderVO orderlist = sellerOrderList.get(i);
-				 		if (orderlist.getStatus().equals("취소")) {
-				 	cnt5++;
-				 		}
-				 	}
-				 %> <span><%=cnt5%></span> <%
 				 	} else {
 				 %> <span>0</span> <%
 				 	}

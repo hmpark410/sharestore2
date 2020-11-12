@@ -1,5 +1,5 @@
 <%@ page import="java.util.ArrayList"%>
-<%@ page import="com.sharestore2.vo.OrderProductVO"%>
+<%@ page import="com.sharestore2.vo.CartVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.sharestore2.vo.MemberVO"%>
@@ -36,7 +36,7 @@
 							class="icon icon-join"></span> <strong>JOIN</strong>
 					</a></li>
 
-					<li class="menu-item"><a href="cart.jsp"> <span
+					<li class="menu-item"><a href="login.jsp"> <span
 							class="icon icon-cart"></span> <strong>CART</strong>
 					</a></li>
 
@@ -50,7 +50,7 @@
 					<li class="menu-item"><a href="result/logout.jsp"> <span
 							class="icon icon-logout"></span> <strong>LOGOUT</strong>
 					</a></li>
-					<li class="menu-item"><a href="cart.jsp"> <span
+					<li class="menu-item"><a href="cartList.do"> <span
 							class="icon icon-cart"></span> <strong>CART</strong>
 					</a></li>
 					<li class="menu-item"><a href="orderList.do"> <span
@@ -80,51 +80,64 @@
 				<div class="sub_title_wrap2">
 					<h2 class="sub_title">SHOPPING BAG</h2>
 				</div>
-				<%ArrayList<OrderProductVO> orderProductList = (ArrayList<OrderProductVO>) session.getAttribute("orderProductList");
-						if (orderProductList != null) { %>
+				<%ArrayList<CartVO> cartProductList = (ArrayList<CartVO>) request.getAttribute("cartProductList");
+						if (!cartProductList.isEmpty()) { %>
 				<div class="cart_frame">
 					<div class="cart_cont">
 						<table class="cols tbl_product shopping">
 							<colgroup>
-								<col style="width: 50px;">
-								<col style="width: 50px;">
-								<col style="width: 50px;">
-								<col style="width: 50px;">
+								<col style="width: 10px;">
+								<col style="width: 100px;">
+								<col style="width: 20px;">
+								<col style="width: 35px;">
+								<col style="width: 35px;">
+								<col style="width: 60px;">
 							</colgroup>
 							<thead>
 								<tr>
-									<th>상품명</th>
-									<th>판매가</th>
+									<th></th>
+									<th>상품정보</th>
 									<th>수량</th>
+									<th>판매가</th>
 									<th>합계</th>
+									<th>선택</th>
 								</tr>
 							</thead>
 							<tbody>
 								<%
 								int totalPrice = 0;
-								for (int i = 0; i < orderProductList.size(); i++) {
-									OrderProductVO orderProduct = orderProductList.get(i);
-									totalPrice += (orderProduct.getPrice() * orderProduct.getCount());
+								for (int i = 0; i < cartProductList.size(); i++) {
+									CartVO cart = cartProductList.get(i);
+									totalPrice += (cart.getPrice() * cart.getCount());
+									String url = "./data/" + cart.getFilename1();
 								%>
 								<tr>
-									<th><%=orderProduct.getName()%></th>
-									<th><%=orderProduct.getPrice()%></th>
-									<th><%=orderProduct.getCount()%></th>
-									<th><%=orderProduct.getPrice() * orderProduct.getCount()%></th>
+									<th><input type="checkbox" name="class" value="<%=cart.getCartNumber()%>" checked="true"></th>
+									<th>
+										<a href="productView.do?productNumber=<%=cart.getProductNumber()%>">
+											<img style="width: 60px; height: 80px; background-size: 60px 80px; background-repeat: no-repeat;" src="<%=url%>" />
+										</a>
+										<p><%=cart.getProduct().getName()%></p>
+									</th>
+									<th><%=cart.getCount()%></th>
+									<th><%=cart.getPrice()%></th>
+									<th><%=cart.getPrice() * cart.getCount()%></th>
+									<th>
+										<input type="hidden" name="productNumber" value="<%=cart.getProductNumber()%>" />
+										<input type="hidden" name="count" value="<%=cart.getCount()%>" />
+										<button type="submit" name="orderbtn" style="margin-bottom:5px;" value="<%=cart.getCartNumber()%>" onclick="javascript: form.action='cartSingleOrderInsert.do';">주문하기</button>
+										<button type="submit" name="deletebtn" value="<%=cart.getCartNumber()%>" onclick="javascript: form.action='cartSingleDelete.do';">삭제하기</button>
+									</th>
 								</tr>
 								<%
 									}
 								%>
 							</tbody>
 						</table>
-						<h3 class="tit first_title">
-						쇼핑백 상품 <span>(<em><%=orderProductList.size()%></em>)
-						</span>
-						</h3>
-						<div class="bx_btn">
+						<div class="bx_btn" style="margin-top: -15px;">
 							<button type="submit" name="button" class="btn"
-								onclick="javascript: form.action='cartDelete.do';">장바구니
-								비우기</button>
+								onclick="javascript: form.action='cartDelete.do';">선택상품
+								삭제하기</button>
 							<button type="button" name="button" class="btn sky"
 								onclick="window.location='mainhome.jsp'">쇼핑계속하기</button>
 						</div>
@@ -142,25 +155,10 @@
 							</li>
 						</ul>
 
-						<%
-							if (member == null) {
-						%>
-						<button type="button" name="button" class="btn sky"
-							style="width: 100%" onclick="window.location='login.jsp'">전체상품
-						주문하기</button>
-						<%
-							} else {
-						%>
-						<input type="hidden" name="memberId" value="${member.id}" />
 						<button type="submit" name="button" class="btn sky"
 							style="width: 100%"
-							onclick="javascript: form.action='orderInsert.do';">전체상품
-					주문하기
+							onclick="javascript: form.action='cartOrderInsert.do';">선택상품 주문하기
 						</button>
-					</div>
-					<%
-						}
-					%>
 				</div>
 				<%
 					} else {
@@ -168,22 +166,26 @@
 				<div class="cart_frame" style="border-top: 2px solid #1a2e88;">
 					<table class="cols tbl_product shopping">
 						<colgroup>
-							<col style="width: 50px;">
-							<col style="width: 50px;">
-							<col style="width: 50px;">
-							<col style="width: 50px;">
+							<col style="width: 10px;">
+							<col style="width: 100px;">
+							<col style="width: 20px;">
+							<col style="width: 35px;">
+							<col style="width: 35px;">
+							<col style="width: 60px;">
 						</colgroup>
 						<thead>
 							<tr>
-								<th>상품명</th>
-								<th>판매가</th>
+								<th></th>
+								<th>상품정보</th>
 								<th>수량</th>
+								<th>판매가</th>
 								<th>합계</th>
+								<th>선택</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-					        	<td colspan="4" style="text-align:center;"><p>상품이 없습니다.<p></td>
+					        	<td colspan="6" style="text-align:center;"><p>상품이 없습니다.<p></td>
 					        </tr>
 						</tbody>
 					</table>

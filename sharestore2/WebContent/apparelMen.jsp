@@ -15,17 +15,12 @@
 </head>
 <body>
 	<div id="page">
-		<form method="post">
 		<header>
 			<div id="top">
 				<div class="logo">
 					<a href="mainhome.jsp">
 						<img src="./data/logo.png"/>
 					</a>
-				</div>
-				<div class="top_search">
-					<input type="text" id="tsearch" name="search" placeholder="검색어를 입력하세요.">
-					<button type="submit" name="button" onclick="javascript: form.action='search.do';">검색</button>
 				</div>
 				<div class="top_menu">
 					<%
@@ -40,7 +35,7 @@
 							class="icon icon-join"></span> <strong>JOIN</strong>
 					</a></li>
 
-					<li class="menu-item"><a href="cart.jsp"> <span
+					<li class="menu-item"><a href="login.jsp"> <span
 							class="icon icon-cart"></span> <strong>CART</strong>
 					</a></li>
 
@@ -54,7 +49,7 @@
 					<li class="menu-item"><a href="result/logout.jsp"> <span
 							class="icon icon-logout"></span> <strong>LOGOUT</strong>
 					</a></li>
-					<li class="menu-item"><a href="cart.jsp"> <span
+					<li class="menu-item"><a href="cartList.do"> <span
 							class="icon icon-cart"></span> <strong>CART</strong>
 					</a></li>
 					<li class="menu-item"><a href="orderList.do"> <span
@@ -136,7 +131,6 @@
 				%>
 			</ul>
 		</section>
-		</form>
 	</div>
 </body>
 </html>

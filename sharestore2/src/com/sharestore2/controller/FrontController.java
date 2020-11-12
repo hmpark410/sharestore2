@@ -15,7 +15,6 @@ public class FrontController extends HttpServlet{
 		charset = sc.getInitParameter("charset");
 		list = new HashMap<String, Controller>();
 		
-		list.put("/search.do", new SearchController());
 		//Buyer
 		list.put("/memberInsert.do", new MemberInsertController());
 		list.put("/memberLogin.do", new MemberLoginController());
@@ -39,10 +38,14 @@ public class FrontController extends HttpServlet{
 		list.put("/sellerOrderUpdate.do", new SellerOrderUpdateController());
 		list.put("/memberOrderUpdate.do", new MemberOrderUpdateController());
 		list.put("/orderProductInsert.do", new OrderProductInsertController());
-		list.put("/orderInsert.do", new OrderInsertController());
+		list.put("/orderDetail.do", new OrderDetailController());
+		//Cart
 		list.put("/cartInsert.do", new CartInsertController());
 		list.put("/cartDelete.do", new CartDeleteController());
-		list.put("/orderDetail.do", new OrderDetailController());
+		list.put("/cartSingleDelete.do", new CartSingleDeleteController());
+		list.put("/cartList.do", new CartListController());
+		list.put("/cartOrderInsert.do", new CartOrderInsertController());
+		list.put("/cartSingleOrderInsert.do", new CartSingleOrderInsertController());
 		//Admin
 		list.put("/adminBuyer.do", new AdminBuyerController());
 		list.put("/adminBuyerDelete.do", new AdminBuyerDeleteController());
