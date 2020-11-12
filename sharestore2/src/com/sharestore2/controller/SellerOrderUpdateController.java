@@ -19,7 +19,7 @@ public class SellerOrderUpdateController implements Controller {
 		String orderNumber = request.getParameter("orderNumber");
 		String sellerId = request.getParameter("sellerId");
 		// 주문완료,배송준비,배송중,배송완료,환불
-		String status = request.getParameter("updateStatus");
+		String updateStatus = request.getParameter("updateStatus");
 		OrderVO order = new OrderVO();
 		OrderService service = OrderService.getInstance();
 		ArrayList<OrderVO> orderList = service.sellerOrderList(sellerId);
@@ -29,10 +29,10 @@ public class SellerOrderUpdateController implements Controller {
 			order = orderList.get(i);
 			if (order.getOrderNumber().equals(orderNumber)) {
 				order.setOrderNumber(orderNumber);
-				order.setStatus(status);
+				order.setStatus(updateStatus);
 				System.out.println(order.getStatus());
 				// 배송완료 (배송완료일)
-				if (status.equals("배송완료")) {
+				if (updateStatus.equals("배송완료")) {
 					Timestamp deliveryDate = new Timestamp(System.currentTimeMillis());
 					order.setDeliveryDate(deliveryDate);
 				} 
@@ -55,11 +55,11 @@ public class SellerOrderUpdateController implements Controller {
 				if (product.getSellerId().equals(sellerId)) {
 					int stock = product.getStock();
 					int count = orderProduct.getCount();
-					if (status.equals("배송준비")) {
+					if (updateStatus.equals("배송준비")) {
 						stock -= count;
 						System.out.println(product.getName() + "(+)stock : " + stock);
 					} 
-					if (status.equals("환불")) {
+					if (updateStatus.equals("환불")) {
 						stock += count;
 						System.out.println(product.getName() + "(-)stock : " + stock);
 					}

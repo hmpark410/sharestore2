@@ -162,7 +162,6 @@
 										<select id="orderstatus" name="updateStatus"
 											style="width: 110px;" class="orderstatus">
 											<option value="">상태변경</option>
-											<option value="취소">취소</option>
 											<option value="배송준비">배송준비</option>
 											<option value="배송중">배송중</option>
 											<option value="배송완료">배송완료</option>
