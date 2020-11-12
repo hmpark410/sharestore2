@@ -18,9 +18,8 @@ public class SellerOrderUpdateController implements Controller {
 
 		String orderNumber = request.getParameter("orderNumber");
 		String sellerId = request.getParameter("sellerId");
-		// 주문완료,배송준비,배송중,배송완료,취소,환불
+		// 주문완료,배송준비,배송중,배송완료,환불
 		String status = request.getParameter("updateStatus");
-
 		OrderVO order = new OrderVO();
 		OrderService service = OrderService.getInstance();
 		ArrayList<OrderVO> orderList = service.sellerOrderList(sellerId);
@@ -31,15 +30,18 @@ public class SellerOrderUpdateController implements Controller {
 			if (order.getOrderNumber().equals(orderNumber)) {
 				order.setOrderNumber(orderNumber);
 				order.setStatus(status);
+				System.out.println(order.getStatus());
 				// 배송완료 (배송완료일)
 				if (status.equals("배송완료")) {
 					Timestamp deliveryDate = new Timestamp(System.currentTimeMillis());
 					order.setDeliveryDate(deliveryDate);
-				} else {
+				} 
+				else {
 					order.setDeliveryDate(null);
 				}
 				service.OrderUpdate(order);
 			}
+			
 			OrderProductVO orderProduct = new OrderProductVO();
 			OrderProductService orderProductService = OrderProductService.getInstance();
 			ArrayList<OrderProductVO> orderProductList = orderProductService.orderDetail(orderNumber);
