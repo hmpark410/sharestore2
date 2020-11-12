@@ -19,9 +19,9 @@ public class MemberInsertController implements Controller {
 		int birth_y = Integer.parseInt(request.getParameter("select_year"));
 		int birth_m = Integer.parseInt(request.getParameter("select_month"));
 		int birth_d = Integer.parseInt(request.getParameter("select_day"));
+		String postCode = request.getParameter("postCode");
 		String roadAddress = request.getParameter("roadAddress");
 		String detailAddress = request.getParameter("detailAddress");
-		String address = roadAddress +  "," + detailAddress;
 		Pattern pwd = Pattern.compile("^(?=.*[0-9])(?=.*[A-Za-z]).{8,16}$");
 	    Matcher m = pwd.matcher(passwd);
 	    
@@ -29,7 +29,7 @@ public class MemberInsertController implements Controller {
 		PrintWriter out = response.getWriter();
 		
 		if(id.isEmpty() || passwd.isEmpty() || check_passwd.isEmpty() || name.isEmpty() ||  phone.isEmpty() || gender.isEmpty()
-				|| Integer.toString(birth_y).isEmpty() || Integer.toString(birth_m).isEmpty() || Integer.toString(birth_d).isEmpty()) {
+				|| Integer.toString(birth_y).isEmpty() || Integer.toString(birth_m).isEmpty() || Integer.toString(birth_d).isEmpty() || postCode.isEmpty() || detailAddress.isEmpty()) {
 			out.println("<script>alert('필수항목을 빠짐없이 입력해주세요.'); location.href='memberInsert.jsp';</script>");
 		}
 		if (passwd.length() < 8 || passwd.length() > 16) {
@@ -56,7 +56,9 @@ public class MemberInsertController implements Controller {
 		member.setBirth_y(birth_y);
 		member.setBirth_m(birth_m);
 		member.setBirth_d(birth_d);
-		member.setAddress(address);
+		member.setPostCode(postCode);
+		member.setRoadAddress(roadAddress);
+		member.setDetailAddress(detailAddress);
 		
 		//Service 객체의 메소드 호출
 		MemberService service = MemberService.getInstance();

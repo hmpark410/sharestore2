@@ -25,6 +25,11 @@ public class CartService {
 		return cartList;
 	}
 	
+	public ArrayList<CartVO> cartNumberList(int cartNumber) {
+		ArrayList<CartVO> cartNumberList = dao.cartNumberList(cartNumber);
+		return cartNumberList;
+	}
+	
 	public void cartDelete(CartVO cart) {
 		dao.cartDelete(cart);
 	}

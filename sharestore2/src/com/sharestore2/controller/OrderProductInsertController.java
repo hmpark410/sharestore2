@@ -38,12 +38,6 @@ public class OrderProductInsertController implements Controller {
 		orderProduct.setProductNumber(productNumber);
 		orderProduct.setCount(count);
 		
-		/*ProductVO product2 = new ProductVO();
-		int udStock = product.getStock() - orderProduct.getCount();
-		product2.setproductNumber(productNumber);
-		product2.setStock(udStock);
-		service.stockUpdate(product2);*/
-		
 		//OrderVO 객체 
 		//주문번호 생성(주문날짜 + 랜던번호) 
 		Calendar cal = Calendar.getInstance();
@@ -55,7 +49,7 @@ public class OrderProductInsertController implements Controller {
 		  subNum += (int)(Math.random() * 10);
 		 }
 		String orderNumber = ymd + "_" + subNum;
-		SimpleDateFormat sdfCurrent = new SimpleDateFormat ("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat sdfCurrent = new SimpleDateFormat ("yyyy-MM-dd hh:mm");
 		Timestamp ts = new Timestamp(System.currentTimeMillis());
 		String orderDate = sdfCurrent.format(ts);
 		int totalPrice = orderProduct.getCount() * orderProduct.getPrice();
@@ -77,16 +71,7 @@ public class OrderProductInsertController implements Controller {
 		orderProduct.setOrderNumber(orderNumber);
 		OrderProductService orderProductService = OrderProductService.getInstance();
 		orderProductService.OrderProductInsert(orderProduct);
-	
-		//CartVO 객체에 멤버변수 저장 
-		//OrderProductList
-		//ArrayList<OrderProductVO> orderProductList = new ArrayList<OrderProductVO>();
-		//orderProductList.add(orderProduct);
-		//cart.setOrderProductList(orderProductList);
-		
-		//HttpSession session = request.getSession();
-		//session.setAttribute("orderProductList", orderProductList);
-		//response.sendRedirect("cart.jsp");
+
 		HttpUtil.forward(request, response, "/result/orderInsertOut.jsp");
 	}
 }

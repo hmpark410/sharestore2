@@ -14,7 +14,6 @@
 </head>
 <body>
 	<div id="page">
-		<form method="post">
 		<header>
 			<div id="top">
 				<div class="logo">
@@ -22,11 +21,6 @@
 						<img src="./data/logo.png"/>
 					</a>
 				</div>
-				<div class="top_search">
-					<input type="text" id="tsearch" name="search" placeholder="검색어를 입력하세요.">
-					<button type="submit" name="button" onclick="javascript: form.action='search.do';">검색</button>
-				</div>
-
 				<div class="top_menu">
 					<%
 						MemberVO member = (MemberVO) session.getAttribute("member");
@@ -143,7 +137,6 @@
 				%>
 			</ul>
 		</section>
-		</form>
 	</div>
 </body>
 </html>

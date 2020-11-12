@@ -114,6 +114,34 @@ public class CartDAO {
 		return cartList;
 	}
 	
+	public ArrayList<CartVO> cartNumberList(int cartNumber) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		CartVO cart = null;
+		ArrayList<CartVO> cartNumberList = new ArrayList<>();
+		try {
+			conn = connect();
+			pstmt = conn.prepareStatement("SELECT * FROM cart where cart_number = ?;");
+			pstmt.setInt(1, cartNumber);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				cart = new CartVO();
+				cart.setCartNumber(rs.getInt(1));
+				cart.setProductNumber(rs.getInt(2));
+				cart.setCount(rs.getInt(3));
+				cart.setMemberId(rs.getString(4));
+				cart.setSellerId(rs.getString(5));
+				cartNumberList.add(cart);
+			}
+		} catch (Exception ex) {
+			System.out.println("오류 발생 : " + ex);
+		} finally {
+			close(conn, pstmt, rs);
+		}
+		return cartNumberList;
+	}
+	
 	public void cartDelete(CartVO cart) {
 	      Connection conn = null;
 	      PreparedStatement pstmt = null;

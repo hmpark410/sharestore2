@@ -10,7 +10,9 @@ public class MemberVO {
 	private int birth_y;
 	private int birth_m;
 	private int birth_d;
-	private String address;
+	private String postCode;
+	private String roadAddress;
+	private String detailAddress;
 	
 	public MemberVO() {}
 	
@@ -79,11 +81,25 @@ public class MemberVO {
 		this.birth_d = birth_d;
 	}
 	
-	public String getAddress() {
-		return address;
+	public String getPostCode() {
+		return postCode;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setPostCode(String postCode) {
+		this.postCode = postCode;
+	}
+	
+	public String getRoadAddress() {
+		return roadAddress;
+	}
+	public void setRoadAddress(String roadAddress) {
+		this.roadAddress = roadAddress;
+	}
+	
+	public String getDetailAddress() {
+		return detailAddress;
+	}
+	public void setDetailAddress(String detailAddress) {
+		this.detailAddress = detailAddress;
 	}
 
 }

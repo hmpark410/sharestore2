@@ -63,7 +63,7 @@
 							<th><%=list.getPhone() %></th>
 							<th><%=list.getMail()%></th>
 							<th><%=list.getGender()%></th>
-							<th><%=list.getAddress()%></th>
+							<th><%=list.getRoadAddress()%></th>
 							<th><input type="checkbox" name="class" value=<%=list.getId() %>></th> 
 						</tr>
 					<%} 

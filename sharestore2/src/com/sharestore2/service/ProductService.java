@@ -83,9 +83,4 @@ public class ProductService {
 		ProductVO product  = dao.productView(productNumber);
 		return product;
 	}
-	//검색기능
-	public ArrayList<ProductVO> pdtSelect(String selectTxt) {
-		ArrayList<ProductVO> pdtSelect = dao.pdtSelect(selectTxt);
-		return pdtSelect;
-	}
 }

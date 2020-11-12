@@ -14,7 +14,6 @@
 </head>
 <body>
 	<div id="page">
-	<form method="post">
 		<header>
 			<div id="top">
 				<div class="logo">
@@ -139,7 +138,6 @@
 				%>
 			</ul>
 		</section>
-		</form>
 	</div>
 </body>
 </html>

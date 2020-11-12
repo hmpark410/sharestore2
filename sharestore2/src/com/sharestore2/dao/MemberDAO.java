@@ -64,7 +64,7 @@ public class MemberDAO {
 		PreparedStatement pstmt = null;
 		try {
 			conn = connect();
-			String sql = "insert into member values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "insert into member values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member.getId());
 			pstmt.setString(2, member.getPasswd());
@@ -75,7 +75,9 @@ public class MemberDAO {
 			pstmt.setInt(7, member.getBirth_y());
 			pstmt.setInt(8, member.getBirth_m());
 			pstmt.setInt(9, member.getBirth_d());
-			pstmt.setString(10, member.getAddress());
+			pstmt.setString(10, member.getPostCode());
+			pstmt.setString(11, member.getRoadAddress());
+			pstmt.setString(12, member.getDetailAddress());
 			pstmt.executeUpdate();
 		}
 		catch(Exception ex){
@@ -113,7 +115,9 @@ public class MemberDAO {
 				member.setBirth_y(rs.getInt(7));
 				member.setBirth_m(rs.getInt(8));
 				member.setBirth_d(rs.getInt(9));
-				member.setAddress(rs.getString(10));
+				member.setPostCode(rs.getString(10));
+				member.setRoadAddress(rs.getString(11));
+				member.setDetailAddress(rs.getString(12));
 			}
 		}
 		catch(Exception ex){
@@ -153,7 +157,9 @@ public class MemberDAO {
 				member.setBirth_y(rs.getInt(7));
 				member.setBirth_m(rs.getInt(8));
 				member.setBirth_d(rs.getInt(9));
-				member.setAddress(rs.getString(10));
+				member.setPostCode(rs.getString(10));
+				member.setRoadAddress(rs.getString(11));
+				member.setDetailAddress(rs.getString(12));
 			}
 		}
 		catch(Exception ex){
@@ -194,7 +200,9 @@ public class MemberDAO {
 				member.setBirth_y(rs.getInt(7));
 				member.setBirth_m(rs.getInt(8));
 				member.setBirth_d(rs.getInt(9));
-				member.setAddress(rs.getString(10));
+				member.setPostCode(rs.getString(10));
+				member.setRoadAddress(rs.getString(11));
+				member.setDetailAddress(rs.getString(12));
 			}
 		}
 		catch(Exception ex){
@@ -212,13 +220,15 @@ public class MemberDAO {
 		PreparedStatement pstmt = null;
 		try {
 			conn = connect();
-			String sql = "update member set passwd = ?, phone = ?, mail = ?, address=? where id = ?";
+			String sql = "update member set passwd = ?, phone = ?, mail = ?, postcode=?, roadAddress=?, detailAddress=? where id = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member.getPasswd());
 			pstmt.setString(2, member.getPhone());
 			pstmt.setString(3, member.getMail());
-			pstmt.setString(4, member.getAddress());
-			pstmt.setString(5, member.getId());	
+			pstmt.setString(4, member.getPostCode());
+			pstmt.setString(5, member.getRoadAddress());
+			pstmt.setString(6, member.getDetailAddress());
+			pstmt.setString(7, member.getId());	
 			pstmt.executeUpdate();
 		}
 		catch(Exception ex){
@@ -268,7 +278,7 @@ public class MemberDAO {
 				member.setPhone(rs.getString(4));
 				member.setMail(rs.getString(5));
 				member.setGender(rs.getString(6));
-				member.setAddress(rs.getString(10));
+				member.setRoadAddress(rs.getString(11));
 				memberList.add(member);
 			}
 		} catch (Exception ex) {

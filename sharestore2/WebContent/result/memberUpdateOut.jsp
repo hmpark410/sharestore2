@@ -10,7 +10,7 @@
 <body>
 	<script>
 		alert('회원이 수정되었습니다.');
-		opener.parent.location="./mainhome.jsp";
+		opener.parent.location="../orderList.do";
 		window.close();
 	</script>
 </body>

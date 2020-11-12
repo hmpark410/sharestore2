@@ -18,12 +18,6 @@
 						<a href="mainhome.jsp"> <img src="./data/logo.png" />
 						</a>
 					</div>
-					<div class="top_search">
-						<input type="text" id="tsearch" name="search"
-							placeholder="검색어를 입력하세요.">
-						<button type="submit" name="button"
-							onclick="javascript: form.action='search.do';">검색</button>
-					</div>
 					<div class="top_menu">
 						<li class="menu-item"><a href="login.jsp"> <span
 								class="icon icon-login"></span> <strong>LOGIN</strong>
@@ -98,18 +92,14 @@
 										maxlength="11" placeholder="하이픈(-)을 제외하고 입력해주세요."></td>
 								</tr>
 								<tr>
-									<th>주소</th>
+									<th>주소<span>*</span></th>
 									<td>
-									<label> 우편번호 </label>
-									<input type="text" id="postcode" placeholder="우편번호" style="margin: 10px;">
-									<input type="button" onclick="DaumPostcode()" 
-										value="우편번호 찾기">
-									<br>
-									<label>주소</label>	
-									<input type="text" id="roadAddress" name="roadAddress" placeholder="도로명주소" style="margin: 10px">
-									<br>
-									<label>상세 주소 입력</label>
-									<input type="text" id="detailAddress" name="detailAddress"placeholder="상세주소" style="margin: 10px">
+										<input type="text" name="postCode" id="postCode" style="width:100px; margin: 10px 8px 0 0;" readonly>
+										<input type="button" onclick="DaumPostcode()" value="우편번호 찾기">
+										<br>
+										<input type="text" name="roadAddress" id="roadAddress" name="roadAddress" placeholder="도로명주소" style="margin: 8px 0 0 0;" readonly>
+										<br>
+										<input type="text" name="detailAddress" id="detailAddress" name="detailAddress"placeholder="상세주소" style="margin: 8px 0 10px;">
 									</td>
 								</tr>
 								<tr>
@@ -310,19 +300,12 @@
 				oncomplete : function(data) {
 					var roadAddr = data.roadAddress; // 도로명 주소 변수
 					// 우편번호와 주소 정보를 해당 필드에 넣는다.
-					document.getElementById('postcode').value = data.zonecode;
+					document.getElementById('postCode').value = data.zonecode;
 					document.getElementById("roadAddress").value = roadAddr;
 					detailAddress
 				}
 			}).open();
 		}
-	</script>
-	<script type="text/javascript">
-		document.addEventListener('keydown', function(event) {
-			if (event.keyCode === 13) {
-				event.preventDefault();
-			}
-		}, true);
 	</script>
 </body>
 </html>

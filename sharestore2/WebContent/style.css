@@ -639,6 +639,16 @@ h2 {
     margin: 0 auto;
 }
 
+.member_frame table tbody td input[type=button], .mupdate_frame table tbody td input[type=button] {
+    padding: 3px;
+    width: 100px;
+    text-align: center;
+    border-color: #1a2e88;
+    background-color: #1a2e88;
+    color: #fff;
+    font-size: 14px;
+}
+
 .cart_frame {
     position: relative;
 }

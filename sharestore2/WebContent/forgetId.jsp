@@ -16,10 +16,6 @@
 						<a href="mainhome.jsp"> <img src="./data/logo.png" />
 						</a>
 					</div>
-					<div class="top_search">
-						<input type="text" id="tsearch" name="search" placeholder="검색어를 입력하세요.">
-						<button type="submit" name="button" onclick="javascript: form.action='search.do';">검색</button>
-					</div>
 					<div class="top_menu">
 						<li class="menu-item"><a href="login.jsp"> <span
 								class="icon icon-login"></span> <strong>LOGIN</strong>
@@ -100,12 +96,5 @@
 			</section>
 		</form>
 	</div>
-	<script type="text/javascript">
-		document.addEventListener('keydown', function(event) {
-		    if (event.keyCode === 13) {
-		        event.preventDefault();
-		    }
-		}, true);
-	</script>
 </body>
 </html>
