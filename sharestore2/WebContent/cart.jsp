@@ -117,7 +117,7 @@
 										<a href="productView.do?productNumber=<%=cart.getProductNumber()%>">
 											<img style="width: 60px; height: 80px; background-size: 60px 80px; background-repeat: no-repeat;" src="<%=url%>" />
 										</a>
-										<p><%=cart.getProduct().getName()%></p>
+										<p><%=cart.getProduct().getName()%> ( <%=cart.getProduct().getSize()%> )</p>
 									</th>
 									<th><%=cart.getCount()%></th>
 									<th><%=cart.getPrice()%></th>
@@ -125,7 +125,7 @@
 									<th>
 										<input type="hidden" name="productNumber" value="<%=cart.getProductNumber()%>" />
 										<input type="hidden" name="count" value="<%=cart.getCount()%>" />
-										<button type="submit" name="orderbtn" style="margin-bottom:5px;" value="<%=cart.getCartNumber()%>" onclick="javascript: form.action='cartSingleOrderInsert.do';">주문하기</button>
+										<button type="submit" name="orderbtn" style="margin-bottom:5px;" value="<%=cart.getCartNumber()%>" onclick="javascript: form.action='cartSingleConfirm.do';">주문하기</button>
 										<button type="submit" name="deletebtn" value="<%=cart.getCartNumber()%>" onclick="javascript: form.action='cartSingleDelete.do';">삭제하기</button>
 									</th>
 								</tr>
@@ -157,7 +157,7 @@
 
 						<button type="submit" name="button" class="btn sky"
 							style="width: 100%"
-							onclick="javascript: form.action='cartOrderInsert.do';">선택상품 주문하기
+							onclick="javascript: form.action='cartConfirm.do';">선택상품 주문하기
 						</button>
 				</div>
 				<%

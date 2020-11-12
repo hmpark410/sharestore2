@@ -46,6 +46,8 @@ public class FrontController extends HttpServlet{
 		list.put("/cartList.do", new CartListController());
 		list.put("/cartOrderInsert.do", new CartOrderInsertController());
 		list.put("/cartSingleOrderInsert.do", new CartSingleOrderInsertController());
+		list.put("/cartConfirm.do", new CartConfirmController());
+		list.put("/cartSingleConfirm.do", new CartSingleConfirmController());
 		//Admin
 		list.put("/adminBuyer.do", new AdminBuyerController());
 		list.put("/adminBuyerDelete.do", new AdminBuyerDeleteController());

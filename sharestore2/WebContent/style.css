@@ -634,7 +634,7 @@ h2 {
     padding:0;
 }
 
-.member_frame {
+.member_frame, .confirm_frame {
     width: 1240px;
     margin: 0 auto;
 }
@@ -671,23 +671,42 @@ h2 {
     margin-left: 57px;
 }
 
-.cart_frame table tbody th a {
+.cart_frame table tbody th a, .confirm_frame table tbody th a {
 	margin-top:3px;
 	padding:0;
 	float:left;
-	margin-left: 30px;
+	margin-left: 40px;
 }
 
-.cart_frame table tbody th p {
-	margin-top: 33px;
-	margin-right: 40px;
-	font-size: 14px;
+.cart_frame table tbody th p, .confirm_frame table tbody th p {
+	margin-top: 37px;
+	margin-right: 50px;
+	font-size: 15px;
 	text-align: center;
     line-height: 100%;
     text-transform: uppercase;
     font-weight: bolder;
     color: #000;
 }
+
+.confirm_frame table tbody .total_price p {
+	font-size: 18px;
+	text-align: right;
+    line-height: 100%;
+    text-transform: uppercase;
+    font-weight: bolder;
+    color: #000;
+}
+
+.confirm_frame table tbody .total_price span {
+	font-size: 22px;
+	text-align: right;
+    line-height: 100%;
+    text-transform: uppercase;
+    font-weight: bolder;
+    color: #1a2e88;
+    margin-left: 15px;
+}	
 
 #container_cart {
 	width: 1240px;
@@ -905,7 +924,7 @@ em {
 	position: absolute;
 }
 
-.member_frame .member_cont {
+.member_frame .member_cont, .confirm_frame .confirm_cont {
     border-top: 2px solid #1a2e88;
 }
 
@@ -1173,12 +1192,12 @@ label {
     cursor: default;
 }
 
-.member_frame .join_btn_wrap, .sellerprdreg_frame .prdreg_btn_wrap {
+.member_frame .join_btn_wrap, .sellerprdreg_frame .prdreg_btn_wrap, .confirm_frame .bx_btn {
     text-align: center;
     margin-bottom: 60px;
 }
 
-.member_frame .join_btn_wrap .btn, .sellerprdreg_frame .prdreg_btn_wrap .btn {
+.member_frame .join_btn_wrap .btn, .sellerprdreg_frame .prdreg_btn_wrap .btn, .confirm_frame .bx_btn .btn {
     margin: 0 8px;
 }
 
