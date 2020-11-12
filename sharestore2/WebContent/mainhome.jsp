@@ -4,11 +4,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script type="text/javascript" src="jquery/lib/jquery.js"></script>
+	<script type="text/javascript" src='jquery/lib/jquery.bgiframe.min.js'></script>
+	<script type="text/javascript" src='jquery/lib/jquery.ajaxQueue.js'></script>
+	<script type="text/javascript" src='jquery/jquery.autocomplete.js'></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link href="style.css" rel="stylesheet" type="text/css">
 	<title>· SHARESTORE ·</title>
 </head>
 <body>
+	<script type="text/javascript">
+		var availableTags = ['보라', '침구', '보색'];
+		
+		$(document).ready(function() {
+			$("#tsearch").autocomplete(availableTags, {
+				matchContains: true,
+				selectFirst: false
+			});
+		});
+	</script>
 	<div id="page">
 		<form method="post">
 			<header>
@@ -34,7 +48,7 @@
 								class="icon icon-join"></span> <strong>JOIN</strong>
 						</a></li>
 	
-						<li class="menu-item"><a href="cart.jsp"> <span
+						<li class="menu-item"><a href="login.jsp"> <span
 								class="icon icon-cart"></span> <strong>CART</strong>
 						</a></li>
 	
@@ -48,7 +62,7 @@
 						<li class="menu-item"><a href="result/logout.jsp"> <span
 								class="icon icon-logout"></span> <strong>LOGOUT</strong>
 						</a></li>
-						<li class="menu-item"><a href="cart.jsp"> <span
+						<li class="menu-item"><a href="cartList.do"> <span
 								class="icon icon-cart"></span> <strong>CART</strong>
 						</a></li>
 						<li class="menu-item"><a href="orderList.do"> <span

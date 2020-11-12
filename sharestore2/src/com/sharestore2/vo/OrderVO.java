@@ -23,6 +23,12 @@ public class OrderVO {
 	public void setOrderProduct(ArrayList<OrderProductVO> orderProductList) {
 		this.orderProductList = orderProductList;
 	}
+	
+	public OrderVO() {}
+	
+	public OrderVO(String orderNumber) {
+		this.orderNumber = orderNumber;
+	}
 
 	public String getOrderNumber() {
 		return orderNumber;

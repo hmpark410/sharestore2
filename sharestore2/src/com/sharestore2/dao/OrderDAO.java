@@ -1,6 +1,7 @@
 package com.sharestore2.dao;
 
 import java.sql.*;
+
 import com.sharestore2.vo.OrderVO;
 import java.util.ArrayList;
 
@@ -180,35 +181,53 @@ public class OrderDAO {
 		}
 	}
 	
-	//주문 
-		public OrderVO getOrder(String sellerId, String orderNumber ) {
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			OrderVO order = null;
-			try {
-				conn = connect();
-				String sql = "selcet * from sharestore.order where order_number=? and sellerId=?;";
-				rs = pstmt.executeQuery();
-				pstmt.setString(1, sellerId);
-				pstmt.setString(2, orderNumber);
-				if (rs.next()) {
-					order = new OrderVO();
-					order.setOrderNumber(rs.getString(1));
-					order.setOrderDate(rs.getString(2));
-					order.setTotalPrice(rs.getInt(3));
-					order.setStatus(rs.getString(4));
-					order.setMemberId(rs.getString(5));
-					order.setSellerId(rs.getNString(6));
-					order.setDeliveryDate(rs.getTimestamp(7));
-				}
-			} catch (Exception ex) {
+	public void orderDelete(OrderVO order) {
+	      Connection conn = null;
+	      PreparedStatement pstmt = null;
+	      try {
+	    	conn = connect();
+			String sql = "delete from sharestore.order where order_number=?;";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, order.getOrderNumber());
+			pstmt.executeUpdate();
+	      }
+	      catch(Exception ex){
 				System.out.println("오류 발생 : " + ex);
-			} finally {
-				close(conn, pstmt);
-			}
-			return order;
 		}
+		finally {
+			close(conn, pstmt);
+		}
+	}
+	
+	//주문 
+	public OrderVO getOrder(String sellerId, String orderNumber ) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		OrderVO order = null;
+		try {
+			conn = connect();
+			String sql = "selcet * from sharestore.order where order_number=? and sellerId=?;";
+			rs = pstmt.executeQuery();
+			pstmt.setString(1, sellerId);
+			pstmt.setString(2, orderNumber);
+			if (rs.next()) {
+				order = new OrderVO();
+				order.setOrderNumber(rs.getString(1));
+				order.setOrderDate(rs.getString(2));
+				order.setTotalPrice(rs.getInt(3));
+				order.setStatus(rs.getString(4));
+				order.setMemberId(rs.getString(5));
+				order.setSellerId(rs.getNString(6));
+				order.setDeliveryDate(rs.getTimestamp(7));
+			}
+		} catch (Exception ex) {
+			System.out.println("오류 발생 : " + ex);
+		} finally {
+			close(conn, pstmt);
+		}
+		return order;
+	}
 	
 	// 주문리스트
 	public ArrayList<OrderVO> sOrderList(String sellerId, String orderDate) {
@@ -261,8 +280,6 @@ public class OrderDAO {
 			close(conn, pstmt);
 		}
 	}
-	
-
 
 	// 주문하기 
 	// 주문번호, 바이어_ID(FK), 결제금액, 주문일자, 상태

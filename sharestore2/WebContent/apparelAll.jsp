@@ -35,35 +35,35 @@
 							class="icon icon-login"></span> <strong>LOGIN</strong>
 					</a></li>
 
-               <li class="menu-item"><a href="join.jsp"> <span
-                     class="icon icon-join"></span> <strong>JOIN</strong>
-               </a></li>
+					<li class="menu-item"><a href="join.jsp"> <span
+							class="icon icon-join"></span> <strong>JOIN</strong>
+					</a></li>
 
-               <li class="menu-item"><a href="cart.jsp"> <span
-                     class="icon icon-cart"></span> <strong>CART</strong>
-               </a></li>
+					<li class="menu-item"><a href="login.jsp"> <span
+							class="icon icon-cart"></span> <strong>CART</strong>
+					</a></li>
 
-               <li class="menu-item"><a href="login.jsp"> <span
-                     class="icon icon-mypage"></span> <strong>MYPAGE</strong>
-               </a></li>
+					<li class="menu-item"><a href="login.jsp"> <span
+							class="icon icon-mypage"></span> <strong>MYPAGE</strong>
+					</a></li>
 
-               <%
-                  } else {
-               %>
-               <li class="menu-item"><a href="result/logout.jsp"> <span
-                     class="icon icon-logout"></span> <strong>LOGOUT</strong>
-               </a></li>
-               <li class="menu-item"><a href="cart.jsp"> <span
-                     class="icon icon-cart"></span> <strong>CART</strong>
-               </a></li>
-               <li class="menu-item"><a href="orderList.do"> <span
-                     class="icon icon-mypage"></span> <strong>MYPAGE</strong>
-               </a></li>
+					<%
+						} else {
+					%>
+					<li class="menu-item"><a href="result/logout.jsp"> <span
+							class="icon icon-logout"></span> <strong>LOGOUT</strong>
+					</a></li>
+					<li class="menu-item"><a href="cartList.do"> <span
+							class="icon icon-cart"></span> <strong>CART</strong>
+					</a></li>
+					<li class="menu-item"><a href="orderList.do"> <span
+							class="icon icon-mypage"></span> <strong>MYPAGE</strong>
+					</a></li>
 
-               <%
-                  }
-               %>
-            </div>
+					<%
+						}
+					%>
+				</div>
          </div>
          <nav>
             <ul class="nav-container">

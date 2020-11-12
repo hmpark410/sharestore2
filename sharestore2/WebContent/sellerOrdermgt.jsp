@@ -31,7 +31,6 @@
 				int cnt2 = 0;
 				int cnt3 = 0;
 				int cnt4 = 0;
-				int cnt5 = 0;
 				ArrayList<OrderVO> sellerOrderList = (ArrayList<OrderVO>) request.getAttribute("sellerOrderList");
 				%>
 				<li>
@@ -94,21 +93,6 @@
 				 	}
 				 %>
 				</li>
-				<li>
-					<h4>취소</h4> <%
-				 	if (!sellerOrderList.isEmpty()) {
-				 	for (int i = 0; i < sellerOrderList.size(); i++) {
-				 		OrderVO orderlist = sellerOrderList.get(i);
-				 		if (orderlist.getStatus().equals("취소")) {
-				 	cnt5++;
-				 		}
-				 	}
-				 %> <span><%=cnt5%></span> <%
-				 	} else {
-				 %> <span>0</span> <%
-				 	}
-				 %>
-				</li>
 			</ul>
 		</div>
 		<h3>주문내역</h3>
@@ -162,7 +146,6 @@
 										<select id="orderstatus" name="updateStatus"
 											style="width: 110px;" class="orderstatus">
 											<option value="">상태변경</option>
-											<option value="취소">취소</option>
 											<option value="배송준비">배송준비</option>
 											<option value="배송중">배송중</option>
 											<option value="배송완료">배송완료</option>

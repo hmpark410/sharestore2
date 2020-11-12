@@ -6,7 +6,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sharestore2.service.CartService;
 import com.sharestore2.service.OrderService;
+import com.sharestore2.vo.CartVO;
 import com.sharestore2.vo.OrderVO;
 
 public class MemberOrderUpdateController implements Controller{
@@ -16,17 +18,18 @@ public class MemberOrderUpdateController implements Controller{
 		String orderNumber = request.getParameter("orderNumber");
 		String status = request.getParameter("update_status");
 		
-		OrderVO order = new OrderVO();
-		order.setOrderNumber(orderNumber);
-		order.setStatus(status);
-		
-		
-		System.out.println("orderNum" + order.getOrderNumber());
-		System.out.println("orderStatus" + order.getStatus());
-		
 		OrderService service = OrderService.getInstance();	
-		service.OrderUpdate(order);
-		HttpUtil.forward(request, response, "/result/memberOrderUpdateOut.jsp");
 		
+		if(status.equals("주문취소")) {
+			OrderVO order = new OrderVO(orderNumber);
+			service.orderDelete(order);
+			HttpUtil.forward(request, response, "/result/memberOrderDeleteOut.jsp");
+		} else {
+			OrderVO order2 = new OrderVO();
+			order2.setOrderNumber(orderNumber);
+			order2.setStatus(status);
+			service.OrderUpdate(order2);
+			HttpUtil.forward(request, response, "/result/memberOrderUpdateOut.jsp");
+		}
 	}
 }

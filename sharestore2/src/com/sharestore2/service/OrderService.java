@@ -2,7 +2,6 @@ package com.sharestore2.service;
 
 import com.sharestore2.dao.OrderDAO;
 import com.sharestore2.vo.OrderVO;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class OrderService {
@@ -44,6 +43,10 @@ public class OrderService {
 	//주문 수정 
 	public void OrderUpdate(OrderVO order) {
 		dao.orderUpdate(order);
+	}
+	
+	public void orderDelete(OrderVO order) {
+		dao.orderDelete(order);
 	}
 	
 	public void cartUpdate(OrderVO order) {

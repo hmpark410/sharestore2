@@ -31,7 +31,7 @@
 						<li class="menu-item"><a href="join.jsp"> <span
 								class="icon icon-join"></span> <strong>JOIN</strong>
 						</a></li>
-						<li class="menu-item"><a href="cart.jsp"> <span
+						<li class="menu-item"><a href="login.jsp"> <span
 								class="icon icon-cart"></span> <strong>CART</strong>
 						</a></li>
 						<li class="menu-item"><a href="login.jsp"> <span
