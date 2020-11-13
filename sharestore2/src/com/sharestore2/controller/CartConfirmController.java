@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import com.sharestore2.service.CartService;
 import com.sharestore2.service.ProductService;
 import com.sharestore2.vo.CartVO;
@@ -42,7 +44,9 @@ public class CartConfirmController implements Controller {
 					cartConfirmList.add(cartProduct);
 				}
 			}
-			request.setAttribute("cartConfirmList", cartConfirmList);
+			HttpSession session = request.getSession();
+			session.setAttribute("cartConfirmList", cartConfirmList);
+			//request.setAttribute("cartConfirmList", cartConfirmList);
 		}
 		HttpUtil.forward(request, response, "/cartConfirm.jsp");
 	}

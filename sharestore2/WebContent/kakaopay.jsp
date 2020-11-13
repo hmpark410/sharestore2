@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.sharestore2.vo.CartVO"%>
 <%@ page import="com.sharestore2.vo.MemberVO"%>
-
-<%
-	
+<%@ page import="java.util.ArrayList"%>
+<% 
 MemberVO member = (MemberVO) session.getAttribute("member");
-
+//ArrayList<CartVO> cartConfirmList = (ArrayList<CartVO>) session.getAttribute("cartConfirmList");
 String name = member.getName();
 String email = member.getMail();
 String phone = member.getPhone();
@@ -69,7 +69,7 @@ int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));
                     }
                 });
                 //성공시 이동할 페이지
-                location.href="result/paymentComplete.jsp";
+                location.href="cartOrderInsert.do";
             } else {
                 msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;

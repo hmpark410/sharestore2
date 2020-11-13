@@ -74,8 +74,9 @@
 							<%
 							
 							MemberVO member = (MemberVO) session.getAttribute("member");
-
-							ArrayList<CartVO> cartConfirmList = (ArrayList<CartVO>) request.getAttribute("cartConfirmList");
+							ArrayList<CartVO> cartConfirmList = (ArrayList<CartVO>) session.getAttribute("cartConfirmList");
+							
+							
 								if (!cartConfirmList.isEmpty()) { 
 									int totalPrice = 0;
 									for (int i = 0; i < cartConfirmList.size(); i++) {
@@ -105,6 +106,7 @@
 							<button type="button" id="btnCancel" name="button" class="btn"
 								onclick="history.back(-1);">취소</button>
 								<input type="hidden" name="totalPrice" value="<%=totalPrice%>"/>
+							
 							<button type="submit" id="btnConfirm" name="button" class="btn black" onclick="javascript: form.action='kakaopay.jsp';">결제하기</button>
 						</div>
 					</div>
