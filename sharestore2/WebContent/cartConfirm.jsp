@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.sharestore2.vo.CartVO"%>
+<%@ page import="com.sharestore2.vo.MemberVO"%>
 <%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
@@ -69,7 +70,12 @@
 									<th>합계</th>
 								</tr>
 							</thead>
-							<%ArrayList<CartVO> cartConfirmList = (ArrayList<CartVO>) request.getAttribute("cartConfirmList");
+							
+							<%
+							
+							MemberVO member = (MemberVO) session.getAttribute("member");
+
+							ArrayList<CartVO> cartConfirmList = (ArrayList<CartVO>) request.getAttribute("cartConfirmList");
 								if (!cartConfirmList.isEmpty()) { 
 									int totalPrice = 0;
 									for (int i = 0; i < cartConfirmList.size(); i++) {
@@ -98,7 +104,8 @@
 						<div class="bx_btn">
 							<button type="button" id="btnCancel" name="button" class="btn"
 								onclick="history.back(-1);">취소</button>
-							<button type="submit" id="btnConfirm" name="button" class="btn black" onclick="">결제하기</button>
+								<input type="hidden" name="totalPrice" value="<%=totalPrice%>"/>
+							<button type="submit" id="btnConfirm" name="button" class="btn black" onclick="javascript: form.action='kakaopay.jsp';">결제하기</button>
 						</div>
 					</div>
 				</div>

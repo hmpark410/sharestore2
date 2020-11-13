@@ -21,13 +21,28 @@ public class CartInsertController implements Controller {
 		String memberId = request.getParameter("memberId");
 		String sellerId = request.getParameter("sellerId");
 		
+		CartService service = CartService.getInstance();		
+		ArrayList<CartVO> cartList = service.cartList(memberId);	
 		CartVO cart = new CartVO();
+		if(!cartList.isEmpty()) {
+			for(int i = 0; i < cartList.size(); i++) {
+				
+				cart = cartList.get(i);
+				if(cart.getProductNumber() == productNumber) {
+					count += cart.getCount();
+					int cartNumber = cart.getCartNumber();
+					System.out.println(cartNumber);
+					cart.setCartNumber(cartNumber);
+					service.cartDelete(cart);
+					
+				}
+			}
+		}
+		
 		cart.setProductNumber(productNumber);
 		cart.setCount(count);
 		cart.setMemberId(memberId);
 		cart.setSellerId(sellerId);
-		
-		CartService service = CartService.getInstance();
 		service.cartInsert(cart);
 		
 		request.setAttribute("cart", cart); 

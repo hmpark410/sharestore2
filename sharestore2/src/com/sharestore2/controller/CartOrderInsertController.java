@@ -27,10 +27,12 @@ public class CartOrderInsertController implements Controller {
 	public void execute(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 				
-		HttpSession session = request.getSession();
-		MemberVO member = (MemberVO) session.getAttribute("member");
-		String memberId = member.getId();
+		//HttpSession session = request.getSession();
+		//MemberVO member = (MemberVO) session.getAttribute("member");
+		//String memberId = member.getId();
 		
+		
+		String memberId = request.getParameter("memberId");
 		String[] varChk = request.getParameterValues("class");
 		int[] chk = new int[varChk.length];
 		for(int i = 0; i < varChk.length; i ++) {

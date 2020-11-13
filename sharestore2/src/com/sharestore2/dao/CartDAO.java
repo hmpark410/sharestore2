@@ -70,7 +70,8 @@ public class CartDAO {
 		PreparedStatement pstmt = null;
 		try {
 			conn = connect();
-			String sql ="INSERT into cart(product_number, count, member_id, seller_id) VALUES (?, ?, ?, ?);";
+			String sql ="INSERT into cart(product_number, count, member_id, seller_id) "
+					+ "VALUES (?, ?, ?, ?);";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, cart.getProductNumber());
 			pstmt.setInt(2, cart.getCount());
