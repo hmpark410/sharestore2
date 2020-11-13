@@ -1,18 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="com.sharestore2.vo.CartVO"%>
 <%@ page import="com.sharestore2.vo.MemberVO"%>
 <%@ page import="java.util.ArrayList"%>
 <% 
 MemberVO member = (MemberVO) session.getAttribute("member");
-//ArrayList<CartVO> cartConfirmList = (ArrayList<CartVO>) session.getAttribute("cartConfirmList");
 String name = member.getName();
 String email = member.getMail();
 String phone = member.getPhone();
 String address = member.getPostCode();
 int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));
 %>
-
 
 <!DOCTYPE html>
 <html>
@@ -31,7 +28,7 @@ int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));
         IMP.init('imp29844791'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
         var msg;
         
-        IMP.request_pay({
+        IMP.request_pays({
             pg : 'kakaopay',
             pay_method : 'card',
             merchant_uid : 'merchant_' + new Date().getTime(),

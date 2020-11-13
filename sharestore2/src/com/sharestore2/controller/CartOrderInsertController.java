@@ -50,21 +50,22 @@ public class CartOrderInsertController implements Controller {
 		if (!cartConfirmList.isEmpty()) {
 			for (int i = 0; i < cartConfirmList.size(); i++) {
 				cart = cartConfirmList.get(i);
-				
 				productNumber = cart.getProductNumber();
 				ProductService productService = ProductService.getInstance();
 				ProductVO product = productService.productView(productNumber);
 				totalPrice = cart.getCount() * product.getPrice();
-				sellerId = cart.getSellerId();
-
+				
+				sellerId = product.getSellerId();
+				System.out.println(sellerId);
+				
 				String subNum = "";
 				for (int j = 1; j <= 6; j++) {
 					subNum += (int) (Math.random() * 10);
 				}
 				orderNumber = ymd + "_" + subNum;
-
 				OrderService orderService = OrderService.getInstance();
 				ArrayList<OrderVO> list = orderService.sOrderList(sellerId, orderDate);
+				
 				if (!list.isEmpty()) {
 					for (int j = 0; j < list.size(); j++) {
 						OrderVO vo = list.get(j);
@@ -104,7 +105,8 @@ public class CartOrderInsertController implements Controller {
 							orderProductService.OrderProductInsert(orderProduct2);
 						}
 					}
-				} else {
+				} 
+				else {
 					OrderVO order = new OrderVO();
 					order.setOrderNumber(orderNumber);
 					order.setOrderDate(orderDate);
@@ -123,11 +125,10 @@ public class CartOrderInsertController implements Controller {
 					OrderProductService orderProductService = OrderProductService.getInstance();
 					orderProductService.OrderProductInsert(orderProduct2);
 				}
-
-				CartService cartService = CartService.getInstance();
-				cartService.cartDelete(cart);
-				HttpUtil.forward(request, response, "/result/orderInsertOut.jsp");
 			}
-		}
+			CartService cartService = CartService.getInstance();
+			cartService.cartDelete(cart);
+		}	
+		HttpUtil.forward(request, response, "/result/orderInsertOut.jsp");
 	}
 }

@@ -33,8 +33,8 @@ public class CartConfirmController implements Controller {
 					int productNumber = cart.getProductNumber();
 					int count = cart.getCount();
 					
-					ProductService service2 = ProductService.getInstance();
-					ProductVO product = service2.productView(productNumber);
+					ProductService productService = ProductService.getInstance();
+					ProductVO product = productService.productView(productNumber);
 					
 					CartVO cartProduct = new CartVO();
 					cartProduct.setProduct(product);
