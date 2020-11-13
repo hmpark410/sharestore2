@@ -49,6 +49,10 @@ public class CategoryController implements Controller{
 			ArrayList<ProductVO> productPageList = service.productPageList(category);
 			request.setAttribute("productList", productPageList);
 			HttpUtil.forward(request, response, "/accMen.jsp");
+		} else {
+			ArrayList<ProductVO> productPageList = service.productPageList(category);
+			request.setAttribute("productList", productPageList);
+			HttpUtil.forward(request, response, "/lifeAll.jsp");
 		}
 	}
 	

@@ -14,19 +14,47 @@ public class SubCategoryController implements Controller{
 	public void execute (HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
+		String category = request.getParameter("category");
 		String subCategory = request.getParameter("subCategory");
 		ProductService service = ProductService.getInstance();
 		
-		if(subCategory.equals("111") || subCategory.equals("112") || subCategory.equals("113") || subCategory.equals("114") || subCategory.equals("115") || subCategory.equals("116") || subCategory.equals("117") || subCategory.equals("121")
-				|| subCategory.equals("122") || subCategory.equals("123") || subCategory.equals("124") || subCategory.equals("125") || subCategory.equals("126") || subCategory.equals("127")) {
-			ArrayList<ProductVO> productPageAllList1Sub = service.productPageAllList1Sub(subCategory);
-			request.setAttribute("productList", productPageAllList1Sub);
-		} else if(subCategory.equals("217")) {
-			ArrayList<ProductVO> productPageAllList1Sub = service.productPageAllList1Sub(subCategory);
-			request.setAttribute("productList", productPageAllList1Sub);
+		if(category.equals("1001")) {
+			ArrayList<ProductVO> productPageSubList = service.productPageSubList(category, subCategory);
+			request.setAttribute("productList", productPageSubList);
+			HttpUtil.forward(request, response, "/apparelWomen.jsp");
+		} else if(category.equals("2001")) {
+			ArrayList<ProductVO> productPageSubList = service.productPageSubList(category, subCategory);
+			request.setAttribute("productList", productPageSubList);
+			HttpUtil.forward(request, response, "/apparelMen.jsp");
+		} else if(category.equals("1002")) {
+			ArrayList<ProductVO> productPageSubList = service.productPageSubList(category, subCategory);
+			request.setAttribute("productList", productPageSubList);
+			HttpUtil.forward(request, response, "/bagWomen.jsp");
+		} else if(category.equals("2002")) {
+			ArrayList<ProductVO> productPageSubList = service.productPageSubList(category, subCategory);
+			request.setAttribute("productList", productPageSubList);
+			HttpUtil.forward(request, response, "/bagMen.jsp");
+		} else if(category.equals("1003")) {
+			ArrayList<ProductVO> productPageSubList = service.productPageSubList(category, subCategory);
+			request.setAttribute("productList", productPageSubList);
+			HttpUtil.forward(request, response, "/shoesWomen.jsp");
+		} else if(category.equals("2003")) {
+			ArrayList<ProductVO> productPageSubList = service.productPageSubList(category, subCategory);
+			request.setAttribute("productList", productPageSubList);
+			HttpUtil.forward(request, response, "/shoesMen.jsp");
+		} else if(category.equals("1004")) {
+			ArrayList<ProductVO> productPageSubList = service.productPageSubList(category, subCategory);
+			request.setAttribute("productList", productPageSubList);
+			HttpUtil.forward(request, response, "/accWomen.jsp");
+		} else if(category.equals("2004")) {
+			ArrayList<ProductVO> productPageSubList = service.productPageSubList(category, subCategory);
+			request.setAttribute("productList", productPageSubList);
+			HttpUtil.forward(request, response, "/accMen.jsp");
+		} else {
+			ArrayList<ProductVO> productPageSubList = service.productPageSubList(category, subCategory);
+			request.setAttribute("productList", productPageSubList);
+			HttpUtil.forward(request, response, "/lifeAll.jsp");
 		}
-		
-		HttpUtil.forward(request, response, "/apparelAll.jsp");
 	}
 	
 }

@@ -37,15 +37,25 @@
 			</div>
 			<nav>
 				<ul class="nav-container">
-					<li class="nav-item"><a href="apparelAll.do">APPAREL</a>
-						<p>|</p></li>
-					<li class="nav-item"><a href="bagAll.do">BAG</a>
-						<p>|</p></li>
-					<li class="nav-item"><a href="shoesAll.do">SHOES</a>
-						<p>|</p></li>
-					<li class="nav-item"><a href="accAll.do">ACC</a>
-						<p>|</p></li>
-					<li class="nav-item"><a href="lifeAll.do">LIFE</a></li>
+					<li class="nav-item">
+						<a href="apparelAll.do">APPAREL</a>
+						<p>|</p>
+					</li>
+					<li class="nav-item">
+						<a href="bagAll.do">BAG</a>
+						<p>|</p>
+					</li>
+					<li class="nav-item">
+						<a href="shoesAll.do">SHOES</a>
+						<p>|</p>
+					</li>
+					<li class="nav-item">
+						<a href="accAll.do">ACC</a>
+						<p>|</p>
+					</li>
+					<li class="nav-item">
+						<a href="category.do?category=3005">LIFE</a>
+					</li>
 				</ul>
 			</nav>
 		</header>
@@ -74,8 +84,9 @@
 							<%
 							
 							MemberVO member = (MemberVO) session.getAttribute("member");
-
-							ArrayList<CartVO> cartConfirmList = (ArrayList<CartVO>) request.getAttribute("cartConfirmList");
+							ArrayList<CartVO> cartConfirmList = (ArrayList<CartVO>) session.getAttribute("cartConfirmList");
+							
+							
 								if (!cartConfirmList.isEmpty()) { 
 									int totalPrice = 0;
 									for (int i = 0; i < cartConfirmList.size(); i++) {
@@ -105,6 +116,7 @@
 							<button type="button" id="btnCancel" name="button" class="btn"
 								onclick="history.back(-1);">취소</button>
 								<input type="hidden" name="totalPrice" value="<%=totalPrice%>"/>
+							
 							<button type="submit" id="btnConfirm" name="button" class="btn black" onclick="javascript: form.action='kakaopay.jsp';">결제하기</button>
 						</div>
 					</div>

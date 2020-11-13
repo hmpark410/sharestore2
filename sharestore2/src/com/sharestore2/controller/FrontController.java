@@ -60,10 +60,13 @@ public class FrontController extends HttpServlet{
 		list.put("/adminSaleList.do", new AdminSaleListController());
 		//Page
 		list.put("/apparelAll.do", new ApparelAllController());
+		list.put("/apparelAllSub.do", new ApparelAllSubController());
 		list.put("/bagAll.do", new BagAllController());
+		list.put("/bagAllSub.do", new BagAllSubController());
 		list.put("/shoesAll.do", new ShoesAllController());
+		list.put("/shoesAllSub.do", new ShoesAllSubController());
 		list.put("/accAll.do", new AccAllController());
-		list.put("/lifeAll.do", new LifeAllController());
+		list.put("/accAllSub.do", new AccAllSubController());
 		list.put("/category.do", new CategoryController());
 		list.put("/subCategory.do", new SubCategoryController());
 	}

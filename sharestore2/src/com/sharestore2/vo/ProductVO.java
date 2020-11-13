@@ -9,6 +9,7 @@ public class ProductVO {
 	private int stock;
 	private String category;
 	private String subCategory;
+	private String season;
 	private String exp;
 	private String sellerId;
 	private String filename1;
@@ -61,6 +62,12 @@ public class ProductVO {
 	}
 	public void setSubCategory(String subCategory) {
 		this.subCategory = subCategory;
+	}
+	public String getSeason() {
+		return season;
+	}
+	public void setSeason(String season) {
+		this.season = season;
 	}
 	public void setExp(String exp) {
 		this.exp = exp;

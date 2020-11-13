@@ -13,7 +13,7 @@
 	<script>
 	MemberVO member = (MemberVO) session.getAttribute("member");
 	alert('주문이 완료되었습니다.');
-	location.href="orderList.do";
+	location.href="../orderList.do";
 	</script>
 </body>
 </html>

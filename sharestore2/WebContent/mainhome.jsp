@@ -74,7 +74,7 @@
 						<p>|</p>
 					</li>
 					<li class="nav-item">
-						<a href="lifeAll.do">LIFE</a>
+						<a href="category.do?category=3005">LIFE</a>
 					</li>
 				</ul>
 			</nav>
@@ -126,7 +126,7 @@
 				      slides[i].style.display = "none";  
 				  }
 				  for (i = 0; i < dots.length; i++) {
-				      dots[i].className = dots[i].className.replace(" active", "");
+				      dots[i].className = dots[i].className.replace("active", "");
 				  }
 				  slides[slideIndex-1].style.display = "block";  
 				  dots[slideIndex-1].className += " active";

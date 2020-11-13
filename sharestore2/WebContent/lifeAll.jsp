@@ -79,7 +79,7 @@
 						<p>|</p>
 					</li>
 					<li class="nav-item">
-						<a href="lifeAll.do">LIFE</a>
+						<a href="category.do?category=3005">LIFE</a>
 					</li>
 				</ul>
 			</nav>	
@@ -95,7 +95,7 @@
 			<nav>
 				<ul>
 					<li>
-						<a href="lifeAll.do">ALL</a>
+						<a href="category.do?category=3005">ALL</a>
 					</li>
 				</ul>
 			</nav>
@@ -103,6 +103,16 @@
 		
 		<section id="pdtlist_block">
 			<h1>HOME > LIFE > ALL</h1>
+			<div class="sub_category">
+				<span>> <a href="subCategory.do?category=3005&subCategory=28">가구/수납</a></span>
+				<span>> <a href="subCategory.do?category=3005&subCategory=29">홈데코</a></span>
+				<span>> <a href="subCategory.do?category=3005&subCategory=30">조명</a></span>
+				<span>> <a href="subCategory.do?category=3005&subCategory=31">가전제품</a></span>
+				<span>> <a href="subCategory.do?category=3005&subCategory=32">디지털기기</a></span>
+				<span>> <a href="subCategory.do?category=3005&subCategory=33">펫용품</a></span>
+				<span>> <a href="subCategory.do?category=3005&subCategory=34">문구</a></span>
+				<span>> <a href="subCategory.do?category=3005&subCategory=35">기타</a></span>
+			</div>
 			<ul>
 				<%
 				ArrayList<ProductVO> productList = (ArrayList<ProductVO>) request.getAttribute("productList");

@@ -80,7 +80,7 @@
 						<p>|</p>
 					</li>
 					<li class="nav-item">
-						<a href="lifeAll.do">LIFE</a>
+						<a href="category.do?category=3005">LIFE</a>
 					</li>
 				</ul>
 			</nav>	
@@ -109,6 +109,15 @@
 		</section>
 		<section id="pdtlist_block">
 			<h1>HOME > APPAREL > MEN</h1>
+			<div class="sub_category">
+				<span>> <a href="subCategory.do?category=2001&subCategory=1">아우터</a></span>
+				<span>> <a href="subCategory.do?category=2001&subCategory=2">원피스</a></span>
+				<span>> <a href="subCategory.do?category=2001&subCategory=3">상의/티</a></span>
+				<span>> <a href="subCategory.do?category=2001&subCategory=4">블라우스/셔츠</a></span>
+				<span>> <a href="subCategory.do?category=2001&subCategory=5">니트</a></span>
+				<span>> <a href="subCategory.do?category=2001&subCategory=6">하의/스커트</a></span>
+				<span>> <a href="subCategory.do?category=2001&subCategory=7">기타</a></span>
+			</div>
 			<ul>
 				<%
 				ArrayList<ProductVO> productList = (ArrayList<ProductVO>) request.getAttribute("productList");

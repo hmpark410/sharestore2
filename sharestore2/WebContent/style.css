@@ -444,8 +444,8 @@ h2 {
 	min-width: 1250px;
 	display: block;
 	padding: 10px 50px;
-	border-top: 1px solid #1a2e88;
-	border-bottom: 1px solid #1a2e88;
+	border-top: 1px solid #e6e6e6;
+	border-bottom: 1px solid #e6e6e6;
 }
 
 #pdtlist_block .sub_category span {
