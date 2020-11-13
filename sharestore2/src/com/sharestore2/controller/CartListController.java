@@ -51,4 +51,3 @@ public class CartListController implements Controller{
 		HttpUtil.forward(request, response, "/cart.jsp");
 	}
 }
-
