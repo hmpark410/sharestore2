@@ -98,10 +98,10 @@
 						<a href="bagAll.do">ALL</a>
 					</li>
 					<li>
-						<a href="bagWomen.do">WOMEN</a>
+						<a href="category.do?category=1002">WOMEN</a>
 					</li>
 					<li>
-						<a href="bagMen.do">MEN</a>
+						<a href="category.do?category=2002">MEN</a>
 					</li>
 				</ul>
 			</nav>

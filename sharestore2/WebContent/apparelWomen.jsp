@@ -98,10 +98,10 @@
 						<a href="apparelAll.do">ALL</a>
 					</li>
 					<li>
-						<a href="apparelWomen.do">WOMEN</a>
+						<a href="category.do?category=1001">WOMEN</a>
 					</li>
 					<li>
-						<a href="apparelMen.do">MEN</a>
+						<a href="category.do?category=2001">MEN</a>
 					</li>
 				</ul>
 			</nav>

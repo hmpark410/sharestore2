@@ -116,11 +116,12 @@ public class ProductDAO {
 				product.setPrice(rs.getInt(4));
 				product.setStock(rs.getInt(5));
 				product.setCategory(rs.getString(6));
-				product.setExp(rs.getString(7));
-				product.setSellerId(rs.getString(8));
-				product.setFilename1(rs.getString(9));
-				product.setFilename2(rs.getString(10));
-				product.setFilename3(rs.getString(11));
+				product.setSubCategory(rs.getString(7));
+				product.setExp(rs.getString(8));
+				product.setSellerId(rs.getString(9));
+				product.setFilename1(rs.getString(10));
+				product.setFilename2(rs.getString(11));
+				product.setFilename3(rs.getString(12));
 				productList.add(product);
 			}
 		} catch (Exception ex) {
@@ -157,11 +158,12 @@ public class ProductDAO {
 				product.setPrice(rs.getInt(4));
 				product.setStock(rs.getInt(5));
 				product.setCategory(rs.getString(6));
-				product.setExp(rs.getString(7));
-				product.setSellerId(rs.getString(8));
-				product.setFilename1(rs.getString(9));
-				product.setFilename2(rs.getString(10));
-				product.setFilename3(rs.getString(11));
+				product.setSubCategory(rs.getString(7));
+				product.setExp(rs.getString(8));
+				product.setSellerId(rs.getString(9));
+				product.setFilename1(rs.getString(10));
+				product.setFilename2(rs.getString(11));
+				product.setFilename3(rs.getString(12));
 				productPageList.add(product);
 			}
 		} catch (Exception ex) {
@@ -197,11 +199,12 @@ public class ProductDAO {
 				product.setPrice(rs.getInt(4));
 				product.setStock(rs.getInt(5));
 				product.setCategory(rs.getString(6));
-				product.setExp(rs.getString(7));
-				product.setSellerId(rs.getString(8));
-				product.setFilename1(rs.getString(9));
-				product.setFilename2(rs.getString(10));
-				product.setFilename3(rs.getString(11));
+				product.setSubCategory(rs.getString(7));
+				product.setExp(rs.getString(8));
+				product.setSellerId(rs.getString(9));
+				product.setFilename1(rs.getString(10));
+				product.setFilename2(rs.getString(11));
+				product.setFilename3(rs.getString(12));
 				productPageAllList1.add(product);
 			}
 		} catch (Exception ex) {
@@ -210,6 +213,49 @@ public class ProductDAO {
 			close(conn, pstmt, rs);
 		}
 		return productPageAllList1;
+	}
+	
+	//페이지all_1 sub상품리스트
+	public ArrayList<ProductVO> productPageAllList1Sub(String subCategory) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ProductVO product = null;
+		ArrayList<ProductVO>productPageAllList1Sub = new ArrayList<>();
+
+		try {
+			conn = connect();
+			pstmt = conn.prepareStatement("SELECT * FROM sharestore.product where category LIKE '%1' and sub_category=?");
+			pstmt.setString(1, subCategory);
+			rs = pstmt.executeQuery();
+			// paging 
+			// "SELECT @ROWNUM := @ROWNUM + 1 AS ROWNUM, A.* FROM"
+			// + "(SELECT * FROM sharestore.product ORDER BY product_number ASC) AS A"
+			// + ",(SELECT @ROWNUM := 0) B"
+
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				product = new ProductVO();
+				product.setproductNumber(rs.getInt(1));
+				product.setName(rs.getString(2));
+				product.setSize(rs.getString(3));
+				product.setPrice(rs.getInt(4));
+				product.setStock(rs.getInt(5));
+				product.setCategory(rs.getString(6));
+				product.setSubCategory(rs.getString(7));
+				product.setExp(rs.getString(8));
+				product.setSellerId(rs.getString(9));
+				product.setFilename1(rs.getString(10));
+				product.setFilename2(rs.getString(11));
+				product.setFilename3(rs.getString(12));
+				productPageAllList1Sub.add(product);
+			}
+		} catch (Exception ex) {
+			System.out.println("오류 발생 : " + ex);
+		} finally {
+			close(conn, pstmt, rs);
+		}
+		return productPageAllList1Sub;
 	}
 	
 	//페이지all_2 상품리스트
@@ -237,11 +283,12 @@ public class ProductDAO {
 				product.setPrice(rs.getInt(4));
 				product.setStock(rs.getInt(5));
 				product.setCategory(rs.getString(6));
-				product.setExp(rs.getString(7));
-				product.setSellerId(rs.getString(8));
-				product.setFilename1(rs.getString(9));
-				product.setFilename2(rs.getString(10));
-				product.setFilename3(rs.getString(11));
+				product.setSubCategory(rs.getString(7));
+				product.setExp(rs.getString(8));
+				product.setSellerId(rs.getString(9));
+				product.setFilename1(rs.getString(10));
+				product.setFilename2(rs.getString(11));
+				product.setFilename3(rs.getString(12));
 				productPageAllList2.add(product);
 			}
 		} catch (Exception ex) {
@@ -277,11 +324,12 @@ public class ProductDAO {
 				product.setPrice(rs.getInt(4));
 				product.setStock(rs.getInt(5));
 				product.setCategory(rs.getString(6));
-				product.setExp(rs.getString(7));
-				product.setSellerId(rs.getString(8));
-				product.setFilename1(rs.getString(9));
-				product.setFilename2(rs.getString(10));
-				product.setFilename3(rs.getString(11));
+				product.setSubCategory(rs.getString(7));
+				product.setExp(rs.getString(8));
+				product.setSellerId(rs.getString(9));
+				product.setFilename1(rs.getString(10));
+				product.setFilename2(rs.getString(11));
+				product.setFilename3(rs.getString(12));
 				productPageAllList3.add(product);
 			}
 		} catch (Exception ex) {
@@ -317,11 +365,12 @@ public class ProductDAO {
 				product.setPrice(rs.getInt(4));
 				product.setStock(rs.getInt(5));
 				product.setCategory(rs.getString(6));
-				product.setExp(rs.getString(7));
-				product.setSellerId(rs.getString(8));
-				product.setFilename1(rs.getString(9));
-				product.setFilename2(rs.getString(10));
-				product.setFilename3(rs.getString(11));
+				product.setSubCategory(rs.getString(7));
+				product.setExp(rs.getString(8));
+				product.setSellerId(rs.getString(9));
+				product.setFilename1(rs.getString(10));
+				product.setFilename2(rs.getString(11));
+				product.setFilename3(rs.getString(12));
 				productPageAllList4.add(product);
 			}
 		} catch (Exception ex) {
@@ -347,17 +396,19 @@ public class ProductDAO {
 
 			while (rs.next()) {
 				product = new ProductVO();
+				product = new ProductVO();
 				product.setproductNumber(rs.getInt(1));
 				product.setName(rs.getString(2));
 				product.setSize(rs.getString(3));
 				product.setPrice(rs.getInt(4));
 				product.setStock(rs.getInt(5));
 				product.setCategory(rs.getString(6));
-				product.setExp(rs.getString(7));
-				product.setSellerId(rs.getString(8));
-				product.setFilename1(rs.getString(9));
-				product.setFilename2(rs.getString(10));
-				product.setFilename3(rs.getString(11));
+				product.setSubCategory(rs.getString(7));
+				product.setExp(rs.getString(8));
+				product.setSellerId(rs.getString(9));
+				product.setFilename1(rs.getString(10));
+				product.setFilename2(rs.getString(11));
+				product.setFilename3(rs.getString(12));
 				sellerPrdlist.add(product);
 			}
 		} catch (Exception ex) {
@@ -408,11 +459,12 @@ public class ProductDAO {
 				product.setPrice(rs.getInt(4));
 				product.setStock(rs.getInt(5));
 				product.setCategory(rs.getString(6));
-				product.setExp(rs.getString(7));
-				product.setSellerId(rs.getString(8));
-				product.setFilename1(rs.getString(9));
-				product.setFilename2(rs.getString(10));
-				product.setFilename3(rs.getString(11));
+				product.setSubCategory(rs.getString(7));
+				product.setExp(rs.getString(8));
+				product.setSellerId(rs.getString(9));
+				product.setFilename1(rs.getString(10));
+				product.setFilename2(rs.getString(11));
+				product.setFilename3(rs.getString(12));
 				sellerPrdUpdatelist.add(product);
 			}
 		} catch (Exception ex) {
@@ -490,11 +542,12 @@ public class ProductDAO {
 				product.setPrice(rs.getInt(4));
 				product.setStock(rs.getInt(5));
 				product.setCategory(rs.getString(6));
-				product.setExp(rs.getString(7));
-				product.setSellerId(rs.getString(8));
-				product.setFilename1(rs.getString(9));
-				product.setFilename2(rs.getString(10));
-				product.setFilename3(rs.getString(11));
+				product.setSubCategory(rs.getString(7));
+				product.setExp(rs.getString(8));
+				product.setSellerId(rs.getString(9));
+				product.setFilename1(rs.getString(10));
+				product.setFilename2(rs.getString(11));
+				product.setFilename3(rs.getString(12));
 				adminPrdUpdatelist.add(product);
 			}
 		} catch (Exception ex) {
@@ -551,11 +604,12 @@ public class ProductDAO {
 				product.setPrice(rs.getInt(4));
 				product.setStock(rs.getInt(5));
 				product.setCategory(rs.getString(6));
-				product.setExp(rs.getString(7));
-				product.setSellerId(rs.getString(8));
-				product.setFilename1(rs.getString(9));
-				product.setFilename2(rs.getString(10));
-				product.setFilename3(rs.getString(11));
+				product.setSubCategory(rs.getString(7));
+				product.setExp(rs.getString(8));
+				product.setSellerId(rs.getString(9));
+				product.setFilename1(rs.getString(10));
+				product.setFilename2(rs.getString(11));
+				product.setFilename3(rs.getString(12));
 			}
 
 		} catch (Exception ex) {

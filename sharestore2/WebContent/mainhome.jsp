@@ -4,10 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script type="text/javascript" src="jquery/lib/jquery.js"></script>
-	<script type="text/javascript" src='jquery/lib/jquery.bgiframe.min.js'></script>
-	<script type="text/javascript" src='jquery/lib/jquery.ajaxQueue.js'></script>
-	<script type="text/javascript" src='jquery/jquery.autocomplete.js'></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link href="style.css" rel="stylesheet" type="text/css">
 	<title>· SHARESTORE ·</title>

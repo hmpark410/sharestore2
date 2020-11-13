@@ -84,14 +84,29 @@
 		<section id="pdtlist_sub_title">
 			<nav>
 				<ul>
-					<li><a href="apparelAll.do">ALL</a></li>
-					<li><a href="apparelWomen.do">WOMEN</a></li>
-					<li><a href="apparelMen.do">MEN</a></li>
+					<li>
+						<a href="apparelAll.do">ALL</a>
+					</li>
+					<li>
+						<a href="category.do?category=1001">WOMEN</a>
+					</li>
+					<li>
+						<a href="category.do?category=2001">MEN</a>
+					</li>
 				</ul>
 			</nav>
 		</section>
 		<section id="pdtlist_block">
 			<h1>HOME > APPAREL > ALL</h1>
+			<div class="sub_category">
+				<span>> <a href="subCategory.do?subCategory=101">아우터</a></span>
+				<span>> <a href="subCategory.do?subCategory=102">원피스</a></span>
+				<span>> <a href="subCategory.do?subCategory=103">상의/티</a></span>
+				<span>> <a href="subCategory.do?subCategory=104">블라우스/셔츠</a></span>
+				<span>> <a href="subCategory.do?subCategory=105">니트</a></span>
+				<span>> <a href="subCategory.do?subCategory=106">하의/스커트</a></span>
+				<span>> <a href="subCategory.do?subCategory=107">기타</a></span>
+			</div>
 			<ul>
 				<%
 				ArrayList<ProductVO> productList = (ArrayList<ProductVO>) request.getAttribute("productList");

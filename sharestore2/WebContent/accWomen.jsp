@@ -95,13 +95,13 @@
 			<nav>
 				<ul>
 					<li>
-						<a href="accAll.do">ALL</a>
+						<a href="accAll.co">ALL</a>
 					</li>
 					<li>
-						<a href="accWomen.do">WOMEN</a>
+						<a href="category.do?category=1004">WOMEN</a>
 					</li>
 					<li>
-						<a href="accMen.do">MEN</a>
+						<a href="category.do?category=2004">MEN</a>
 					</li>
 				</ul>
 			</nav>

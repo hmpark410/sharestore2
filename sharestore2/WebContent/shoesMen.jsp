@@ -99,10 +99,10 @@
 						<a href="shoesAll.do">ALL</a>
 					</li>
 					<li>
-						<a href="shoesWomen.do">WOMEN</a>
+						<a href="category.do?category=1003">WOMEN</a>
 					</li>
 					<li>
-						<a href="shoesMen.do">MEN</a>
+						<a href="category.do?category=2003">MEN</a>
 					</li>
 				</ul>
 			</nav>

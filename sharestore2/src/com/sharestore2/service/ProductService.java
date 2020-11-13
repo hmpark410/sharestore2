@@ -36,6 +36,11 @@ public class ProductService {
 		ArrayList<ProductVO> productPageAllList1 = dao.productPageAllList1();
 		return productPageAllList1;
 	}
+	//페이지all_1 상품리스트
+	public ArrayList<ProductVO> productPageAllList1Sub(String subCategory){
+		ArrayList<ProductVO> productPageAllList1Sub = dao.productPageAllList1Sub(subCategory);
+		return productPageAllList1Sub;
+	}
 	//페이지all_2 상품리스트
 	public ArrayList<ProductVO> productPageAllList2(){
 		ArrayList<ProductVO> productPageAllList2 = dao.productPageAllList2();
