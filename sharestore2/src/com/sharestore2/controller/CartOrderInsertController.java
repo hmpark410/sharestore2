@@ -45,11 +45,11 @@ public class CartOrderInsertController implements Controller {
 		String sellerId = null;
 		int productNumber = 0;
 		Timestamp deliveryDate = null;
-		CartVO cart = new CartVO();
 	
 		if (!cartConfirmList.isEmpty()) {
 			for (int i = 0; i < cartConfirmList.size(); i++) {
-				cart = cartConfirmList.get(i);
+				CartVO cart = cartConfirmList.get(i);
+				int cartNumber = cart.getCartNumber();
 				productNumber = cart.getProductNumber();
 				ProductService productService = ProductService.getInstance();
 				ProductVO product = productService.productView(productNumber);
@@ -125,10 +125,11 @@ public class CartOrderInsertController implements Controller {
 					OrderProductService orderProductService = OrderProductService.getInstance();
 					orderProductService.OrderProductInsert(orderProduct2);
 				}
+				CartVO cart2 = new CartVO(cartNumber);
+				CartService cartService = CartService.getInstance();
+				cartService.cartDelete(cart2);
 			}
-			CartService cartService = CartService.getInstance();
-			cartService.cartDelete(cart);
-		}	
-		HttpUtil.forward(request, response, "/result/orderInsertOut.jsp");
+			HttpUtil.forward(request, response, "/result/orderInsertOut.jsp");
+		}		
 	}
 }

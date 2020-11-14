@@ -63,10 +63,10 @@
 										</select>
 									</div>
 									<div class="select_box_wrap" style="display: inline-block;">
-									<select id="sub_category" name="sub_category" style="width: 124px; class="normal">
-										<option value="<%=prdlist.getSubCategory()%>">카테고리</option>
-									</select>
-								</div>
+										<select id="sub_category" name="sub_category" style="width: 124px; class="normal">
+											<option value="<%=prdlist.getSubCategory()%>">카테고리</option>
+										</select>
+									</div>
 					          	</td>
 					        </tr>
 						    <tr>

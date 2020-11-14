@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList"%>
-<%@ page import="com.sharestore2.vo.OrderProductVO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,9 +9,8 @@
 
 <body>
 	<script>
-	MemberVO member = (MemberVO) session.getAttribute("member");
-	alert('주문이 완료되었습니다.');
-	location.href="../orderList.do";
+		alert('주문이 완료되었습니다.');
+		location.href="./orderList.do";
 	</script>
 </body>
 </html>
