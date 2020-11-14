@@ -12,6 +12,5 @@ public class MemberMypageController implements Controller {
 			throws ServletException, IOException {	
 		HttpSession session = request.getSession();
 		//session.getAttribute("id",member.getId());
-		
 	}
 }

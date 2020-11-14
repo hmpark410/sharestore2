@@ -112,9 +112,7 @@
 			</ul>
 		</div>
 		<h3>주문내역</h3>
-
 		<div class="orderlist">
-
 			<table class="cols tbl_product shopping">
 				<colgroup>
 					<col style="width: 186px;">
@@ -128,7 +126,6 @@
 					<tr>
 						<th>주문일</th>
 						<th>주문번호</th>
-						<th>상품</th>
 						<th>금액</th>
 						<th>아이디</th>
 						<th>진행상황</th>
@@ -144,8 +141,12 @@
 					<tr>
 						<th><input type="text" name="orderDate" class="txt"
 							value="<%=orderlist.getOrderDate()%>"></th>
-						<th><input type="text" name="orderNumber" class="txt"
-							value="<%=orderlist.getOrderNumber()%>" readonly></th>
+						<th>
+						<th><button type="submit" class="hiddenbtn"
+                              name="orderNumber" onclick='showPopup()'
+                              value="<%=orderlist.getOrderNumber()%>"><%=orderlist.getOrderNumber()%>
+                             </button>
+                        </th>
 						<th><input type="text" name="totalPrice" class="txt"
 							value="<%=orderlist.getTotalPrice()%>" readonly></th>
 						<th><input type="text" name="memberId" class="txt"
@@ -193,5 +194,14 @@
 			</table>
 		</div>
 	</div>
+	<script type="text/javascript">
+		function showPopup() {
+			var check = document.form1;
+			window.open('', 'POP', "width=750, height=400, top=45, left=535");
+			check.action = 'orderDetail.do';
+			check.target = 'POP';
+			check.submit();
+		}
+	</script>
 </body>
 </html>

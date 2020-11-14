@@ -94,7 +94,6 @@
                                  OrderVO order = orderList.get(i);
                                  sum += order.getTotalPrice();
                               }
-                           
                            %> 
                            <%=sum%></span> 원 ( <span><%=orderList.size()%></span> 회)
                            </p> 
@@ -134,7 +133,8 @@
                            <tr>
                               <th><button type="submit" class="hiddenbtn"
                               name="orderNum" onclick='showPopup2()'
-                              value="<%=order.getOrderNumber()%>"><%=order.getOrderNumber()%></button></th>
+                              value="<%=order.getOrderNumber()%>"><%=order.getOrderNumber()%></button>
+                              </th>
                               <th><%=order.getOrderDate()%></th>
                               <th><%=order.getTotalPrice()%></th>
                               <th><%=order.getStatus()%></th>                             
