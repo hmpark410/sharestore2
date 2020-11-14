@@ -8,9 +8,16 @@
    <title>· SHARESTORE ·</title>
 
 <body>
+<<<<<<< HEAD
    <script>
       alert('주문이 완료되었습니다.');
       location.href="./orderList.do";
    </script>
+=======
+	<script>
+		alert('주문이 완료되었습니다.');
+		location.href="./orderList.do";
+	</script>
+>>>>>>> branch 'master' of https://github.com/hmpark410/sharestore2
 </body>
 </html>
