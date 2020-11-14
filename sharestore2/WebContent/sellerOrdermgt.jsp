@@ -27,12 +27,28 @@
 		<div class="state">
 			<ul class="order">
 				<%
+				int cnt0 = 0;
 				int cnt1 = 0;
 				int cnt2 = 0;
 				int cnt3 = 0;
 				int cnt4 = 0;
 				ArrayList<OrderVO> sellerOrderList = (ArrayList<OrderVO>) request.getAttribute("sellerOrderList");
 				%>
+				<li>
+					<h4>주문완료</h4> <%
+				 	if (!sellerOrderList.isEmpty()) {
+				 	for (int i = 0; i < sellerOrderList.size(); i++) {
+				 		OrderVO orderlist = sellerOrderList.get(i);
+				 		if (orderlist.getStatus().equals("주문완료")) {
+				 	cnt0++;
+				 		}
+				 	}
+				 %> <span><%=cnt0%></span> <%
+				 	} else {
+				 %> <span>0</span> <%
+				 	}
+				 %>
+				</li>
 				<li>
 					<h4>배송준비</h4> <%
 				 	if (!sellerOrderList.isEmpty()) {
@@ -141,8 +157,10 @@
 								<div class="select_box_wrap"
 									style="float: left; margin-left: 5px;">
 									<div class="select_box orderstatus_box">
+									
 									<input type="hidden" name="orderNumber" value="<%=orderlist.getOrderNumber()%>">
 									<input type="hidden" name="sellerId" value="<%=orderlist.getSellerId()%>">
+										
 										<select id="orderstatus" name="updateStatus"
 											style="width: 110px;" class="orderstatus">
 											<option value="">상태변경</option>

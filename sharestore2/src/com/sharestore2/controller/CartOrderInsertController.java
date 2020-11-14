@@ -56,8 +56,6 @@ public class CartOrderInsertController implements Controller {
 				totalPrice = cart.getCount() * product.getPrice();
 				
 				sellerId = product.getSellerId();
-				System.out.println(sellerId);
-				
 				String subNum = "";
 				for (int j = 1; j <= 6; j++) {
 					subNum += (int) (Math.random() * 10);
@@ -125,10 +123,11 @@ public class CartOrderInsertController implements Controller {
 					OrderProductService orderProductService = OrderProductService.getInstance();
 					orderProductService.OrderProductInsert(orderProduct2);
 				}
+				CartService cartService = CartService.getInstance();
+				cartService.cartDelete(cart);
 			}
-			CartService cartService = CartService.getInstance();
-			cartService.cartDelete(cart);
 		}	
 		HttpUtil.forward(request, response, "/result/orderInsertOut.jsp");
+		
 	}
 }
