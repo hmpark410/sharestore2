@@ -18,7 +18,7 @@
         <div class="mupdate_frame">
         	<div class="mupdate_cont">
             	<a class="mdelete" onClick="location.href='memberDelete.do'">회원탈퇴</a>
-				<form action="memberUpdate.do" method="post">
+				<form method="post">
 					<table>
 						<tbody>
 				        	<tr>
@@ -85,7 +85,7 @@
 				        </tbody>
 					</table>
 					<div class="update_btn_wrap">
-		                <button type="submit" id="btnConfirm" name="button" class="btn black">확인</button>
+		                <button type="submit" id="btnConfirm" name="button" class="btn black" onclick="javascript: form.action='memberUpdate.do';">확인</button>
 		            </div> 
 			    </form>
 			</div>

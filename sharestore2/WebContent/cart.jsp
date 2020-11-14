@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div id="page">
-		<form method="post">
+		<form name="form1" method="post">
 		<header>
 			<div id="top">
 				<div class="logo">
@@ -122,7 +122,7 @@
 									String url = "./data/" + cart.getFilename1();
 								%>
 								<tr>
-									<th><input type="checkbox" name="class" value="<%=cart.getCartNumber()%>" checked="true"></th>
+									<th><input type="checkbox" id="class" name="class" value="<%=cart.getCartNumber()%>" onclick="value_check()"></th>
 									<th>
 										<a href="productView.do?productNumber=<%=cart.getProductNumber()%>">
 											<img style="width: 60px; height: 80px; background-size: 60px 80px; background-repeat: no-repeat;" src="<%=url%>" />
@@ -135,6 +135,7 @@
 									<th>
 										<input type="hidden" name="productNumber" value="<%=cart.getProductNumber()%>" />
 										<input type="hidden" name="count" value="<%=cart.getCount()%>" />
+										<input type="hidden" name="price" value="<%=cart.getPrice()%>" />
 										<button type="submit" name="orderbtn" style="margin-bottom:5px;" value="<%=cart.getCartNumber()%>" onclick="javascript: form.action='cartSingleConfirm.do';">주문하기</button>
 										<button type="submit" name="deletebtn" value="<%=cart.getCartNumber()%>" onclick="javascript: form.action='cartSingleDelete.do';">삭제하기</button>
 									</th>
@@ -159,8 +160,8 @@
 						<h3>주문금액</h3>
 						<ul>
 							<li class="total"><strong>총 결제금액</strong>
-								<p>
-									<em id="counterTotalAmt"><%=totalPrice%></em>원
+								<p style="margin-top:-8px;">
+									<input type="text" name="tPrice" style="width:85px; text-align:right; background-color: #f2f2f2; border: #f2f2f2; font-size: 20px; color: #1a2e88;"/> 원
 								</p>
 							</li>
 						</ul>
@@ -204,5 +205,18 @@
 			</section>
 		</form>
 	</div>
+	<script type="text/javascript">
+		function value_check() {
+	        var check_count = document.getElementsByName("class").length;
+	        var totalPrice=0;
+	        
+	        for (var i=0; i<check_count; i++) {
+	            if (document.getElementsByName("class")[i].checked == true) {
+	                totalPrice += (document.getElementsByName("price")[i].value)*(document.getElementsByName("count")[i].value);  
+	            }
+	        }
+	        document.form1.tPrice.value=totalPrice;
+	    }
+	</script>
 </body>
 </html>
