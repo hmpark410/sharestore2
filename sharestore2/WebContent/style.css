@@ -1365,7 +1365,7 @@ strong, b {
 
 .member_cont .state .order li, .sellerodmgt_frame .state .order li {
 	float: left;
-    width: 25%;	
+    width: 20%;	
     padding: 0 0 4px;
     margin: 0 -1px 0 0;
     border-right: 1px dotted #c9c7ca;

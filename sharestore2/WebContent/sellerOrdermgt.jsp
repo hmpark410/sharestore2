@@ -154,7 +154,7 @@
 						<th><input type="text" name="status" class="txt"
 							value="<%=orderlist.getStatus()%>" readonly></th>
 						<th>
-							<form action="sellerOrderUpdate.do" method="post">
+							<form name="form1" action="sellerOrderUpdate.do" method="post">
 								<div class="select_box_wrap"
 									style="float: left; margin-left: 5px;">
 									<div class="select_box orderstatus_box">
