@@ -18,7 +18,7 @@
 	if (selected == null) {
 		selected = "sellerPage.jsp";
 	}
-	%>
+	%>s
 	<jsp:include page="<%=selected%>" flush="false">
 		<jsp:param name="" value="" />
 	</jsp:include>
