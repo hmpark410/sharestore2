@@ -37,15 +37,25 @@
 			</div>
 			<nav>
 				<ul class="nav-container">
-					<li class="nav-item"><a href="apparelAll.do">APPAREL</a>
-						<p>|</p></li>
-					<li class="nav-item"><a href="bagAll.do">BAG</a>
-						<p>|</p></li>
-					<li class="nav-item"><a href="shoesAll.do">SHOES</a>
-						<p>|</p></li>
-					<li class="nav-item"><a href="accAll.do">ACC</a>
-						<p>|</p></li>
-					<li class="nav-item"><a href="lifeAll.do">LIFE</a></li>
+					<li class="nav-item">
+						<a href="apparelAll.do">APPAREL</a>
+						<p>|</p>
+					</li>
+					<li class="nav-item">
+						<a href="bagAll.do">BAG</a>
+						<p>|</p>
+					</li>
+					<li class="nav-item">
+						<a href="shoesAll.do">SHOES</a>
+						<p>|</p>
+					</li>
+					<li class="nav-item">
+						<a href="accAll.do">ACC</a>
+						<p>|</p>
+					</li>
+					<li class="nav-item">
+						<a href="category.do?category=3005">LIFE</a>
+					</li>
 				</ul>
 			</nav>
 		</header>

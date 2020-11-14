@@ -72,8 +72,8 @@ public class ProductDAO {
 		try {
 			conn = connect();
 			String sql = "insert into sharestore.product"
-					+ "(name, size, price, stock, category, exp, seller_id, filename1, filename2, filename3) "
-					+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+					+ "(name, size, price, stock, category, sub_category, season, exp, seller_id, filename1, filename2, filename3) "
+					+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, product.getName());
@@ -81,11 +81,13 @@ public class ProductDAO {
 			pstmt.setInt(3, product.getPrice());
 			pstmt.setInt(4, product.getStock());
 			pstmt.setString(5, product.getCategory());
-			pstmt.setString(6, product.getExp());
-			pstmt.setString(7, product.getSellerId());
-			pstmt.setString(8, product.getFilename1());
-			pstmt.setString(9, product.getFilename2());
-			pstmt.setString(10, product.getFilename3());
+			pstmt.setString(6, product.getSubCategory());
+			pstmt.setString(7, product.getSeason());
+			pstmt.setString(8, product.getExp());
+			pstmt.setString(9, product.getSellerId());
+			pstmt.setString(10, product.getFilename1());
+			pstmt.setString(11, product.getFilename2());
+			pstmt.setString(12, product.getFilename3());
 			pstmt.executeUpdate();
 
 		} catch (Exception ex) {
@@ -116,11 +118,13 @@ public class ProductDAO {
 				product.setPrice(rs.getInt(4));
 				product.setStock(rs.getInt(5));
 				product.setCategory(rs.getString(6));
-				product.setExp(rs.getString(7));
-				product.setSellerId(rs.getString(8));
-				product.setFilename1(rs.getString(9));
-				product.setFilename2(rs.getString(10));
-				product.setFilename3(rs.getString(11));
+				product.setSubCategory(rs.getString(7));
+				product.setSeason(rs.getString(8));
+				product.setExp(rs.getString(9));
+				product.setSellerId(rs.getString(10));
+				product.setFilename1(rs.getString(11));
+				product.setFilename2(rs.getString(12));
+				product.setFilename3(rs.getString(13));
 				productList.add(product);
 			}
 		} catch (Exception ex) {
@@ -157,11 +161,13 @@ public class ProductDAO {
 				product.setPrice(rs.getInt(4));
 				product.setStock(rs.getInt(5));
 				product.setCategory(rs.getString(6));
-				product.setExp(rs.getString(7));
-				product.setSellerId(rs.getString(8));
-				product.setFilename1(rs.getString(9));
-				product.setFilename2(rs.getString(10));
-				product.setFilename3(rs.getString(11));
+				product.setSubCategory(rs.getString(7));
+				product.setSeason(rs.getString(8));
+				product.setExp(rs.getString(9));
+				product.setSellerId(rs.getString(10));
+				product.setFilename1(rs.getString(11));
+				product.setFilename2(rs.getString(12));
+				product.setFilename3(rs.getString(13));
 				productPageList.add(product);
 			}
 		} catch (Exception ex) {
@@ -170,6 +176,50 @@ public class ProductDAO {
 			close(conn, pstmt, rs);
 		}
 		return productPageList;
+	}
+	
+	//페이지 상품리스트
+	public ArrayList<ProductVO> productPageSubList(String category, String subCategory) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ProductVO product = null;
+		ArrayList<ProductVO> productPageSubList = new ArrayList<>();
+
+		try {
+			conn = connect();
+			pstmt = conn.prepareStatement("SELECT * FROM sharestore.product where category=? and sub_category=?");
+			pstmt.setString(1, category);
+			pstmt.setString(2, subCategory);
+			rs = pstmt.executeQuery();
+			// paging 
+			// "SELECT @ROWNUM := @ROWNUM + 1 AS ROWNUM, A.* FROM"
+			// + "(SELECT * FROM sharestore.product ORDER BY product_number ASC) AS A"
+			// + ",(SELECT @ROWNUM := 0) B"
+
+			while (rs.next()) {
+				product = new ProductVO();
+				product.setproductNumber(rs.getInt(1));
+				product.setName(rs.getString(2));
+				product.setSize(rs.getString(3));
+				product.setPrice(rs.getInt(4));
+				product.setStock(rs.getInt(5));
+				product.setCategory(rs.getString(6));
+				product.setSubCategory(rs.getString(7));
+				product.setSeason(rs.getString(8));
+				product.setExp(rs.getString(9));
+				product.setSellerId(rs.getString(10));
+				product.setFilename1(rs.getString(11));
+				product.setFilename2(rs.getString(12));
+				product.setFilename3(rs.getString(13));
+				productPageSubList.add(product);
+			}
+		} catch (Exception ex) {
+			System.out.println("오류 발생 : " + ex);
+		} finally {
+			close(conn, pstmt, rs);
+		}
+		return productPageSubList;
 	}
 	
 	//페이지all_1 상품리스트
@@ -197,11 +247,13 @@ public class ProductDAO {
 				product.setPrice(rs.getInt(4));
 				product.setStock(rs.getInt(5));
 				product.setCategory(rs.getString(6));
-				product.setExp(rs.getString(7));
-				product.setSellerId(rs.getString(8));
-				product.setFilename1(rs.getString(9));
-				product.setFilename2(rs.getString(10));
-				product.setFilename3(rs.getString(11));
+				product.setSubCategory(rs.getString(7));
+				product.setSeason(rs.getString(8));
+				product.setExp(rs.getString(9));
+				product.setSellerId(rs.getString(10));
+				product.setFilename1(rs.getString(11));
+				product.setFilename2(rs.getString(12));
+				product.setFilename3(rs.getString(13));
 				productPageAllList1.add(product);
 			}
 		} catch (Exception ex) {
@@ -210,6 +262,50 @@ public class ProductDAO {
 			close(conn, pstmt, rs);
 		}
 		return productPageAllList1;
+	}
+	
+	//페이지all_1 sub
+	public ArrayList<ProductVO> productPageAllList1Sub(String subCategory) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ProductVO product = null;
+		ArrayList<ProductVO>productPageAllList1Sub = new ArrayList<>();
+
+		try {
+			conn = connect();
+			pstmt = conn.prepareStatement("SELECT * FROM sharestore.product where category LIKE '%1' and sub_category=?");
+			pstmt.setString(1, subCategory);
+			rs = pstmt.executeQuery();
+			// paging 
+			// "SELECT @ROWNUM := @ROWNUM + 1 AS ROWNUM, A.* FROM"
+			// + "(SELECT * FROM sharestore.product ORDER BY product_number ASC) AS A"
+			// + ",(SELECT @ROWNUM := 0) B"
+
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				product = new ProductVO();
+				product.setproductNumber(rs.getInt(1));
+				product.setName(rs.getString(2));
+				product.setSize(rs.getString(3));
+				product.setPrice(rs.getInt(4));
+				product.setStock(rs.getInt(5));
+				product.setCategory(rs.getString(6));
+				product.setSubCategory(rs.getString(7));
+				product.setSeason(rs.getString(8));
+				product.setExp(rs.getString(9));
+				product.setSellerId(rs.getString(10));
+				product.setFilename1(rs.getString(11));
+				product.setFilename2(rs.getString(12));
+				product.setFilename3(rs.getString(13));
+				productPageAllList1Sub.add(product);
+			}
+		} catch (Exception ex) {
+			System.out.println("오류 발생 : " + ex);
+		} finally {
+			close(conn, pstmt, rs);
+		}
+		return productPageAllList1Sub;
 	}
 	
 	//페이지all_2 상품리스트
@@ -237,11 +333,13 @@ public class ProductDAO {
 				product.setPrice(rs.getInt(4));
 				product.setStock(rs.getInt(5));
 				product.setCategory(rs.getString(6));
-				product.setExp(rs.getString(7));
-				product.setSellerId(rs.getString(8));
-				product.setFilename1(rs.getString(9));
-				product.setFilename2(rs.getString(10));
-				product.setFilename3(rs.getString(11));
+				product.setSubCategory(rs.getString(7));
+				product.setSeason(rs.getString(8));
+				product.setExp(rs.getString(9));
+				product.setSellerId(rs.getString(10));
+				product.setFilename1(rs.getString(11));
+				product.setFilename2(rs.getString(12));
+				product.setFilename3(rs.getString(13));
 				productPageAllList2.add(product);
 			}
 		} catch (Exception ex) {
@@ -250,6 +348,50 @@ public class ProductDAO {
 			close(conn, pstmt, rs);
 		}
 		return productPageAllList2;
+	}
+	
+	//페이지all_2 상품리스트 sub
+	public ArrayList<ProductVO> productPageAllList2Sub(String subCategory) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ProductVO product = null;
+		ArrayList<ProductVO> productPageAllList2Sub = new ArrayList<>();
+
+		try {
+			conn = connect();
+			pstmt = conn.prepareStatement("SELECT * FROM sharestore.product where category LIKE '%2' and sub_category=?");
+			pstmt.setString(1, subCategory);
+			rs = pstmt.executeQuery();
+			// paging 
+			// "SELECT @ROWNUM := @ROWNUM + 1 AS ROWNUM, A.* FROM"
+			// + "(SELECT * FROM sharestore.product ORDER BY product_number ASC) AS A"
+			// + ",(SELECT @ROWNUM := 0) B"
+
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				product = new ProductVO();
+				product.setproductNumber(rs.getInt(1));
+				product.setName(rs.getString(2));
+				product.setSize(rs.getString(3));
+				product.setPrice(rs.getInt(4));
+				product.setStock(rs.getInt(5));
+				product.setCategory(rs.getString(6));
+				product.setSubCategory(rs.getString(7));
+				product.setSeason(rs.getString(8));
+				product.setExp(rs.getString(9));
+				product.setSellerId(rs.getString(10));
+				product.setFilename1(rs.getString(11));
+				product.setFilename2(rs.getString(12));
+				product.setFilename3(rs.getString(13));
+				productPageAllList2Sub.add(product);
+			}
+		} catch (Exception ex) {
+			System.out.println("오류 발생 : " + ex);
+		} finally {
+			close(conn, pstmt, rs);
+		}
+		return productPageAllList2Sub;
 	}
 	
 	//페이지all_3 상품리스트
@@ -277,11 +419,13 @@ public class ProductDAO {
 				product.setPrice(rs.getInt(4));
 				product.setStock(rs.getInt(5));
 				product.setCategory(rs.getString(6));
-				product.setExp(rs.getString(7));
-				product.setSellerId(rs.getString(8));
-				product.setFilename1(rs.getString(9));
-				product.setFilename2(rs.getString(10));
-				product.setFilename3(rs.getString(11));
+				product.setSubCategory(rs.getString(7));
+				product.setSeason(rs.getString(8));
+				product.setExp(rs.getString(9));
+				product.setSellerId(rs.getString(10));
+				product.setFilename1(rs.getString(11));
+				product.setFilename2(rs.getString(12));
+				product.setFilename3(rs.getString(13));
 				productPageAllList3.add(product);
 			}
 		} catch (Exception ex) {
@@ -290,6 +434,50 @@ public class ProductDAO {
 			close(conn, pstmt, rs);
 		}
 		return productPageAllList3;
+	}
+	
+	//페이지all_3 상품리스트 sub
+	public ArrayList<ProductVO> productPageAllList3Sub(String subCategory) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ProductVO product = null;
+		ArrayList<ProductVO> productPageAllList3Sub = new ArrayList<>();
+
+		try {
+			conn = connect();
+			pstmt = conn.prepareStatement("SELECT * FROM sharestore.product where category LIKE '%3' and sub_category=?");
+			pstmt.setString(1, subCategory);
+			rs = pstmt.executeQuery();
+			// paging 
+			// "SELECT @ROWNUM := @ROWNUM + 1 AS ROWNUM, A.* FROM"
+			// + "(SELECT * FROM sharestore.product ORDER BY product_number ASC) AS A"
+			// + ",(SELECT @ROWNUM := 0) B"
+
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				product = new ProductVO();
+				product.setproductNumber(rs.getInt(1));
+				product.setName(rs.getString(2));
+				product.setSize(rs.getString(3));
+				product.setPrice(rs.getInt(4));
+				product.setStock(rs.getInt(5));
+				product.setCategory(rs.getString(6));
+				product.setSubCategory(rs.getString(7));
+				product.setSeason(rs.getString(8));
+				product.setExp(rs.getString(9));
+				product.setSellerId(rs.getString(10));
+				product.setFilename1(rs.getString(11));
+				product.setFilename2(rs.getString(12));
+				product.setFilename3(rs.getString(13));
+				productPageAllList3Sub.add(product);
+			}
+		} catch (Exception ex) {
+			System.out.println("오류 발생 : " + ex);
+		} finally {
+			close(conn, pstmt, rs);
+		}
+		return productPageAllList3Sub;
 	}
 	
 	//페이지all_4 상품리스트
@@ -317,11 +505,13 @@ public class ProductDAO {
 				product.setPrice(rs.getInt(4));
 				product.setStock(rs.getInt(5));
 				product.setCategory(rs.getString(6));
-				product.setExp(rs.getString(7));
-				product.setSellerId(rs.getString(8));
-				product.setFilename1(rs.getString(9));
-				product.setFilename2(rs.getString(10));
-				product.setFilename3(rs.getString(11));
+				product.setSubCategory(rs.getString(7));
+				product.setSeason(rs.getString(8));
+				product.setExp(rs.getString(9));
+				product.setSellerId(rs.getString(10));
+				product.setFilename1(rs.getString(11));
+				product.setFilename2(rs.getString(12));
+				product.setFilename3(rs.getString(13));
 				productPageAllList4.add(product);
 			}
 		} catch (Exception ex) {
@@ -330,6 +520,50 @@ public class ProductDAO {
 			close(conn, pstmt, rs);
 		}
 		return productPageAllList4;
+	}
+	
+	//페이지all_4 상품리스트 sub
+	public ArrayList<ProductVO> productPageAllList4Sub(String subCategory) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ProductVO product = null;
+		ArrayList<ProductVO> productPageAllList4Sub = new ArrayList<>();
+
+		try {
+			conn = connect();
+			pstmt = conn.prepareStatement("SELECT * FROM sharestore.product where category LIKE '%4' and sub_category=?");
+			pstmt.setString(1, subCategory);
+			rs = pstmt.executeQuery();
+			// paging 
+			// "SELECT @ROWNUM := @ROWNUM + 1 AS ROWNUM, A.* FROM"
+			// + "(SELECT * FROM sharestore.product ORDER BY product_number ASC) AS A"
+			// + ",(SELECT @ROWNUM := 0) B"
+
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				product = new ProductVO();
+				product.setproductNumber(rs.getInt(1));
+				product.setName(rs.getString(2));
+				product.setSize(rs.getString(3));
+				product.setPrice(rs.getInt(4));
+				product.setStock(rs.getInt(5));
+				product.setCategory(rs.getString(6));
+				product.setSubCategory(rs.getString(7));
+				product.setSeason(rs.getString(8));
+				product.setExp(rs.getString(9));
+				product.setSellerId(rs.getString(10));
+				product.setFilename1(rs.getString(11));
+				product.setFilename2(rs.getString(12));
+				product.setFilename3(rs.getString(13));
+				productPageAllList4Sub.add(product);
+			}
+		} catch (Exception ex) {
+			System.out.println("오류 발생 : " + ex);
+		} finally {
+			close(conn, pstmt, rs);
+		}
+		return productPageAllList4Sub;
 	}
 	
 	// 셀러상품리스트
@@ -353,11 +587,13 @@ public class ProductDAO {
 				product.setPrice(rs.getInt(4));
 				product.setStock(rs.getInt(5));
 				product.setCategory(rs.getString(6));
-				product.setExp(rs.getString(7));
-				product.setSellerId(rs.getString(8));
-				product.setFilename1(rs.getString(9));
-				product.setFilename2(rs.getString(10));
-				product.setFilename3(rs.getString(11));
+				product.setSubCategory(rs.getString(7));
+				product.setSeason(rs.getString(8));
+				product.setExp(rs.getString(9));
+				product.setSellerId(rs.getString(10));
+				product.setFilename1(rs.getString(11));
+				product.setFilename2(rs.getString(12));
+				product.setFilename3(rs.getString(13));
 				sellerPrdlist.add(product);
 			}
 		} catch (Exception ex) {
@@ -408,11 +644,13 @@ public class ProductDAO {
 				product.setPrice(rs.getInt(4));
 				product.setStock(rs.getInt(5));
 				product.setCategory(rs.getString(6));
-				product.setExp(rs.getString(7));
-				product.setSellerId(rs.getString(8));
-				product.setFilename1(rs.getString(9));
-				product.setFilename2(rs.getString(10));
-				product.setFilename3(rs.getString(11));
+				product.setSubCategory(rs.getString(7));
+				product.setSeason(rs.getString(8));
+				product.setExp(rs.getString(9));
+				product.setSellerId(rs.getString(10));
+				product.setFilename1(rs.getString(11));
+				product.setFilename2(rs.getString(12));
+				product.setFilename3(rs.getString(13));
 				sellerPrdUpdatelist.add(product);
 			}
 		} catch (Exception ex) {
@@ -429,15 +667,16 @@ public class ProductDAO {
 		PreparedStatement pstmt = null;
 		try {
 			conn = connect();
-			String sql = "update product set name=?, size=?, price=?, stock=?, category=?, exp=?where product_number=?;";
+			String sql = "update product set name=?, size=?, price=?, stock=?, category=?, sub_category=? , exp=? where product_number=?;";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, product.getName());
 			pstmt.setString(2, product.getSize());
 			pstmt.setInt(3, product.getPrice());
 			pstmt.setInt(4, product.getStock());	
 			pstmt.setString(5, product.getCategory());
-			pstmt.setString(6, product.getExp());
-			pstmt.setInt(7, product.getproductNumber());
+			pstmt.setString(6, product.getSubCategory());
+			pstmt.setString(7, product.getExp());
+			pstmt.setInt(8, product.getproductNumber());
 			
 			pstmt.executeUpdate();
 		}
@@ -490,11 +729,13 @@ public class ProductDAO {
 				product.setPrice(rs.getInt(4));
 				product.setStock(rs.getInt(5));
 				product.setCategory(rs.getString(6));
-				product.setExp(rs.getString(7));
-				product.setSellerId(rs.getString(8));
-				product.setFilename1(rs.getString(9));
-				product.setFilename2(rs.getString(10));
-				product.setFilename3(rs.getString(11));
+				product.setSubCategory(rs.getString(7));
+				product.setSeason(rs.getString(8));
+				product.setExp(rs.getString(9));
+				product.setSellerId(rs.getString(10));
+				product.setFilename1(rs.getString(11));
+				product.setFilename2(rs.getString(12));
+				product.setFilename3(rs.getString(13));
 				adminPrdUpdatelist.add(product);
 			}
 		} catch (Exception ex) {
@@ -551,11 +792,13 @@ public class ProductDAO {
 				product.setPrice(rs.getInt(4));
 				product.setStock(rs.getInt(5));
 				product.setCategory(rs.getString(6));
-				product.setExp(rs.getString(7));
-				product.setSellerId(rs.getString(8));
-				product.setFilename1(rs.getString(9));
-				product.setFilename2(rs.getString(10));
-				product.setFilename3(rs.getString(11));
+				product.setSubCategory(rs.getString(7));
+				product.setSeason(rs.getString(8));
+				product.setExp(rs.getString(9));
+				product.setSellerId(rs.getString(10));
+				product.setFilename1(rs.getString(11));
+				product.setFilename2(rs.getString(12));
+				product.setFilename3(rs.getString(13));
 			}
 
 		} catch (Exception ex) {

@@ -10,18 +10,18 @@ import javax.servlet.http.HttpServletResponse;
 import com.sharestore2.service.ProductService;
 import com.sharestore2.vo.ProductVO;
 
-public class AccWomenController implements Controller{
+public class BagAllSubController implements Controller{
 	public void execute (HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
-		
-		String category = "1004";
+		String subCategory = request.getParameter("subCategory");
 		ProductService service = ProductService.getInstance();
-		ArrayList<ProductVO> productPageList = service.productPageList(category);
-	
-		request.setAttribute("productList", productPageList);
-		//request.setAttribute("paging", paging);
-		HttpUtil.forward(request, response, "/accWomen.jsp");
+		
+		ArrayList<ProductVO> productPageAllList2Sub = service.productPageAllList2Sub(subCategory);
+		request.setAttribute("productList", productPageAllList2Sub);
+
+		HttpUtil.forward(request, response, "/bagAll.jsp");
 	}
 	
 }
+

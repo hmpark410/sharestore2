@@ -25,7 +25,6 @@ public class SellerOrderUpdateController implements Controller {
 		OrderVO order = new OrderVO();
 		OrderService service = OrderService.getInstance();
 		ArrayList<OrderVO> orderList = service.sellerOrderList(sellerId);
-
 		System.out.println("orderListSize = " + orderList.size());
 		// order
 		int i;

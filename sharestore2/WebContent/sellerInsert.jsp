@@ -35,13 +35,13 @@
 						</a>
 					</li>
 					<li class="menu-item">
-						<a href="cart.jsp">
+						<a href="login.jsp">
 							<span class="icon icon-cart"></span>
 	                        <strong>CART</strong>
 						</a>
 					</li>
 					<li class="menu-item">
-						<a href="mypage.jsp">
+						<a href="login.jsp">
 							<span class="icon icon-mypage"></span>
 	                        <strong>MYPAGE</strong>
 						</a>

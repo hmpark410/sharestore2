@@ -61,18 +61,28 @@
 				</div>
          </div>
          <nav>
-            <ul class="nav-container">
-               <li class="nav-item"><a href="apparelAll.do">APPAREL</a>
-                  <p>|</p></li>
-               <li class="nav-item"><a href="bagAll.do">BAG</a>
-                  <p>|</p></li>
-               <li class="nav-item"><a href="shoesAll.do">SHOES</a>
-                  <p>|</p></li>
-               <li class="nav-item"><a href="accAll.do">ACC</a>
-                  <p>|</p></li>
-               <li class="nav-item"><a href="lifeAll.do">LIFE</a></li>
-            </ul>
-         </nav>
+				<ul class="nav-container">
+					<li class="nav-item">
+						<a href="apparelAll.do">APPAREL</a>
+						<p>|</p>
+					</li>
+					<li class="nav-item">
+						<a href="bagAll.do">BAG</a>
+						<p>|</p>
+					</li>
+					<li class="nav-item">
+						<a href="shoesAll.do">SHOES</a>
+						<p>|</p>
+					</li>
+					<li class="nav-item">
+						<a href="accAll.do">ACC</a>
+						<p>|</p>
+					</li>
+					<li class="nav-item">
+						<a href="category.do?category=3005">LIFE</a>
+					</li>
+				</ul>
+			</nav>
       </header>
 
       <section id="pdtlist_title">
@@ -84,14 +94,29 @@
 		<section id="pdtlist_sub_title">
 			<nav>
 				<ul>
-					<li><a href="apparelAll.do">ALL</a></li>
-					<li><a href="apparelWomen.do">WOMEN</a></li>
-					<li><a href="apparelMen.do">MEN</a></li>
+					<li>
+						<a href="apparelAll.do">ALL</a>
+					</li>
+					<li>
+						<a href="category.do?category=1001">WOMEN</a>
+					</li>
+					<li>
+						<a href="category.do?category=2001">MEN</a>
+					</li>
 				</ul>
 			</nav>
 		</section>
 		<section id="pdtlist_block">
 			<h1>HOME > APPAREL > ALL</h1>
+			<div class="sub_category">
+				<span>> <a href="apparelAllSub.do?subCategory=1">아우터</a></span>
+				<span>> <a href="apparelAllSub.do?subCategory=2">원피스</a></span>
+				<span>> <a href="apparelAllSub.do?subCategory=3">상의/티</a></span>
+				<span>> <a href="apparelAllSub.do?subCategory=4">블라우스/셔츠</a></span>
+				<span>> <a href="apparelAllSub.do?subCategory=5">니트</a></span>
+				<span>> <a href="apparelAllSub.do?subCategory=6">하의/스커트</a></span>
+				<span>> <a href="apparelAllSub.do?subCategory=7">기타</a></span>
+			</div>
 			<ul>
 				<%
 				ArrayList<ProductVO> productList = (ArrayList<ProductVO>) request.getAttribute("productList");

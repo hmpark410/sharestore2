@@ -4,10 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script type="text/javascript" src="jquery/lib/jquery.js"></script>
-	<script type="text/javascript" src='jquery/lib/jquery.bgiframe.min.js'></script>
-	<script type="text/javascript" src='jquery/lib/jquery.ajaxQueue.js'></script>
-	<script type="text/javascript" src='jquery/jquery.autocomplete.js'></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link href="style.css" rel="stylesheet" type="text/css">
 	<title>· SHARESTORE ·</title>
@@ -78,7 +74,7 @@
 						<p>|</p>
 					</li>
 					<li class="nav-item">
-						<a href="lifeAll.do">LIFE</a>
+						<a href="category.do?category=3005">LIFE</a>
 					</li>
 				</ul>
 			</nav>
@@ -130,7 +126,7 @@
 				      slides[i].style.display = "none";  
 				  }
 				  for (i = 0; i < dots.length; i++) {
-				      dots[i].className = dots[i].className.replace(" active", "");
+				      dots[i].className = dots[i].className.replace("active", "");
 				  }
 				  slides[slideIndex-1].style.display = "block";  
 				  dots[slideIndex-1].className += " active";
