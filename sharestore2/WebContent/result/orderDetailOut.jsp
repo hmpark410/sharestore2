@@ -29,7 +29,8 @@
 				</tr>
 			</thead>
 			<tbody>
-			<%ArrayList<OrderProductVO> orderProductList = (ArrayList<OrderProductVO>) request.getAttribute("orderProductList");
+			<%
+			ArrayList<OrderProductVO> orderProductList = (ArrayList<OrderProductVO>) request.getAttribute("orderProductList");
 			if (orderProductList != null) { %>
 				<%
 				for (int i = 0; i < orderProductList.size(); i++) {
