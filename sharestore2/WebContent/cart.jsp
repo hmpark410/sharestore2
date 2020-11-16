@@ -19,10 +19,6 @@
 					<a href="mainhome.jsp"> <img src="./data/logo.png" />
 					</a>
 				</div>
-				<div class="top_search">
-					<input type="text" id="tsearch" name="search" placeholder="검색어를 입력하세요.">
-					<button type="submit" name="button" onclick="javascript: form.action='search.do';">검색</button>
-				</div>
 				<div class="top_menu">
 					<%
 						MemberVO member = (MemberVO) session.getAttribute("member");
@@ -122,7 +118,7 @@
 									String url = "./data/" + cart.getFilename1();
 								%>
 								<tr>
-									<th><input type="checkbox" id="class" name="class" value="<%=cart.getCartNumber()%>" onclick="value_check()"></th>
+									<th><input type="checkbox" id="class" name="class" value="<%=cart.getCartNumber()%>" checked="true" onclick="value_check()"></th>
 									<th>
 										<a href="productView.do?productNumber=<%=cart.getProductNumber()%>">
 											<img style="width: 60px; height: 80px; background-size: 60px 80px; background-repeat: no-repeat;" src="<%=url%>" />
@@ -161,7 +157,7 @@
 						<ul>
 							<li class="total"><strong>총 결제금액</strong>
 								<p style="margin-top:-8px;">
-									<input type="text" name="tPrice" style="width:85px; text-align:right; background-color: #f2f2f2; border: #f2f2f2; font-size: 20px; color: #1a2e88;"/> 원
+									<input type="text" name="tPrice" value="<%=totalPrice%>" style="width:85px; text-align:right; background-color: #f2f2f2; border: #f2f2f2; font-size: 20px; color: #1a2e88;"/> 원
 								</p>
 							</li>
 						</ul>
@@ -170,6 +166,7 @@
 							style="width: 100%"
 							onclick="javascript: form.action='cartConfirm.do';">선택상품 주문하기
 						</button>
+					</div>
 				</div>
 				<%
 					} else {

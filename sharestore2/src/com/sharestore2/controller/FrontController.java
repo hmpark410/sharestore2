@@ -22,6 +22,7 @@ public class FrontController extends HttpServlet{
 		list.put("/forgetPasswd.do", new ForgetPasswdController());
 		list.put("/memberUpdate.do", new MemberUpdateController());
 		list.put("/memberDelete.do", new MemberDeleteController());
+		list.put("/memberDetail.do", new MemberDetailController());
 		//Seller
 		list.put("/sellerInsert.do", new SellerInsertController());
 		list.put("/sellerDelete.do", new SellerDeleteController());
@@ -45,7 +46,6 @@ public class FrontController extends HttpServlet{
 		list.put("/cartSingleDelete.do", new CartSingleDeleteController());
 		list.put("/cartList.do", new CartListController());
 		list.put("/cartOrderInsert.do", new CartOrderInsertController());
-		list.put("/cartSingleOrderInsert.do", new CartSingleOrderInsertController());
 		list.put("/cartConfirm.do", new CartConfirmController());
 		list.put("/cartSingleConfirm.do", new CartSingleConfirmController());
 		//Admin

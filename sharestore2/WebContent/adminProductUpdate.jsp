@@ -19,7 +19,7 @@
         </div>
         <div class="pupdate_frame">
         	<div class="pupdate_cont">
-				<form action="adminPrdUpdate.do" method="post" enctype="multipart/form-data">
+				<form action="adminPrdUpdate.do" method="post">
 					<% ArrayList<ProductVO> adminPrdUpdatelist = (ArrayList<ProductVO>) request.getAttribute("adminPrdUpdatelist");
 					if(!adminPrdUpdatelist.isEmpty()){%>
 					<% 
@@ -93,7 +93,7 @@
 							<tr>
 						    	<th>수량</th>
 						        <td>
-					          		<input type="number" name="stock" id="stock" maxlength="10"  min="1" value = "<%=prdlist.getStock()%>">
+					          		<input type="number" name="stock" id="stock" maxlength="10"  min="0" value = "<%=prdlist.getStock()%>">
 					          	</td>
 							</tr>
 							<tr>

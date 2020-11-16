@@ -47,5 +47,9 @@ public class MemberService {
 	public ArrayList<MemberVO> memberList() {
 		ArrayList<MemberVO> memberList = dao.memberList();
 		return memberList;
-	}	
+	}
+	public ArrayList<MemberVO> memberDetail(String id) {
+		ArrayList<MemberVO> memberDetail = dao.memberDetail(id);
+		return memberDetail;
+	}
 }

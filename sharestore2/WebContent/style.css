@@ -397,9 +397,7 @@ h2 {
 	margin: 0;
     padding: 0;
     width: 400px;
-    height: 1000px;
     display : inline-block;
-    border-right: 2px solid #e6e6e6;
 }
 
 #pdtlist_sub_title li {
@@ -418,9 +416,10 @@ h2 {
 	margin-top: -10px;
     padding: 0;
     width: 79%;
-    height: 1000px;
+    min-height: 700px;
 	display : inline-block;
 	position: absolute;
+	border-left: 2px solid #e6e6e6;
 }
 
 #select_block {
@@ -1391,7 +1390,7 @@ strong, b {
     border-top: 2px solid #1a2e88;
 }
 
-.member_cont .orderlist .hiddenbtn, .salelist_frame .orderlist .hiddenbtn, .sellerodmgt_frame .orderlist #hiddenbtn {
+.member_cont .orderlist .hiddenbtn, .salelist_frame .orderlist .hiddenbtn {
 	background-color: #fff;
 	border: none;
 	color: #1a2e88;
@@ -1414,7 +1413,31 @@ strong, b {
     border-bottom: 1px solid #1a2e88;
 }
 
-.sellerodmgt_frame table tbody tr Button {
+#memberdetail {
+	margin:0;
+	padding:0;
+	width: 750px;
+	height: 137px;
+	overflow-y: hidden;
+	overflow-x: hidden;
+	border-bottom: 1px solid #1a2e88;
+    
+}
+#memberdetail table {
+	border-top: 2px solid #1a2e88;
+    border-bottom: 1px solid #1a2e88;
+}
+
+.sellerodmgt_frame .orderlist .hiddenbtn {
+	margin:0;
+    background-color: #f2f2f2;
+	border: none;
+	color: #1a2e88;
+    font-size: 14px;
+    text-align: center;
+}
+
+.sellerodmgt_frame table tbody tr .update_status {
 	margin-top: 5px;
 	margin-right: 15px;
 	float: right;

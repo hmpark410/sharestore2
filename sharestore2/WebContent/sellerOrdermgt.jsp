@@ -18,7 +18,7 @@
 	if (selected == null) {
 		selected = "sellerPage.jsp";
 	}
-	%>s
+	%>
 	<jsp:include page="<%=selected%>" flush="false">
 		<jsp:param name="" value="" />
 	</jsp:include>
@@ -113,6 +113,7 @@
 		</div>
 		<h3>주문내역</h3>
 		<div class="orderlist">
+			<form name="form1" method="post">
 			<table class="cols tbl_product shopping">
 				<colgroup>
 					<col style="width: 186px;">
@@ -124,8 +125,8 @@
 				</colgroup>
 				<thead>
 					<tr>
-						<th>주문일</th>
 						<th>주문번호</th>
+						<th>주문일</th>
 						<th>금액</th>
 						<th>아이디</th>
 						<th>진행상황</th>
@@ -139,43 +140,46 @@
 				%>
 				<tbody>
 					<tr>
-						<th><input type="text" name="orderDate" class="txt"
-							value="<%=orderlist.getOrderDate()%>"></th>
+						
 						<th>
-						<th><button type="submit" class="hiddenbtn"
-                              name="orderNumber" onclick='showPopup()'
+							<button type="submit" class="hiddenbtn"
+                              name="orderNum" onclick='showPopup()'
                               value="<%=orderlist.getOrderNumber()%>"><%=orderlist.getOrderNumber()%>
-                             </button>
+                            </button>
                         </th>
-						<th><input type="text" name="totalPrice" class="txt"
-							value="<%=orderlist.getTotalPrice()%>" readonly></th>
-						<th><input type="text" name="memberId" class="txt"
-							value="<%=orderlist.getMemberId()%>" readonly></th>
-						<th><input type="text" name="status" class="txt"
-							value="<%=orderlist.getStatus()%>" readonly></th>
+						<th><%=orderlist.getOrderDate()%></th>
+						<th><%=orderlist.getTotalPrice()%></th>
 						<th>
-							<form name="form1" action="sellerOrderUpdate.do" method="post">
-								<div class="select_box_wrap"
-									style="float: left; margin-left: 5px;">
-									<div class="select_box orderstatus_box">
-									
-									<input type="hidden" name="orderNumber" value="<%=orderlist.getOrderNumber()%>">
-									<input type="hidden" name="sellerId" value="<%=orderlist.getSellerId()%>">
-										
-										<select id="orderstatus" name="updateStatus"
-											style="width: 110px;" class="orderstatus">
-											<option value="">상태변경</option>
-											<option value="배송준비">배송준비</option>
-											<option value="배송중">배송중</option>
-											<option value="배송완료">배송완료</option>
-											<option value="환불">환불</option>
-										</select>
-									</div>
-								</div>
-								
-								<Button type="submit" name="update_status" class="update_status">수정</Button>
-							</form>
+							<button type="submit" class="hiddenbtn"
+                              name="memberId" onclick='showPopup2()'
+                              value="<%=orderlist.getMemberId()%>"><%=orderlist.getMemberId()%>
+                            </button>
 						</th>
+						<th><%=orderlist.getStatus()%></th>
+						<form name="form2" method="post">
+						<th>
+							<div class="select_box_wrap"
+								style="float: left; margin-left: 5px;">
+								<div class="select_box orderstatus_box">
+								
+								<input type="hidden" name="orderNumber" value="<%=orderlist.getOrderNumber()%>">
+								<input type="hidden" name="sellerId" value="<%=orderlist.getSellerId()%>">
+									
+									<select id="orderstatus" name="updateStatus"
+										style="width: 110px;" class="orderstatus">
+										<option value="">상태변경</option>
+										<option value="배송준비">배송준비</option>
+										<option value="배송중">배송중</option>
+										<option value="배송완료">배송완료</option>
+										<%if(orderlist.getStatus().equals("환불신청")) {%>
+										<option value="환불">환불</option>
+										<%} %>
+									</select>
+								</div>
+							</div>
+							<Button type="submit" name="update_status" class="update_status" onclick="javascript: form.action='sellerOrderUpdate.do';">수정</Button>
+						</th>
+						</form>
 					</tr>
 					<%
 						}
@@ -183,25 +187,31 @@
 					else {
 					%>
 					<tr>
-						<td colspan="6" style="text-align: center;"><p>구매 내역이
-								없습니다.
-							<p></td>
+						<td colspan="6" style="text-align: center;"><p>구매 내역이 없습니다.<p></td>
 					</tr>
 				</tbody>
 				<%
 					}
 				%>
 			</table>
+			<script type="text/javascript">
+				function showPopup() {
+					var check = document.form1;
+					window.open('', 'POP', "width=750, height=400, top=45, left=535");
+					check.action = 'orderDetail.do';
+					check.target = 'POP';
+					check.submit();
+				}
+				function showPopup2() {
+					var check = document.form1;
+					window.open('', 'POP', "width=750, height=140, top=45, left=535");
+					check.action = 'memberDetail.do';
+					check.target = 'POP';
+					check.submit();
+				}
+			</script>
+			</form>
 		</div>
 	</div>
-	<script type="text/javascript">
-		function showPopup() {
-			var check = document.form1;
-			window.open('', 'POP', "width=750, height=400, top=45, left=535");
-			check.action = 'orderDetail.do';
-			check.target = 'POP';
-			check.submit();
-		}
-	</script>
 </body>
 </html>

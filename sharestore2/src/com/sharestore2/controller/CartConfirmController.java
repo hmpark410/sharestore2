@@ -18,37 +18,40 @@ public class CartConfirmController implements Controller {
 		
 		ArrayList<CartVO> cartConfirmList = new ArrayList<>();
 		String[] varChk = request.getParameterValues("class");
-		int[] chk = new int[varChk.length];
-	   
-	   for(int i = 0; i < varChk.length; i ++) {
-		   chk[i] = Integer.parseInt(varChk[i]);
-	   }
 		
-		for(int cartNumber : chk) {
-			CartService service= CartService.getInstance();
-			ArrayList<CartVO> cartConfirm = service.cartNumberList(cartNumber);
-			if(!cartConfirm.isEmpty()){
-				for(int i = 0; i < cartConfirm.size(); i++){
-					CartVO cart = cartConfirm.get(i);
-					int productNumber = cart.getProductNumber();
-					int count = cart.getCount();
-					
-					ProductService productService = ProductService.getInstance();
-					ProductVO product = productService.productView(productNumber);
-					
-					CartVO cartProduct = new CartVO();
-					cartProduct.setProduct(product);
-					cartProduct.setProductNumber(productNumber);
-					cartProduct.setCount(count);
-					cartProduct.setCartNumber(cartNumber);
-					cartConfirmList.add(cartProduct);
+		if(varChk != null) {	
+			int[] chk = new int[varChk.length];
+			
+			for(int i = 0; i < varChk.length; i ++) {
+			   chk[i] = Integer.parseInt(varChk[i]);
+		    }
+			for(int cartNumber : chk) {
+				CartService service= CartService.getInstance();
+				ArrayList<CartVO> cartConfirm = service.cartNumberList(cartNumber);
+				if(!cartConfirm.isEmpty()){
+					for(int i = 0; i < cartConfirm.size(); i++){
+						CartVO cart = cartConfirm.get(i);
+						int productNumber = cart.getProductNumber();
+						int count = cart.getCount();
+						
+						ProductService productService = ProductService.getInstance();
+						ProductVO product = productService.productView(productNumber);
+						
+						CartVO cartProduct = new CartVO();
+						cartProduct.setProduct(product);
+						cartProduct.setProductNumber(productNumber);
+						cartProduct.setCount(count);
+						cartProduct.setCartNumber(cartNumber);
+						cartConfirmList.add(cartProduct);
+					}
 				}
+				HttpSession session = request.getSession();
+				session.setAttribute("cartConfirmList", cartConfirmList);
 			}
-			HttpSession session = request.getSession();
-			session.setAttribute("cartConfirmList", cartConfirmList);
-			//request.setAttribute("cartConfirmList", cartConfirmList);
+			HttpUtil.forward(request, response, "/cartConfirm.jsp");
+		} else {
+			HttpUtil.forward(request, response, "/result/cartConfirmFailOut.jsp");
 		}
-		HttpUtil.forward(request, response, "/cartConfirm.jsp");
 	}
 }
 

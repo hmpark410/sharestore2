@@ -91,7 +91,7 @@
 							<tr>
 						    	<th>수량</th>
 						        <td>
-					          		<input type="number" name="stock" id="stock" maxlength="10" min="1" value ="<%=prdlist.getStock()%>">
+					          		<input type="number" name="stock" id="stock" maxlength="10" min="0" value ="<%=prdlist.getStock()%>">
 					          	</td>
 							</tr>
 							<tr>

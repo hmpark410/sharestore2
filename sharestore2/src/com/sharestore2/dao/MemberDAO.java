@@ -289,4 +289,40 @@ public class MemberDAO {
 		return memberList;
 	}
 	
+	public ArrayList<MemberVO> memberDetail(String id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MemberVO member = null;
+		ArrayList<MemberVO> memberDetail = new ArrayList<>();
+		try {
+			conn = connect();
+			pstmt = conn.prepareStatement("SELECT * from member where id=?;");
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				member = new MemberVO();
+				member.setId(rs.getString(1));
+				member.setPasswd(rs.getString(2));
+				member.setName(rs.getString(3));
+				member.setPhone(rs.getString(4));
+				member.setMail(rs.getNString(5));
+				member.setGender(rs.getString(6));
+				member.setBirth_y(rs.getInt(7));
+				member.setBirth_m(rs.getInt(8));
+				member.setBirth_d(rs.getInt(9));
+				member.setPostCode(rs.getString(10));
+				member.setRoadAddress(rs.getString(11));
+				member.setDetailAddress(rs.getString(12));
+				memberDetail.add(member);
+			}
+		} catch (Exception ex) {
+			System.out.println("오류 발생 : " + ex);
+		} finally {
+			close(conn, pstmt, rs);
+		}
+		return memberDetail;
+	}
+	
 }
